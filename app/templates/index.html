@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <meta property="og:title" content="Restaurante - PaKu">
+    <meta property="og:description" content="Ven y disfruta de nuestras bebidas y comidas">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo.jpg') }}">
+    <meta property="og:type" content="website">
+    <title>Restaurante - Paku</title>
+  
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Added splash screen view -->
+        <!-- Splash Screen View -->
+        <div id="splash-view" class="view active">
+            <div class="splash-container">
+                <div class="splash-bg"></div>
+                <div class="splash-content">
+                    <div class="splash-logo">
+                        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
+                    </div>
+                    
+                    <!-- Fixed navigation from splash to home -->
+                    <button class="splash-menu-btn" onclick="navigateTo('menu')">
+                        <i class="fas fa-utensils"></i> MENÚ
+                    </button>
+                    
+                    <button class="splash-location-btn">
+                        <i class="fas fa-map-marker-alt"></i> UBICACIÓN
+                    </button>
+                    
+                    <div class="splash-social">
+                        <h3>follow us</h3>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link"><i class="fab fa-facebook-f" target="_blank"></i></a>
+                            <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2" class="social-link"><i class="fab fa-instagram" target="_blank"></i></a>
+                            <a href="https://wa.me/50683628516?text=Hola%20quiero%20hacer%20un%20pedido"
+                                    class="social-link"
+                                    target="_blank"
+                                    rel="noopener">
+                                    <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Home View -->
+        <!-- Changed id from home-view to menu-view -->
+        <div id="menu-view" class="view">
+            <header class="header">
+                <button class="back-btn" onclick="goBack()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                 <div class="splash-logo">
+                        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
+                    </div>
+            </header>
+
+            <main class="main-content">
+                <div class="category-grid">
+                    <div class="category-card" onclick="navigateTo('bebidas')">
+                        <div class="category-text">
+                            <h2>BEBIDAS</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="{{ url_for('static', filename='images/Cocteles.jpg') }}" alt="Bebidas">
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="navigateTo('para-comenzar')">
+                        <div class="category-text">
+                            <h2>Entradas</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="{{ url_for('static', filename='images/Papa_Nacho.jpg') }}" alt="Para Comenzar">
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="navigateTo('ensaladas')">
+                        <div class="category-text">
+                            <h2>ENSALADAS</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Ensaladas">
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="navigateTo('menu-ninos')">
+                        <div class="category-text">
+                            <h2>MENÚ<br>DE NIÑOS</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1623428454614-abaf00244e52?w=400" alt="Menú de Niños">
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="navigateTo('hamburguesas')">
+                        <div class="category-text">
+                            <h2>HAMBUR-<br>GUESAS</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Hamburguesas">
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="navigateTo('postres')">
+                        <div class="category-text">
+                            <h2>POSTRES</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400" alt="Postres">
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="navigateTo('mi-creacion')">
+                        <div class="category-text">
+                            <h2>DESAYUNOS</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="{{ url_for('static', filename='images/Pinto1.jpg') }}" alt="Mi Creación">
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Bebidas View -->
+        <div id="bebidas-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Bebidas</h1>
+            </header>
+
+            <main class="main-content">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-category="all">all</button>
+                    <button class="filter-tab" data-category="importadas">Cervezas Importadas</button>
+                    <button class="filter-tab" data-category="nacionales">Cervezas Nacionales</button>
+                    <button class="filter-tab" data-category="cocteles">Cocteles</button>
+                </div>
+
+                <div class="section-banner">
+                    <h2>Cervezas Importadas</h2>
+                    <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=200" alt="Beer">
+                </div>
+
+                <div class="products-list" id="bebidas-products">
+                    <!-- Added data-category attributes for filtering -->
+                    <div class="product-card" data-category="nacionales" data-product-id="ImperialLight">
+                        <img src="https://info.megasuper.com/ecommerce/764009000651_1.jpeg" alt="Imperial-light">
+                        <div class="product-info">
+                            <h3>Imperial-Light</h3>
+                            <p>Refrescante cerveza ligera, con un sabor equilibrado y diferente.</p>
+                            <div class="product-badge">
+                                <i class="fas fa-star"></i>
+                                <span>Recomencion</span>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price">₡1500</span>
+                                <button class="show-btn" onclick="showProductDetail('ImperialLight')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="nacionales" data-product-id="ImperialSilver">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvNYD1A4OtrHT9TX1z8agEiJZUwY3WBoH2gw&s" alt="Imperial_silver">
+                        <div class="product-info">
+                            <h3>Imperial Silver</h3>
+                            <p>La imperial ofrece un sabor suave y equilibrado, perfecta para disfrutar en cualquier ocasión.</p>
+                            <div class="product-badge">
+                                <i class="fas fa-star"></i>
+                                <span>Recomencion</span>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price">₡1500</span>
+                                <button class="show-btn" onclick="showProductDetail('ImperialSilver')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="importadas" data-product-id="heineken">
+                        <img src="https://walmartcr.vtexassets.com/arquivos/ids/901628/69630_02.jpg?v=638796948355600000" alt="Heineken">
+                        <div class="product-info">
+                            <h3>Heineken</h3>
+                            <p>Con más de 150 de historia, Heineken es reconocida por sus ingredientes puros y naturales.</p>
+                            <div class="product-badge">
+                                <i class="fas fa-star"></i>
+                                <span>Recomencion</span>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price">₡2000</span>
+                                <button class="show-btn" onclick="showProductDetail('heineken')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="importadas" data-product-id="corona">
+                        <img src="https://walmartcr.vtexassets.com/arquivos/ids/1020886/cerveza-corona-extra-botella-355-ml-7503034941200.jpg?v=638985672026930000" alt="Corona">
+                        <div class="product-info">
+                            <h3>Corona</h3>
+                            <p>Cerveza mexicana refrescante con un sabor suave y equilibrado, perfecta con limón.</p>
+                            <div class="product-footer">
+                                <span class="price">₡2000</span>
+                                <button class="show-btn" onclick="showProductDetail('corona')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="nacionales" data-product-id="bavariaGold">
+                        <img src="https://walmartcr.vtexassets.com/arquivos/ids/921562-800-450?v=638826759337670000&width=800&height=450&aspect=true" alt="Bavria">
+                        <div class="product-info">
+                            <h3>Bavaria Gold</h3>
+                            <p>Es una bebida milenaria, natural y refrescante, con un incomparable sabor y aroma, producida a partir de malta, agua, levadura y lúpulo y adjuntos.</p>
+                            <div class="product-footer">
+                                <span class="price">₡2500</span>
+                                <button class="show-btn" onclick="showProductDetail('bavariaGold')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="nacionales" data-product-id="imperial">
+                        <img src="https://walmartcr.vtexassets.com/arquivos/ids/901171/14486_01.jpg?v=638796933315530000" alt="Imperial">
+                        <div class="product-info">
+                            <h3>Imperial Regular</h3>
+                            <p>Cerveza costarricense, la número uno del país con su sabor único y refrescante.</p>
+                            <div class="product-footer">
+                                <span class="price">₡1500</span>
+                                <button class="show-btn" onclick="showProductDetail('imperial')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="nacionales" data-product-id="pilsen">
+                        <img src="https://howlermag.com/wp-content/uploads/2024/01/Untitled-design-2024-01-08T091121.775.jpg" alt="Pilsen">
+                        <div class="product-info">
+                            <h3>Pilsen</h3>
+                            <p>Cerveza tradicional costarricense con cuerpo ligero y sabor suave.</p>
+                            <div class="product-footer">
+                                <span class="price">₡1500</span>
+                                <button class="show-btn" onclick="showProductDetail('pilsen')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="product-card" data-category="cocteles" data-product-id="bulldog">
+                        <img src="{{ url_for('static', filename='images/Bulldog_Maracuya.jpg') }}" alt="Bulldog">
+                        <div class="product-info">
+                            <h3>Margarita Bulldog </h3>
+                            <p>Margarita Bulldog de Maracuya</p>
+                            <div class="product-footer">
+                                <span class="price">₡4500</span>
+                                <button class="show-btn" onclick="showProductDetail('bulldog')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Para Comenzar View -->
+        <div id="para-comenzar-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Entradas</h1>
+            </header>
+
+            <main class="main-content">
+                <div class="section-banner">
+                    <h2>Para Comenzar</h2>
+                </div>
+
+                <div class="products-list">
+                    <div class="product-card" data-product-id="alitas">
+                        <img src="https://images.getrecipekit.com/20220914180525-alas-20de-20pollo-20fritas.png?width=650&quality=90&" alt="Tequeños">
+                        <div class="product-info">
+                            <h3>Alitas</h3>
+                            <p>6 unidades denustras deliciosas alitas de pollo</p>
+                            <div class="product-footer">
+                                <span class="price">₡5500</span>
+                                <button class="show-btn" onclick="showProductDetail('alitas')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="chicken-fingers">
+                        <img src="https://img.freepik.com/fotos-premium/tiras-pollo-empanizadas-papas-fritas-salsa-mojar_665346-27557.jpg" alt="Chicken Fingers">
+                        <div class="product-info">
+                            <h3>Chicken Fingers</h3>
+                            <p>4 unidades de deditos de pollo empanizados, con deliciosas papas fritas</p>
+                            <div class="product-footer">
+                                <span class="price">$7.50</span>
+                                <button class="show-btn" onclick="showProductDetail('chicken-fingers')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="spin-fries">
+                        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=150" alt="Spin Fries">
+                        <div class="product-info">
+                            <h3>Spin Fries</h3>
+                            <p>Remolinos de papas sazonadas y crujientes, bañadas con queso cheddar fundido, trocitos de bacon y cebollina.</p>
+                            <div class="product-footer">
+                                <span class="price">$6.95</span>
+                                <button class="show-btn" onclick="showProductDetail('spin-fries')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="papas-romero">
+                        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=150" alt="Papas con Romero">
+                        <div class="product-info">
+                            <h3>Papas con Romero y Parmesano</h3>
+                            <p>Papas fritas servidas con romero fresco y queso parmesano</p>
+                            <div class="product-footer">
+                                <span class="price">$5.50</span>
+                                <button class="show-btn" onclick="showProductDetail('papas-romero')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="alitas">
+                        <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=150" alt="Alitas de Pollo">
+                        <div class="product-info">
+                            <h3>Alitas de Pollo</h3>
+                            <p>8 unidades de alitas BBQ o picantes, servidas con aderezo ranch</p>
+                            <div class="product-footer">
+                                <span class="price">$8.95</span>
+                                <button class="show-btn" onclick="showProductDetail('alitas')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Hamburguesas View -->
+        <div id="hamburguesas-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Hamburguesas</h1>
+            </header>
+
+            <main class="main-content">
+                <h2 class="section-title">Recomendados del Chef</h2>
+
+                <div class="products-list">
+                    <div class="product-card" data-product-id="le-blue">
+                        <div class="product-badge-new">new</div>
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=150" alt="Le Blue">
+                        <div class="product-info">
+                            <h3>Le Blue 1/2</h3>
+                            <p>1/2 libra de Angus blend Hamburguesia, queso gouda, jalea de tocino, Blue cheese mayo, coronada con cebolla crispy, en nuestro pan Brioche artesanal</p>
+                            <div class="product-footer">
+                                <span class="price">$15.95</span>
+                                <button class="show-btn" onclick="showProductDetail('le-blue')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="say-cheeese">
+                        <div class="product-badge-new">new</div>
+                        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=150" alt="Say Cheeese">
+                        <div class="product-info">
+                            <h3>Say Cheeese</h3>
+                            <p>Angus Blend Hamburguesia, cebollas caramelizadas con maple y ron añejo, papas crunch, pinky spice mayo, mucho queso cheddar fundido, lluvia de bacon y pan artesanal</p>
+                            <div class="product-footer">
+                                <span class="price">$14.95</span>
+                                <button class="show-btn" onclick="showProductDetail('say-cheeese')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="sofia">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=150" alt="Sofía">
+                        <div class="product-info">
+                            <h3>Sofía</h3>
+                            <p>Emblemático pattie "Angus Blend Hamburguesia" con queso Gouda derretido, acompañada con una sofisticada combinación entre un dúo de hongos</p>
+                            <div class="product-footer">
+                                <span class="price">$13.95</span>
+                                <button class="show-btn" onclick="showProductDetail('sofia')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="la-crack">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=150" alt="La Crack">
+                        <div class="product-info">
+                            <h3>La Crack</h3>
+                            <p>Jugosa carne de Angus blend Hamburguesia, abrazada con doble queso cheddar, sobre una base de arúgula, contraste de ajoili de puerro y Wichu mayo</p>
+                            <div class="product-badge">
+                                <i class="fas fa-star"></i>
+                                <span>Recommended</span>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price">$12.95</span>
+                                <button class="show-btn" onclick="showProductDetail('la-crack')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="juicy-queen">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=150" alt="Juicy Queen">
+                        <div class="product-info">
+                            <h3>Juicy Queen</h3>
+                            <p>Participante Burger Week 2018. Carne Angus blend Hamburguesia, queso suizo, jalea de tocineta, coronados con chutney de mango</p>
+                            <div class="product-footer">
+                                <span class="price">$13.50</span>
+                                <button class="show-btn" onclick="showProductDetail('juicy-queen')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="cheesy-kissy">
+                        <img src="/images/12.jpg" alt="Cheesy Kissy">
+                        <div class="product-info">
+                            <h3>Cheesy Kissy</h3>
+                            <p>Participante Burger Week 2020. 1/2 libra de nuestro Angus blend, rellena de quesos fundidos (Gouday, Monterrey Jack). Cubierta de queso cheddar.</p>
+                            <div class="product-footer">
+                                <span class="price">$14.95</span>
+                                <button class="show-btn" onclick="showProductDetail('cheesy-kissy')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="mini-hamburguesa">
+                        <img src="/images/9.jpg" alt="Mini Hamburguesa">
+                        <div class="product-info">
+                            <h3>Mini Hamburguesa</h3>
+                            <p>Una mini hamburguesa con queso cheddar, lechuga y tomate, incluye papas fritas</p>
+                            <div class="product-footer">
+                                <span class="price">$6.75</span>
+                                <button class="show-btn" onclick="showProductDetail('mini-hamburguesa')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="la-clasica">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=150" alt="La Clásica">
+                        <div class="product-info">
+                            <h3>La Clásica</h3>
+                            <p>Carne Angus blend Hamburguesia, queso cheddar, lechuga, tomate, cebolla y pepinillos con nuestra salsa especial</p>
+                            <div class="product-footer">
+                                <span class="price">$11.95</span>
+                                <button class="show-btn" onclick="showProductDetail('la-clasica')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Ensaladas View -->
+        <div id="ensaladas-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Ensaladas</h1>
+            </header>
+
+            <main class="main-content">
+                <div class="products-list">
+                    <div class="product-card" data-product-id="cesar">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=150" alt="César">
+                        <div class="product-info">
+                            <h3>Ensalada César</h3>
+                            <p>Lechuga romana, crutones, queso parmesano y aderezo césar</p>
+                            <div class="product-footer">
+                                <span class="price">$7.95</span>
+                                <button class="show-btn" onclick="showProductDetail('cesar')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="pollo-parrilla">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=150" alt="Pollo a la Parrilla">
+                        <div class="product-info">
+                            <h3>Ensalada con Pollo a la Parrilla</h3>
+                            <p>Mix de lechugas, tomates cherry, aguacate, pollo a la parrilla y vinagreta balsámica</p>
+                            <div class="product-footer">
+                                <span class="price">$9.95</span>
+                                <button class="show-btn" onclick="showProductDetail('pollo-parrilla')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Menu Niños View -->
+        <div id="menu-ninos-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Menú de Niños</h1>
+            </header>
+
+            <main class="main-content">
+                <div class="products-list">
+                    <div class="product-card" data-product-id="nuggets">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=150" alt="Nuggets">
+                        <div class="product-info">
+                            <h3>Nuggets de Pollo</h3>
+                            <p>6 nuggets de pollo con papas fritas y salsa</p>
+                            <div class="product-footer">
+                                <span class="price">$6.50</span>
+                                <button class="show-btn" onclick="showProductDetail('nuggets')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="mini-burger-ninos">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=150" alt="Mini Burger">
+                        <div class="product-info">
+                            <h3>Mini Hamburguesa</h3>
+                            <p>Mini hamburguesa con queso, lechuga y tomate, servida con papas</p>
+                            <div class="product-footer">
+                                <span class="price">$7.50</span>
+                                <button class="show-btn" onclick="showProductDetail('mini-burger-ninos')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Postres View -->
+        <div id="postres-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Postres</h1>
+            </header>
+
+            <main class="main-content">
+                <div class="products-list">
+                    <div class="product-card" data-product-id="brownie-helado">
+                        <img src="{{ url_for('static', filename='images/Brownie') }}" alt="Brownie">
+                        <div class="product-info">
+                            <h3>Brownie con Helado</h3>
+                            <p>Delicioso brownie tibio con helado de vainilla y salsa de chocolate</p>
+                            <div class="product-footer">
+                                <span class="price">$6.50</span>
+                                <button class="show-btn" onclick="showProductDetail('brownie-helado')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-product-id="cheesecake">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=150" alt="Cheesecake">
+                        <div class="product-info">
+                            <h3>Cheesecake</h3>
+                            <p>Suave cheesecake con frutos rojos</p>
+                            <div class="product-footer">
+                                <span class="price">$7.50</span>
+                                <button class="show-btn" onclick="showProductDetail('cheesecake')">SHOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mi Creación View -->
+        <div id="mi-creacion-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Desayunos</h1>
+            </header>
+
+            <main class="main-content">
+                <div class="custom-builder">
+                    <h2 class="section-title">Desallunos tipicos</h2>
+                    <p style="color: #fff; padding: 1rem; text-align: center;">Elige uno de nuestro delecisos desayunos tipicos</p>
+                    
+                    <div class="products-list">
+                        <div class="product-card" data-product-id="Pinto1">
+                            <img src="{{ url_for('static', filename='images/Pinto1.jpg') }}" alt="Tu Creación">
+                            <div class="product-info">
+                                <h3>Buchon</h3>
+                                <p>Gallo pintotradicional</p>
+                                <div class="product-footer">
+                                    <span class="price">₡4500</span>
+                                    <button class="show-btn" onclick="showProductDetail('Pinto1')">CREAR</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Added Search View -->
+        <!-- Search View -->
+        <div id="search-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                 <div class="splash-logo">
+                        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
+                    </div>
+            </header>
+
+            <main class="main-content">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search" />
+                    </div>
+                    
+                    <div class="search-placeholder" id="search-placeholder">
+                        <div class="search-logo">
+                            <div class="logo-icon-large">
+                                <div class="logo-lines"></div>
+                            </div>
+                        </div>
+                        <h2>Paku</h2>
+                        <p>Busca en nuestro menu digital</p>
+                    </div>
+
+                    <div class="search-results" id="search-results"></div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Added Contact View -->
+        <!-- Contact View -->
+        <div id="contact-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                 <div class="splash-logo">
+                        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
+                    </div>
+            </header>
+
+            <main class="main-content">
+                <div class="contact-container">
+                    <h1 class="contact-title">Contact</h1>
+                    
+                    <button class="call-waiter-btn">
+                        <i class="fas fa-bell"></i> CALL THE WAITER
+                    </button>
+
+                    <div class="contact-info">
+                        <h3>Restaurante Paku</h3>
+                        <p>Paraíso de Cartago, Costa Rica</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+506 1234-5678</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>info@paku.cr</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Ver ubicación en el mapa</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-social">
+                            <h4>Síguenos en redes sociales</h4>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2" class="social-link"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/50683628516?text=Hola%20quiero%20hacer%20un%20pedido"
+                                    class="social-link"
+                                    target="_blank"
+                                    rel="noopener">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <nav class="bottom-nav">
+                <!-- Added onclick handlers to all nav buttons -->
+                <button class="nav-item" onclick="navigateTo('splash')">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('menu')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-item" onclick="navigateTo('search')">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="nav-item active" onclick="navigateTo('contact')">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Added Product Detail Modal -->
+        <!-- Product Detail Modal -->
+        <div id="product-modal" class="modal">
+            <div class="modal-overlay" onclick="closeProductModal()"></div>
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeProductModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <div class="modal-gallery">
+                    <button class="gallery-nav gallery-prev" onclick="previousImage()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <img id="modal-image" src="/placeholder.svg" alt="Product">
+                    <button class="gallery-nav gallery-next" onclick="nextImage()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <h3 id="modal-price"></h3>
+                    <p id="modal-description"></p>
+                    
+                    <div id="modal-options" class="modal-options"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const URL_PINTO1= "{{ url_for('static', filename='images/Pinto1.jpg') }}"
+        const URL_BULLDOG="{{ url_for('static', filename='images/Bulldog_Maracuya.jpg') }}"
+    </script>
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+    
+</body>
+</html>
