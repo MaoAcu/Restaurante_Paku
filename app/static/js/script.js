@@ -80,44 +80,44 @@ const products = {
   },
   "papas-romero": {
     name: "Papas con Romero y Parmesano",
-    price: "₡",
+    price: "₡5500",
     description: "Papas fritas servidas con romero fresco y queso parmesano",
     images: ["https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800"],
   },
  
   cesar: {
     name: "Ensalada César",
-    price: "₡",
+    price: "₡5500",
     description: "Lechuga romana, crutones, queso parmesano y aderezo césar",
     images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800"],
   },
   "pollo-parrilla": {
     name: "Ensalada con Pollo a la Parrilla",
-    price: "₡",
+    price: "₡5500",
     description: "Mix de lechugas, tomates cherry, aguacate, pollo a la parrilla y vinagreta balsámica",
     images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800"],
   },
   nuggets: {
     name: "Nuggets de Pollo",
-    price: "₡",
+    price: "₡5500",
     description: "6 nuggets de pollo con papas fritas y salsa",
     images: ["https://images.unsplash.com/photo-1562967914-608f82629710?w=800"],
   },
   "mini-burger-ninos": {
     name: "Mini Hamburguesa",
-    price: "₡",
+    price: "₡5500",
     description: "Mini hamburguesa con queso, lechuga y tomate, servida con papas",
     images: ["/images/9.jpg"],
   },
   "brownie-helado": {
     name: "Brownie con Helado",
-    price: "₡",
+    price: "₡5500",
     description: "Delicioso brownie tibio con helado de vainilla y salsa de chocolate",
     images: ["https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800"],
   },
   TresLeches: {
     name: "Tres Leches",
-    price: "₡",
+    price: "₡5500",
     description: "Suave y delicioso 3 leches",
     images: ["https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800"],
   },
@@ -131,14 +131,14 @@ const products = {
   },
   "le-blue": {
     name: "Le Blue 1/2",
-    price: "₡",
+    price: "₡5500",
     description:
       "1/2 libra de Angus blend Hamburguesia, queso gouda, jalea de tocino, Blue cheese mayo, coronada con cebolla crispy, en nuestro pan Brioche artesanal",
     images: ["https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"],
   },
   "say-cheeese": {
     name: "Say Cheeese",
-    price: "₡",
+    price: "₡5500",
     description:
       "Angus Blend Hamburguesia, cebollas caramelizadas con maple y ron añejo, papas crunch, pinky spice mayo, mucho queso cheddar fundido, lluvia de bacon y pan artesanal",
     images: ["https://images.unsplash.com/photo-1550547660-d9450f859349?w=800"],
@@ -146,23 +146,23 @@ const products = {
   
   "la-crack": {
     name: "La Crack",
-    price: "₡",
+    price: "₡5500",
     description:
       "Jugosa carne de Angus blend Hamburguesia, abrazada con doble queso cheddar, sobre una base de arúgula, contraste de ajoili de puerro y Wichu mayo",
     images: ["https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"],
   },
   "juicy-queen": {
     name: "Juicy Queen",
-    price: "₡",
+    price: "₡5500",
     description:
-      "Participante Burger Week 2018. Carne Angus blend Hamburguesia, queso suizo, jalea de tocineta, coronados con chutney de mango",
+      " Carne Angus blend Hamburguesia, queso suizo, jalea de tocineta, coronados con chutney de mango",
     images: ["https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"],
   },
   "cheesy-kissy": {
     name: "Cheesy Kissy",
-    price: "₡",
+    price: "₡5500",
     description:
-      'Participante Burger Week 2020. 1/2 libra de nuestro Angus blend, rellena de quesos fundidos (Gouday, Monterrey Jack). Cubierta de queso cheddar. Bañada con Pinkyspice Mayo Chile - Jelly de tomate en reducción de "Ron Abuelo". Coronada con lluvia de bacon & cebollas crispy. Lechuga rizada en pan artesanal.',
+      '  1/2 libra de nuestro Angus blend, rellena de quesos fundidos (Gouday, Monterrey Jack). Cubierta de queso cheddar. Bañada con Pinkyspice Mayo Chile - Jelly de tomate en reducción de "Ron Abuelo". Coronada con lluvia de bacon & cebollas crispy. Lechuga rizada en pan artesanal.',
     images: [
       "/images/12.jpg",
       "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800",
@@ -175,7 +175,7 @@ const products = {
   },
   "mini-hamburguesa": {
     name: "Mini Hamburguesa",
-    price: "₡",
+    price: "₡5500",
     description: "Una mini hamburguesa con queso cheddar, lechuga y tomate, incluye papas fritas",
     images: ["/images/9.jpg"],
   },
