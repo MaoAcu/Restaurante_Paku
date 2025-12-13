@@ -50,7 +50,7 @@ const products = {
    bulldog: {
     name: "Margarita Bulldog",
     price: "Desde los ₡4500",
-    description: "Refescante y deliciosa bebida a base de serviza(a su eleccion) con tequila y maracuya",
+    description: "Refescante y deliciosa bebida a base de cerveza (a su eleccion) con tequila y maracuya",
     images: [URL_BULLDOG],
   },
   pilsen: {
