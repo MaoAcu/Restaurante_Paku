@@ -11,7 +11,7 @@ class RestaurantDashboard {
                     id: 1,
                     name: 'Hamburguesa Especial',
                     description: 'Carne 200g, queso cheddar, tomate, lechuga, cebolla y salsa especial de la casa. Acompañada de papas fritas.',
-                    price: 12.99,
+                    price: 5500,
                     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                     status: 'active',
                     category: 'menu'
@@ -20,7 +20,7 @@ class RestaurantDashboard {
                     id: 2,
                     name: 'Pizza Margarita',
                     description: 'Masa artesanal, salsa de tomate natural, mozzarella fresca y albahaca. Horneada en horno de leña.',
-                    price: 14.50,
+                    price: 5500,
                     image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                     status: 'active',
                     category: 'menu'
@@ -29,7 +29,7 @@ class RestaurantDashboard {
                     id: 3,
                     name: 'Ensalada César',
                     description: 'Lechuga romana, pollo a la parrilla, crutones, queso parmesano y aderezo césar casero.',
-                    price: 9.75,
+                    price: 5500,
                     image: 'https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                     status: 'active',
                     category: 'menu'
@@ -40,7 +40,7 @@ class RestaurantDashboard {
                     id: 101,
                     name: 'Martes de Hamburguesas',
                     description: '¡2x1 en todas nuestras hamburguesas! Todos los martes de 12:00 a 22:00 hrs.',
-                    price: 0,
+                    price: 5500,
                     image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                     status: 'active',
                     category: 'promos',
@@ -50,7 +50,7 @@ class RestaurantDashboard {
                     id: 102,
                     name: 'Jueves de Tacos',
                     description: 'Tacos al pastor a mitad de precio todos los jueves. ¡No te lo pierdas!',
-                    price: 5.50,
+                    price: 5500,
                     image: 'https://images.unsplash.com/photo-1613514785940-ea1a6b2e673c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                     status: 'active',
                     category: 'promos',
@@ -62,7 +62,7 @@ class RestaurantDashboard {
                     id: 201,
                     name: 'Limonada Natural',
                     description: 'Limonada fresca con hierbabuena y un toque de jengibre.',
-                    price: 3.50,
+                    price: 5500,
                     image: 'https://images.unsplash.com/photo-1621263764928-df1444c5e859?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                     status: 'active',
                     category: 'bebidas'
@@ -71,7 +71,7 @@ class RestaurantDashboard {
                     id: 202,
                     name: 'Cerveza Artesanal',
                     description: 'Nuestra cerveza IPA especial con notas cítricas.',
-                    price: 5.99,
+                    price: 5500,
                     image: 'https://images.unsplash.com/photo-1618885472181-5d1f4b2b6b6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                     status: 'active',
                     category: 'bebidas'
@@ -82,7 +82,7 @@ class RestaurantDashboard {
                     id: 301,
                     name: 'Cheesecake de Fresa',
                     description: 'Delicioso cheesecake con base de galleta y coulis de fresa natural.',
-                    price: 6.50,
+                    price: 5500,
                     image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                     status: 'active',
                     category: 'postres'
@@ -91,7 +91,7 @@ class RestaurantDashboard {
                     id: 302,
                     name: 'Flan de Vainilla',
                     description: 'Tradicional flan casero con caramelo y un toque de vainilla.',
-                    price: 4.75,
+                    price: 5500,
                     image: 'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                     status: 'active',
                     category: 'postres'
