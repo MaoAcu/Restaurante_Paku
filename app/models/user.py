@@ -11,5 +11,5 @@ class Usuario(db.Model):
     password = Column(String, nullable=False)
     codigo6digitos = Column(String)
     estado = Column(Integer, default=1)  # 1 activo, 0 inactivo
-    tipo = Column(Integer)  # 1=Consultante, 2=Terapeuta
+    local = Column(Integer)  
     intentos = Column(Integer)

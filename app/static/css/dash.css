@@ -766,96 +766,97 @@ button {
         margin-left: 250px;
     }
 }
-
-/* Mobile Large (576px - 768px) */
 @media (max-width: 768px) {
-     .sidebar {
-        transform: translateX(-100%);
-        width: 280px;
-        height: 100vh;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .sidebar.active {
-        transform: translateX(0);
-    }
-    
-   
-    .sidebar-nav {
-        flex: 1;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch; 
-        padding: 20px 0;
-        min-height: 0; 
-    }
-    
-  
-    .user-info {
-        margin-top: auto;
-        padding: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        background: var(--color-black);
-        flex-shrink: 0; 
-    }
-    
-    
-    .btn-logout {
-        width: 100%;
-        padding: 12px;
-        margin-top: 10px;
-        min-height: 44px; 
-    }
-    
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-    }
-    
-    .menu-toggle {
-        display: flex;
-    }
-    
-    .top-bar {
-        padding: 1rem;
-    }
-    
-    .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .btn-add-item {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .items-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .sidebar-overlay.active {
-        display: block;
-    }
-    
-    .config-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .item-actions {
-        flex-direction: column;
-    }
-    
-    .header-actions {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .btn-save {
-        width: 100%;
-        justify-content: center;
-    }
+  .sidebar {
+    transform: translateX(-100%);
+    width: 280px;
+    height: 100dvh;
+    overflow-y: hidden; /* Updated from auto to hidden */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  /* Added .logo styles to prevent compression */
+  .logo {
+    flex-shrink: 0;
+    padding: 20px;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 0;
+    min-height: 0;
+  }
+
+  .user-info {
+    margin-top: auto !important;
+    padding: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--color-black);
+    flex-shrink: 0;
+  }
+
+  .btn-logout {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    min-height: 44px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .top-bar {
+    padding: 1rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-add-item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  .config-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .item-actions {
+    flex-direction: column;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-save {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Mobile Small (less than 576px) */
