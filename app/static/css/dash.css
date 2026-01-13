@@ -750,7 +750,7 @@ button {
     color: var(--success);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* RESPONSIVE DESIGN  */
 
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) {
@@ -769,13 +769,43 @@ button {
 
 /* Mobile Large (576px - 768px) */
 @media (max-width: 768px) {
-    .sidebar {
+     .sidebar {
         transform: translateX(-100%);
         width: 280px;
+        height: 100vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
     }
     
     .sidebar.active {
         transform: translateX(0);
+    }
+    
+   
+    .sidebar-nav {
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; 
+        padding: 20px 0;
+        min-height: 0; 
+    }
+    
+  
+    .user-info {
+        margin-top: auto;
+        padding: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--color-black);
+        flex-shrink: 0; 
+    }
+    
+    
+    .btn-logout {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        min-height: 44px; 
     }
     
     .main-content {
