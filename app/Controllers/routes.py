@@ -15,6 +15,10 @@ def index():
 def DashBoard():
     return render_template('dashboard.html')
 
+@routes_bp.route("/Menu", endpoint="Menu")
+def DashBoard():
+    return render_template('index.html')
+
 
 
 

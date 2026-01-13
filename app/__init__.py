@@ -3,7 +3,10 @@ from app.extensions import db
 import os
 #from dotenv import load_dotenv
 from .Controllers.routes import routes_bp
-
+from .Controllers.AunthController import auth_bp
+from app.models import (
+    Usuario
+)
 
 
 def create_app():
@@ -24,4 +27,5 @@ def create_app():
     
     #  Registra los blueprints
     app.register_blueprint(routes_bp)
+    app.register_blueprint(auth_bp)
     return app
