@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Paku</title>
+    
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar Overlay para móviles -->
+        <div class="sidebar-overlay"></div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2><i class="fas fa-utensils"></i> Mi Restaurante</h2>
+                <p class="restaurant-subtitle">Panel de Control</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-section="menu">
+                        <i class="fas fa-book"></i>
+                        <span>Menú Principal</span>
+                    </li>
+                    <li data-section="promos">
+                        <i class="fas fa-percentage"></i>
+                        <span>Promociones</span>
+                    </li>
+                    <li data-section="bebidas">
+                        <i class="fas fa-wine-glass"></i>
+                        <span>Bebidas</span>
+                    </li>
+                    <li data-section="postres">
+                        <i class="fas fa-ice-cream"></i>
+                        <span>Postres</span>
+                    </li>
+                    <li data-section="config">
+                        <i class="fas fa-cog"></i>
+                        <span>Configuración</span>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                    <div>
+                        <p class="user-name">Administrador</p>
+                        <p class="user-role">Dueño</p>
+                    </div>
+                </div>
+                <button id="logoutBtn" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar con menú hamburguesa -->
+            <header class="top-bar">
+                <button id="menuToggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <h1 id="sectionTitle">Menú Principal</h1>
+                
+                <div class="header-actions">
+                    <button id="saveAllBtn" class="btn-save">
+                        <i class="fas fa-save"></i> Guardar Cambios
+                    </button>
+                </div>
+            </header>
+
+            <!-- Sección de Menú Principal -->
+            <div id="menuSection" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-hamburger"></i> Platos Principales</h2>
+                    <button class="btn-add-item" data-category="menu">
+                        <i class="fas fa-plus"></i> Agregar Plato
+                    </button>
+                </div>
+                <div id="menuItems" class="items-grid">
+                    <!-- Los items se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Sección de Promociones -->
+            <div id="promosSection" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-tags"></i> Promociones Semanales</h2>
+                    <button class="btn-add-item" data-category="promos">
+                        <i class="fas fa-plus"></i> Agregar Promoción
+                    </button>
+                </div>
+                <div id="promoItems" class="items-grid">
+                    <!-- Las promociones se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Sección de Bebidas -->
+            <div id="bebidasSection" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-wine-glass-alt"></i> Bebidas</h2>
+                    <button class="btn-add-item" data-category="bebidas">
+                        <i class="fas fa-plus"></i> Agregar Bebida
+                    </button>
+                </div>
+                <div id="bebidasItems" class="items-grid">
+                    <!-- Las bebidas se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Sección de Postres -->
+            <div id="postresSection" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-birthday-cake"></i> Postres</h2>
+                    <button class="btn-add-item" data-category="postres">
+                        <i class="fas fa-plus"></i> Agregar Postre
+                    </button>
+                </div>
+                <div id="postresItems" class="items-grid">
+                    <!-- Los postres se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Sección de Configuración -->
+            <div id="configSection" class="content-section" style="display: none;">
+                <div class="config-container">
+                    <h2><i class="fas fa-cog"></i> Configuración General</h2>
+                    
+                    <div class="config-grid">
+                        <div class="config-card">
+                            <h3><i class="fas fa-store"></i> Información del Restaurante</h3>
+                            <div class="config-form">
+                                <div class="form-group">
+                                    <label>Nombre del Restaurante</label>
+                                    <input type="text" id="restaurantName" placeholder="Ej: El Buen Sabor">
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripción</label>
+                                    <textarea id="restaurantDescription" rows="3" placeholder="Breve descripción del restaurante"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Horario</label>
+                                    <input type="text" id="restaurantHours" placeholder="Ej: Lunes a Viernes 9:00-22:00">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="config-card">
+                            <h3><i class="fas fa-user-shield"></i> Seguridad</h3>
+                            <div class="config-form">
+                                <div class="form-group">
+                                    <label>Cambiar Contraseña</label>
+                                    <input type="password" id="newPassword" placeholder="Nueva contraseña">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirmar Contraseña</label>
+                                    <input type="password" id="confirmPassword" placeholder="Confirmar nueva contraseña">
+                                </div>
+                                <button id="saveConfigBtn" class="btn-save">
+                                    <i class="fas fa-save"></i> Guardar Configuración
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar/agregar items -->
+    <div id="editModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Editar Item</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="itemForm">
+                    <input type="hidden" id="itemId">
+                    <input type="hidden" id="itemCategory">
+                    
+                    <div class="form-group">
+                        <label for="itemName">Nombre del Plato/Bebida</label>
+                        <input type="text" id="itemName" required placeholder="Ej: Hamburguesa Especial">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="itemDescription">Descripción</label>
+                        <textarea id="itemDescription" rows="3" placeholder="Describe el plato, ingredientes, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="itemPrice">Precio ($)</label>
+                        <div class="price-input">
+                            <span class="currency">$</span>
+                            <input type="number" id="itemPrice" step="0.01" min="0" required placeholder="0.00">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="itemImage">URL de la Imagen</label>
+                        <div class="image-input-group">
+                            <input type="text" id="itemImage" placeholder="https://ejemplo.com/imagen.jpg">
+                            <button type="button" class="btn-image-upload" onclick="document.getElementById('imageUpload').click()">
+                                <i class="fas fa-upload"></i>
+                            </button>
+                        </div>
+                        <small>Inserta una URL o sube una imagen</small>
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="itemStatus">Estado</label>
+                        <div class="status-toggle">
+                            <button type="button" class="status-btn active" data-status="active">Activo</button>
+                            <button type="button" class="status-btn" data-status="inactive">Inactivo</button>
+                            <input type="hidden" id="itemStatus" value="active">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel close-modal">Cancelar</button>
+                        <button type="submit" class="btn-save">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para subir imagen -->
+    <div id="uploadModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Subir Imagen</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="dropArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Arrastra una imagen aquí o haz clic para seleccionar</p>
+                    <input type="file" id="fileUpload" accept="image/*">
+                </div>
+                <div class="preview-container">
+                    <img id="imagePreview" src="" alt="Vista previa">
+                </div>
+                <div class="upload-actions">
+                    <button id="cancelUpload" class="btn-cancel">Cancelar</button>
+                    <button id="confirmUpload" class="btn-save" disabled>Usar Imagen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
+    
+</body>
+</html>

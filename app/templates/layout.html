@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Menu Paku{% endblock %}</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<nav class="bottom-nav">
+    <button class="nav-item {% if active_view == 'splash' %}active{% endif %}"
+            onclick="navigateTo('splash')">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </button>
+
+    <button class="nav-item {% if active_view == 'menu' %}active{% endif %}"
+            onclick="navigateTo('menu')">
+        <i class="fas fa-utensils"></i>
+        <span>Menu</span>
+    </button>
+
+    <button class="nav-item {% if active_view == 'search' %}active{% endif %}"
+            onclick="navigateTo('search')">
+        <i class="fas fa-search"></i>
+        <span>Search</span>
+    </button>
+
+    <button class="nav-item {% if active_view == 'contact' %}active{% endif %}"
+            onclick="navigateTo('contact')">
+        <i class="fas fa-phone"></i>
+        <span>Contact</span>
+    </button>
+</nav>
+
+{% block scripts %}{% endblock %}
+</body>
+</html>

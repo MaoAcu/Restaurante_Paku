@@ -1,14 +1,14 @@
 /* Added CSS variables for Paku brand colors and changed to light theme */
 :root {
   /* Brand Colors - Paku */
-  --color-primary: #cc122d;
-  --color-primary-dark: #a50f24;
-  --color-secondary: #ffd700;
-  --color-accent: #ff8c00;
+  --color-primary: #B62021;
+  --color-primary-dark: #B62021;
+  --color-secondary: #E6871B;
+  --color-accent: #E6871B;
 
   /* Neutral Colors */
-  --color-black: #000000;
-  --color-white: #ffffff;
+  --color-black:#060505 ;
+  --color-white: #faf7f7;
   --color-gray-50: #f9fafb;
   --color-gray-100: #f3f4f6;
   --color-gray-200: #e5e7eb;
@@ -141,6 +141,7 @@
 body {
   font-family: var(--font-family);
   background-color: var(--color-background);
+
   color: var(--color-text-primary);
   overflow-x: hidden;
    margin: 0;
@@ -165,7 +166,9 @@ body {
 .view.active {
   display: block;
 }
-
+body#splash-splash-view .navbar {
+    display: none;
+}
 /* Header */
 .header {
   background-color: var(--color-black);
@@ -255,7 +258,7 @@ body {
 
 .category-card {
   background: linear-gradient(to right, var(--color-black) 50%, transparent 50%);
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--color-accent);
   border-radius: var(--radius-xl);
   height: 130px;
   display: flex;
@@ -294,7 +297,7 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
-  border: 3px solid var(--color-accent);
+  /* border: 3px solid var(--color-accent); */
   border-left: none;
 }
 
@@ -1108,4 +1111,39 @@ l
   color: var(--color-text-tertiary);
   font-size: var(--font-size-sm);
   margin: 0;
+}
+/*ocultal el layout en al splash*/
+#splash-view.active ~ .bottom-nav {
+    display: none !important;
+}
+
+/* También ocultar cualquier flash message */
+#splash-view.active ~ .flash {
+    display: none !important;
+}
+
+/* Estilos para el splash */
+#splash-view {
+    display: none;
+}
+
+#splash-view.active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background: white; /* Ajusta el color según tu diseño */
+}
+
+/*filtros flotantes en bebidas*/
+.sticky-filter {
+    position: sticky;
+    top: 0; 
+    z-index: 100; 
+    background:var(--color-black); 
+    padding: 10px 0; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
 }

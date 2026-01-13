@@ -186,7 +186,7 @@ let currentProduct = null
 let currentImageIndex = 0
 
 // Navigation system
-const navigationHistory = ["splash"]
+const navigationHistory = ["menu"]
 
 function navigateTo(viewId) {
   console.log("[v0] Navigating to:", viewId)
@@ -477,6 +477,3 @@ document.addEventListener("keydown", (e) => {
   }
 })
 
-// Initialize app
-console.log("Restaurante Paku - Menú Digital")
-console.log("Paraíso de Cartago, Costa Rica")

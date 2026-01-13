@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2c3e50">
-    <meta property="og:title" content="Restaurante - PaKu">
-    <meta property="og:description" content="Ven y disfruta de nuestras bebidas y comidas">
-    <meta property="og:image" content="{{ url_for('static', filename='images/logo.jpg') }}">
-    <meta property="og:type" content="website">
-    <title>Restaurante - Paku</title>
-  
-     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %}Bebidas | Menu Paku{% endblock %}
+
+{% block content %}
     <div id="app">
         <!-- Added splash screen view -->
         <!-- Splash Screen View -->
-        <div id="splash-view" class="view active">
+         <div id="splash-view" class="view active">
             <div class="splash-container">
                 <div class="splash-bg"></div>
                 <div class="splash-content">
@@ -56,7 +44,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Home View -->
         <!-- Changed id from home-view to menu-view -->
         <div id="menu-view" class="view">
@@ -136,25 +123,6 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
         </div>
 
         <!-- Bebidas View -->
@@ -168,11 +136,13 @@
             </header>
 
             <main class="main-content">
-                <div class="filter-tabs">
-                    <button class="filter-tab active" data-category="all">all</button>
-                    <button class="filter-tab" data-category="importadas">Cervezas Importadas</button>
-                    <button class="filter-tab" data-category="nacionales">Cervezas Nacionales</button>
-                    <button class="filter-tab" data-category="cocteles">Cocteles</button>
+                <div class="sticky-filter">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-category="all">all</button>
+                        <button class="filter-tab" data-category="importadas">Cervezas Importadas</button>
+                        <button class="filter-tab" data-category="nacionales">Cervezas Nacionales</button>
+                        <button class="filter-tab" data-category="cocteles">Cocteles</button>
+                    </div>
                 </div>
 
                 <div class="section-banner">
@@ -291,25 +261,7 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
+           
         </div>
 
         <!-- Para Comenzar View -->
@@ -390,25 +342,7 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
+           
         </div>
 
         <!-- Hamburguesas View -->
@@ -529,25 +463,7 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
+           
         </div>
 
         <!-- Ensaladas View -->
@@ -588,25 +504,7 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
+           
         </div>
 
         <!-- Menu Niños View -->
@@ -647,25 +545,7 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
+           
         </div>
 
         <!-- Postres View -->
@@ -706,25 +586,6 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
         </div>
 
         <!-- Mi Creación View -->
@@ -758,25 +619,7 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
+          
         </div>
 
         <!-- Added Search View -->
@@ -813,25 +656,7 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
+           
         </div>
 
         <!-- Added Contact View -->
@@ -891,25 +716,7 @@
                 </div>
             </main>
 
-            <nav class="bottom-nav">
-                <!-- Added onclick handlers to all nav buttons -->
-                <button class="nav-item" onclick="navigateTo('splash')">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('menu')">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-item" onclick="navigateTo('search')">
-                    <i class="fas fa-search"></i>
-                    <span>Search</span>
-                </button>
-                <button class="nav-item active" onclick="navigateTo('contact')">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </button>
-            </nav>
+           
         </div>
 
         <!-- Added Product Detail Modal -->
@@ -948,5 +755,4 @@
     </script>
 <script src="{{url_for('static', filename='js/script.js')}}"></script>
     
-</body>
-</html>
+{% endblock %}
