@@ -356,7 +356,7 @@ class RestaurantDashboard {
     }
     
     createItemCard(item, section) {
-        const priceDisplay = item.price === 0 ? 'GRATIS' : `$${item.price.toFixed(2)}`;
+        const priceDisplay = item.price === 0 ? 'GRATIS' : `₡${item.price.toFixed(2)}`;
         
         return `
             <div class="item-card">
