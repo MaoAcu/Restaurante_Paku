@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación 2FA - Paku</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/codigoVerificacion.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popupstye.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+<div id="flash-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <main class="main-content">
+        <div class="login-container">
+            <div class="brand-logo-container">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo Paku" class="brand-logo">
+            </div>
+
+            <h2>Verificación</h2>
+            <p>Ingresa el código de 6 dígitos enviado a tu dispositivo.</p>
+
+            <form method="post" action="{{ url_for('auth.VerificarCodigo') }}" id="otp-form">
+                <div class="otp-container">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" autocomplete="one-time-code" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" required>
+                </div>
+
+                <input type="hidden"  id="codigo" name="codigo">
+                <button type="submit" class="verify-btn">Verificar</button>
+                <a href="#" class="resend-link">Reenviar código</a>
+            </form>
+        </div>
+    </main>
+
+    <script src="{{url_for('static', filename='js/popup.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/codigo2fact.js') }}"></script>
+</body>
+</html>

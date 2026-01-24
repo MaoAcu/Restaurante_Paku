@@ -1,6 +1,10 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session, flash
+from flask import Blueprint, render_template, request, redirect, url_for, session, flash,current_app
 from app import db
 from app.models.login import Login
+from sqlalchemy import text
+import random
+from datetime import datetime
+import threading
 
 auth_bp = Blueprint("auth", __name__)
 
@@ -44,10 +48,11 @@ def login():
         session["idusuario"] = login.idusuario
         session["correo"] = login.correo
         session["local"] = login.local
-
-        print("SESSION:", dict(session))
-
-        return redirect(url_for("routes.dashboard"))
+        idusuario = session.get("idusuario")
+        
+        app = current_app._get_current_object()
+        threading.Thread(target=SendCode, args=(app,idusuario, correo)).start()
+        return redirect(url_for("routes.Codigo"))
 
     return render_template("login.html")
 
@@ -55,3 +60,49 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for("auth.login"))
+def GenerarCodigo():
+    return "{:06d}".format(random.randint(0, 999999))
+
+
+
+def SendCode(app,idusuario, correo):
+    from app import db
+    from app.Service import email_service
+    with app.app_context():
+       code = GenerarCodigo()
+
+       sql_update = text("""
+        UPDATE login 
+        SET codigo=:codigo
+        WHERE idusuario=:idusuario
+    """)
+
+       db.session.execute(sql_update, {"codigo": code, "idusuario": idusuario})
+       db.session.commit()
+
+       email_service.SendVerificationCode(email=correo, code=code)
+@auth_bp.route("/verificar_codigo", methods=["GET", "POST"])
+def VerificarCodigo():
+    if request.method == "POST":
+        codigo_ingresado = request.form.get("codigo")
+        sql = text("""
+            SELECT codigo FROM login 
+            WHERE idusuario=:idusuario
+        """)
+        result = db.session.execute(sql, {"idusuario": session["idusuario"]}).fetchone()
+        print(type(codigo_ingresado), type(result.codigo))
+        if not result:
+            flash("Error interno", "error")
+            return redirect(url_for("routes.Codigo"))
+        
+        if str(codigo_ingresado).strip() != str(result.codigo).strip():
+            flash("Código incorrecto", "error")
+            return redirect(url_for("routes.Codigo"))
+        
+        
+        sql_reset = text("UPDATE login SET codigo=NULL WHERE idusuario=:idusuario")
+        db.session.execute(sql_reset, {"idusuario": session["idusuario"]})
+        db.session.commit()   
+        return redirect(url_for("routes.dashboard"))
+        
+    return render_template("verificar_codigo.html")

@@ -1,4 +1,4 @@
-const CACHE_NAME = "paku-admin-v1";
+const CACHE_NAME = "paku-admin-v2";
 
 const urlsToCache = [
   "/login",

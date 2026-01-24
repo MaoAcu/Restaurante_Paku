@@ -1,6 +1,7 @@
 from flask import Flask
 from app.extensions import db
 import os
+from app.Service import email_service 
 #from dotenv import load_dotenv
 from .Controllers.routes import routes_bp
 from .Controllers.AunthController import auth_bp
@@ -19,7 +20,7 @@ def create_app():
     app.secret_key = os.getenv("SECRET_KEY")
     #  Inicializa la base de datos
     db.init_app(app)
-
+    email_service.init_app(app) 
     # Seguridad de cookies
     app.config["SESSION_COOKIE_SECURE"] = True
     app.config["SESSION_COOKIE_SAMESITE"] = "Lax"

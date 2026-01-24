@@ -42,7 +42,11 @@ def Menu():
 def Login():
     return render_template('login.html')
 
-
+@routes_bp.route("/Codigo", endpoint="Codigo")
+@loginRequired
+@localRequired(1,2)
+def codigo_verificacion():
+    return render_template('codigo-verificacion.html')
 
 
 

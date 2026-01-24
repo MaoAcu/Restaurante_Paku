@@ -1,38 +1,70 @@
-
 let deferredPrompt;
 
-// Registrar el Service Worker primero
+//configuracion minima
+const INSTALL_VISIBLE_TIME = 6000; 
+const INSTALL_COOLDOWN = 24 * 60 * 60 * 1000; 
+const isMenuPage = location.pathname.startsWith("/Menu");
+
+const lastPrompt = localStorage.getItem("menu-pwa-last");
+const now = Date.now();
+
+const canShowInstall =
+  !lastPrompt || now - lastPrompt > INSTALL_COOLDOWN;
+
+// registra service worher
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/static/sw-menu.js", { scope: "/" })
-    .then(() => console.log("Service Worker registrado"))
-    .catch(err => console.log("Error SW:", err));
+  navigator.serviceWorker
+    .register("/static/sw-menu.js", { scope: "/Menu" })
+    .then(() => console.log("✅ SW Menu registrado"))
+    .catch(err => console.error(" Error SW Menu:", err));
 }
 
-// Escuchar beforeinstallprompt laza el evento si la aplicacion cumple los requisitos
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault(); // Evita el prompt automatico
-    deferredPrompt = e;
-    createInstallButton();
+// instalar beforeinstall
+window.addEventListener("beforeinstallprompt", (e) => {
+  if (!isMenuPage) return;
+  if (!canShowInstall) return;
+
+  e.preventDefault();
+  deferredPrompt = e;
+
+  showInstallButton();
 });
-//boton que va a desencadenar el enveto para pwa
-function createInstallButton() {
-    if (!document.getElementById('install-btn')) {
-        const installBtn = document.createElement('button');
-        installBtn.id = 'install-btn';
-        installBtn.textContent = "Instalar App";
-        installBtn.classList.add("install-btn");
-        document.body.appendChild(installBtn);
-          //cuando se presiona el btn mouestra el prompt de instlacion
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;//esto hace que sepa si el usuario acepto o rechazo
-               
-                //limpia el evento para evitar ser reutilizado
-                deferredPrompt = null;
-                window.location.reload();
-            }
-        });
-       
-    }
+
+// btn instalar
+function showInstallButton() {
+  if (document.getElementById("install-btn")) return;
+
+  const btn = document.createElement("button");
+  btn.id = "install-btn";
+  btn.textContent = "Instalar Menú";
+  btn.className = "install-btn";
+
+  document.body.appendChild(btn);
+  localStorage.setItem("menu-pwa-last", Date.now());
+
+  const removeButton = () => {
+    btn.remove();
+    window.removeEventListener("scroll", removeButton);
+    window.removeEventListener("click", removeButton);
+  };
+
+  // Auto-ocultar
+  setTimeout(removeButton, INSTALL_VISIBLE_TIME);
+
+  // Cualquier interaccion lo oculta
+  window.addEventListener("scroll", removeButton, { once: true });
+  window.addEventListener("click", removeButton, { once: true });
+
+  // Instalar
+  btn.addEventListener("click", async (e) => {
+    e.stopPropagation();
+
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+    removeButton();
+  });
 }

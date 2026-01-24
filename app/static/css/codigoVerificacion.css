@@ -1,0 +1,133 @@
+ :root {
+            --color-primary: #B62021;
+            --color-primary-dark: #8e1a1b;
+            --color-secondary: #E6871B;
+            --bg-white: #ffffff;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --border-color: #dfe6e9;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            background-color: var(--bg-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: radial-gradient(#e5e5f7 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            padding: 15px; /* Evita que la tarjeta toque los bordes del celular */
+        }
+
+        .main-content {
+            width: 100%;
+            max-width: 400px; /* Tamaño ideal para tarjetas de login */
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .login-container {
+            background: white;
+            padding: 30px 20px; /* Reducido para móviles */
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        }
+
+        /* LOGO REDONDO RESPONSIVO */
+        .brand-logo-container {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .brand-logo { width: 100%; height: 100%; object-fit: cover; }
+
+        h2 { color: var(--text-main); font-size: 1.4rem; margin-bottom: 8px; }
+        p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; padding: 0 10px; }
+
+        /* CONTENEDOR DE CÓDIGO 100% RESPONSIVO */
+        .otp-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px; /* Espacio pequeño para que quepan todos */
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .otp-input {
+            /* Cálculo mágico: 100% del ancho dividido entre 6 campos, menos el espacio del gap */
+            width: calc(100% / 6 - 8px); 
+            max-width: 50px; /* No deja que crezcan demasiado en PC */
+            height: 55px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            transition: all 0.2s ease;
+            color: var(--color-primary);
+        }
+
+        .otp-input:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(230, 135, 27, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .verify-btn {
+            width: 100%;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .verify-btn:hover { background-color: var(--color-primary-dark); }
+
+        .resend-link {
+            display: block;
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ajuste para pantallas extra pequeñas (iPhone 5/SE) */
+        @media (max-width: 340px) {
+            .otp-container { gap: 4px; }
+            .otp-input { height: 45px; font-size: 1.2rem; }
+            .login-container { padding: 20px 15px; }
+        }

@@ -3,7 +3,7 @@ let deferredPrompt;
 
 // Registrar el Service Worker primero
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/static/sw-login.js", { scope: "/" })
+    navigator.serviceWorker.register("/static/sw-login.js", { scope: "/login" })
     .then(() => console.log("Service Worker registrado"))
     .catch(err => console.log("Error SW:", err));
 }
