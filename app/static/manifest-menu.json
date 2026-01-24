@@ -1,8 +1,8 @@
 {
   "name": "Paku Menu",
   "short_name": "Menu Paku",
-  "start_url": "/menu",
-  "scope": "/menu",
+  "start_url": "/Menu",
+  "scope": "/Menu",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",

@@ -305,7 +305,7 @@ body#splash-splash-view .navbar {
   background-color: var(--color-black)!important;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  border: 2px solid var(--color-secondary);
+  border: 2px solid var(--color-primary);
   padding: 10px 0;
   margin-bottom: var(--spacing-lg);
   display: flex;

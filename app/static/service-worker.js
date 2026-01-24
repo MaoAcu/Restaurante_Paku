@@ -1,8 +1,8 @@
-const CACHE_NAME = "paku-pwa-v2";
+const CACHE_NAME = "paku-pwa-v8";
 
 const STATIC_CACHE = [
   "/",
-  "/menu",
+  "/Menu",
   "/dashboard",
 
   "/static/css/styles.css",

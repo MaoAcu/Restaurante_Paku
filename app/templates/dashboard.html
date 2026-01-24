@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dash.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
     <!-- Dashboard Container -->
@@ -55,9 +56,9 @@
                         <p class="user-role">Dueño</p>
                     </div>
                 </div>
-                <button id="logoutBtn" class="btn-logout">
+                <a href="{{ url_for('auth.logout') }}" style="text-decoration: none;" id="logoutBtn" class="btn-logout">
                     <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                </button>
+                </a>
             </div>
         </div>
 

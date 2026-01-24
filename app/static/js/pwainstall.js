@@ -9,7 +9,7 @@ if ("serviceWorker" in navigator) {
 }
 
 // Detectar contexto donde eesta el usuario
-const isMenu = location.pathname.startsWith("/menu");
+const isMenu = location.pathname.startsWith("/Menu");
 const isDashboard = location.pathname.startsWith("/dashboard");
 
 // Evitar spam

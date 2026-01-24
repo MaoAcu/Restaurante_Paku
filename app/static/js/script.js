@@ -53,13 +53,13 @@ const products = {
     description: "Refescante y deliciosa bebida a base de cerveza (a su eleccion) con tequila y maracuya",
     images: [URL_BULLDOG],
   },
-  pilsen: {
+  "pilsen": {
     name: "Pilsen",
     price: "₡1500",
     description: "Cerveza tradicional costarricense con cuerpo ligero y sabor suave.",
     images: ["https://howlermag.com/wp-content/uploads/2024/01/Untitled-design-2024-01-08T091121.775.jpg"],
   },
-  alitas: {
+  "alitas": {
     name: "Alitas",
     price: "5500",
     description: "6 unidades denustras deliciosas alitas de pollo, acompañadas o bañadas en la salsa de su eleccion",
@@ -85,7 +85,7 @@ const products = {
     images: ["https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800"],
   },
  
-  cesar: {
+  "cesar": {
     name: "Ensalada César",
     price: "₡5500",
     description: "Lechuga romana, crutones, queso parmesano y aderezo césar",
@@ -97,7 +97,7 @@ const products = {
     description: "Mix de lechugas, tomates cherry, aguacate, pollo a la parrilla y vinagreta balsámica",
     images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800"],
   },
-  nuggets: {
+  "nuggets": {
     name: "Nuggets de Pollo",
     price: "₡5500",
     description: "6 nuggets de pollo con papas fritas y salsa",
@@ -115,14 +115,14 @@ const products = {
     description: "Delicioso brownie tibio con helado de vainilla y salsa de chocolate",
     images: ["https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800"],
   },
-  TresLeches: {
+  "TresLeches": {
     name: "Tres Leches",
     price: "₡5500",
     description: "Suave y delicioso 3 leches",
     images: ["https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800"],
   },
   
-  Pinto1: {
+  "Pinto1": {
     name: "Gallo Pinto",
     price: "₡4500",
     description:
@@ -158,26 +158,12 @@ const products = {
       " Carne Angus blend Hamburguesia, queso suizo, jalea de tocineta, coronados con chutney de mango",
     images: ["https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"],
   },
-  "cheesy-kissy": {
-    name: "Cheesy Kissy",
-    price: "₡5500",
-    description:
-      '  1/2 libra de nuestro Angus blend, rellena de quesos fundidos (Gouday, Monterrey Jack). Cubierta de queso cheddar. Bañada con Pinkyspice Mayo Chile - Jelly de tomate en reducción de "Ron Abuelo". Coronada con lluvia de bacon & cebollas crispy. Lechuga rizada en pan artesanal.',
-    images: [
-      "/images/12.jpg",
-      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800",
-      "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800",
-    ],
-    options: {
-      breadType: "Escoge Tipo de Pan:",
-      breadOptions: ["Brioche", "Pan Artesanal", "Sin Pan"],
-    },
-  },
+ 
   "mini-hamburguesa": {
     name: "Mini Hamburguesa",
     price: "₡5500",
     description: "Una mini hamburguesa con queso cheddar, lechuga y tomate, incluye papas fritas",
-    images: ["/images/9.jpg"],
+    images: [""],
   },
 }
 

@@ -227,13 +227,6 @@ class RestaurantDashboard {
             });
         });
         
-        // Logout (simulado)
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
-                window.location.href = 'index.html';
-            }
-        });
-        
         // Manejar redimensionamiento de ventana
         window.addEventListener('resize', () => {
             this.handleResize();

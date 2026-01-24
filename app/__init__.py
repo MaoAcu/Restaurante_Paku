@@ -5,7 +5,7 @@ import os
 from .Controllers.routes import routes_bp
 from .Controllers.AunthController import auth_bp
 from app.models import (
-    Usuario
+    Usuario,Login
 )
 
 

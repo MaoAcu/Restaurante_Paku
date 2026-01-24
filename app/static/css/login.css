@@ -1,66 +1,229 @@
+  /* VARIABLES DE COLOR SOLICITADAS */
+        :root {
+            --color-primary: #B62021;
+            --color-primary-dark: #8e1a1b;
+            --color-secondary: #E6871B;
+            --color-accent: #E6871B;
+            --bg-white: #ffffff;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --border-color: #dfe6e9;
+        }
 
-        .login-page {
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            justify-content: center;
+            /* Un sutil patrón de fondo para dar textura de restaurante */
+            background-image: radial-gradient(#e5e5f7 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
         }
-        
-        .login-container {
+
+        .main-content {
             width: 100%;
-            max-width: 400px;
-            animation: fadeIn 0.5s ease;
+            max-width: 420px;
+            padding: 20px;
+            animation: fadeIn 0.6s ease-out;
         }
-        
-        .login-box {
+
+        .login-container {
             background: white;
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Línea decorativa superior con el color secundario */
+        .login-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        }
+
+        .login-header {
             text-align: center;
+            margin-bottom: 35px;
         }
-        
-        .logo-login {
-            margin-bottom: 30px;
-        }
-        
-        .logo-login h1 {
-            color: #333;
+
+        .brand-icon {
+            font-size: 3rem;
+            color: var(--color-primary);
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
         }
-        
-        .logo-login p {
-            color: #666;
+
+        .login-header h2 {
+            color: var(--text-main);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .login-header p {
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
-        
-        .demo-credentials {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
+
+        /* FORMULARIO */
+        .form-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             font-size: 0.85rem;
-            border-left: 4px solid #667eea;
-        }
-        
-        .demo-credentials h4 {
+            font-weight: 600;
+            color: var(--text-main);
             margin-bottom: 8px;
-            color: #333;
+            padding-left: 5px;
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .user-icon, .password-icon {
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
-        
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(230, 135, 27, 0.1);
+        }
+
+        /* ICONO OJO */
+        #togglePassword {
+            position: absolute;
+            right: 15px;
+            top: 42px; /* Ajustado para estar centrado en el input */
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            z-index: 10;
+        }
+
+        #togglePassword:hover {
+            color: var(--color-primary);
+        }
+
+        /* ENLACE RECUPERAR */
+        .forgot-password {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 25px;
+        }
+
+        .forgot-password a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        /* BOTÓN PRINCIPAL */
+        .login-btn {
+            width: 100%;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .login-btn:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(182, 32, 33, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .login-btn:hover .arrow {
+            transform: translateX(5px);
+        }
+    /* Contenedor del logo: debe ser un círculo perfecto */
+.brand-logo-container {
+    width: 100px;           /* Ajusta el tamaño que desees */
+    height: 100px;          /* Debe ser igual al ancho */
+    margin: 0 auto 15px;
+    border-radius: 50%;     /* Esto lo hace redondo */
+    overflow: hidden;       /* Corta cualquier parte de la imagen que se salga */
+    border: 3px solid var(--color-secondary); /* Un borde naranja llamativo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* Fondo blanco por si el logo tiene transparencia */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Imagen dentro del círculo */
+.brand-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* Crucial: rellena el círculo sin deformar la imagen */
+    display: block;
+}
+
+/* Nombre Paku debajo del logo */
+.brand-name {
+    color: var(--color-primary); /* Usamos el rojo para el nombre */
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-top: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+        /* RESPONSIVO */
         @media (max-width: 480px) {
-            .login-box {
+            .login-container {
                 padding: 30px 20px;
             }
         }
