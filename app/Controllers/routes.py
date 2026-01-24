@@ -10,14 +10,21 @@ routes_bp = Blueprint("routes", __name__)
 def index():
     return render_template('index.html')
 
-@routes_bp.route("/service-worker.js")
-def service_worker():
+@routes_bp.route("/sw-login.js")
+def service_worker_login():
     return send_from_directory(
         os.path.join(current_app.root_path, "static"),
-        "service-worker.js",
+        "sw-login.js",
         mimetype="application/javascript"
     )
-    
+
+@routes_bp.route("/sw-menu.js")
+def service_worker_menu():
+    return send_from_directory(
+        os.path.join(current_app.root_path, "static"),
+        "sw-menu.js",
+        mimetype="application/javascript"
+    )  
 
 @routes_bp.route("/dashboard", endpoint="dashboard")
 @loginRequired

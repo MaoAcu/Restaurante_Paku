@@ -189,18 +189,18 @@
         .login-btn:hover .arrow {
             transform: translateX(5px);
         }
-    /* Contenedor del logo: debe ser un círculo perfecto */
+  
 .brand-logo-container {
-    width: 100px;           /* Ajusta el tamaño que desees */
-    height: 100px;          /* Debe ser igual al ancho */
+    width: 100px;           
+    height: 100px;          
     margin: 0 auto 15px;
-    border-radius: 50%;     /* Esto lo hace redondo */
-    overflow: hidden;       /* Corta cualquier parte de la imagen que se salga */
-    border: 3px solid var(--color-secondary); /* Un borde naranja llamativo */
+    border-radius: 50%;     
+    overflow: hidden;       
+    border: 3px solid var(--color-secondary); 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white; /* Fondo blanco por si el logo tiene transparencia */
+    background-color: white; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -208,13 +208,13 @@
 .brand-logo {
     width: 100%;
     height: 100%;
-    object-fit: cover;      /* Crucial: rellena el círculo sin deformar la imagen */
+    object-fit: cover;      
     display: block;
 }
 
 /* Nombre Paku debajo del logo */
 .brand-name {
-    color: var(--color-primary); /* Usamos el rojo para el nombre */
+    color: var(--color-primary);
     font-size: 1.4rem;
     font-weight: 800;
     margin-top: 5px;
