@@ -1,13 +1,11 @@
 {
-  "id": "/",
   "name": "Paku",
   "short_name": "Paku",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/dashboard",
+  "scope": "/dashboard",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#2c3e50",
+  "theme_color": "#000000",
   "icons": [
     {
       "src": "/static/images/logo-192x192.png",

@@ -1,8 +1,9 @@
 const CACHE_NAME = "paku-pwa-v2";
 
 const STATIC_CACHE = [
+  "/",
   "/menu",
-  "/login",
+  "/dashboard",
 
   "/static/css/styles.css",
   "/static/css/dash.css",
@@ -14,8 +15,17 @@ const STATIC_CACHE = [
 // INSTALL
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_CACHE);
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const url of STATIC_CACHE) {
+        try {
+          const response = await fetch(url);
+          if (response.ok) {
+            await cache.put(url, response);
+          }
+        } catch (e) {
+          console.warn("No se pudo cachear:", url);
+        }
+      }
     })
   );
 

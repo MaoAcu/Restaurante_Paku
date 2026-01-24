@@ -20,7 +20,7 @@
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
   /* Semantic Colors */
-  --color-background: var(--color-white);
+  --color-background: var(--color-black);
   --color-surface: var(--color-gray-50);
   --color-surface-elevated: var(--color-white);
   --color-text-primary: var(--color-white);
@@ -171,7 +171,7 @@ body#splash-splash-view .navbar {
 }
 /* Header */
 .header {
-  background-color: var(--color-white);
+  background-color: var(--color-background);
   padding: var(--spacing-md);
   display: flex;
   align-items: center;
@@ -188,7 +188,7 @@ body#splash-splash-view .navbar {
   left: var(--spacing-md);
   background: none;
   border: none;
-  color: var(--color-black);
+  color: var(--color-white);
   font-size: var(--font-size-2xl);
   cursor: pointer;
   padding: var(--spacing-sm);
@@ -242,7 +242,7 @@ body#splash-splash-view .navbar {
 .page-title {
   font-size: var(--font-size-2xl);
   font-weight: 600;
-  color: var(--color-black);
+  color: var(--color-white);
 }
 
 /* Main Content */
@@ -258,7 +258,7 @@ body#splash-splash-view .navbar {
 }
 
 .category-card {
-  background: linear-gradient(to right, var(--color-white) 50%, transparent 50%);
+  background: linear-gradient(to right, var(--color-black) 50%, transparent 50%);
   border: 2px solid var(--color-accent);
   border-radius: var(--radius-xl);
   height: 130px;
@@ -283,7 +283,7 @@ body#splash-splash-view .navbar {
 .category-text h2 {
   font-size: var(--font-size-2xl);
   font-weight: 700;
-  color: var(--color-secondary);
+  color: var(--color-primary);
   line-height: 1.2;
 }
 
@@ -302,17 +302,21 @@ body#splash-splash-view .navbar {
   border-left: none;
 }
 .sticky-filter{
-  background-color: var(--color-white)!important;
+  background-color: var(--color-black)!important;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   border: 2px solid var(--color-secondary);
-  padding: var(--spacing-xl);
+  padding: 10px 0;
   margin-bottom: var(--spacing-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 120px;
+  position: sticky;
+  top: 60px; 
+  z-index: 100; 
 }
+
 /* Filter Tabs */
 .filter-tabs {
   display: flex;
@@ -329,8 +333,8 @@ body#splash-splash-view .navbar {
 .filter-tab {
   padding: var(--spacing-sm) var(--spacing-md);
   background-color: transparent;
-  border: 2px solid var(--color-secondary);
-  color: var(--color-secondary);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
   border-radius: 20px;
   cursor: pointer;
   white-space: nowrap;
@@ -346,7 +350,7 @@ body#splash-splash-view .navbar {
 
 /* Section Banner */
 .section-banner {
-  background: linear-gradient(to right, var(--color-white) 60%, transparent 60%);
+  background: linear-gradient(to right, var(--color-black) 60%, transparent 60%);
   border: 2px solid var(--color-primary);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
@@ -361,7 +365,7 @@ body#splash-splash-view .navbar {
 .section-banner h2 {
   font-size: var(--font-size-3xl);
   font-weight: 700;
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .section-banner img {
@@ -387,7 +391,7 @@ body#splash-splash-view .navbar {
 }
 
 .product-card {
-  background-color: var(--color-white);
+  background-color: var(--color-background);
   border-radius: var(--radius-lg);
   padding: var(--spacing-md);
   display: flex;
@@ -446,8 +450,8 @@ body#splash-splash-view .navbar {
 }
 
 .product-info p {
-  font-size: var(--font-size-sm);
-  color: var(--color-black);
+  font-size: large;
+  color: var(--color-white);
   line-height: 1.4;
 }
 
@@ -991,7 +995,7 @@ l
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--color-white);
+  background-color: var(--color-background);
 }
 
 .modal-content {
@@ -1001,7 +1005,7 @@ l
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-white);
+  background-color: var(--color-background);
 }
 
 .modal-close {
@@ -1014,7 +1018,7 @@ l
   border-radius: var(--radius-full);
   background-color: rgba(11, 11, 11, 0.9);
   border: none;
-  color: var(--color-wh);
+  color: var(--color-white);
   font-size: var(--font-size-2xl);
   cursor: pointer;
   display: flex;
@@ -1049,7 +1053,7 @@ l
   border-radius: var(--radius-full);
   background-color: rgba(255, 255, 255, 0.9);
   border: none;
-  color: var(--color-black);
+  color: var(--color-white);
   font-size: var(--font-size-xl);
   cursor: pointer;
   display: flex;
@@ -1084,7 +1088,7 @@ l
 .modal-info h2 {
   font-size: var(--font-size-4xl);
   font-weight: 700;
-  color: var(--color-black);
+  color: var(--color-white);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -1097,7 +1101,7 @@ l
 
 .modal-info p {
   font-size: var(--font-size-base);
-  color: var(--color-black);
+  color: var(--color-white);
   line-height: 1.6;
   margin-bottom: var(--spacing-lg);
 }
@@ -1115,7 +1119,7 @@ l
 }
 
 .modal-option h4 {
-  color: var(--color-black);
+  color: var(--color-white);
   margin-bottom: var(--spacing-sm);
   font-size: var(--font-size-lg);
 }
@@ -1151,12 +1155,4 @@ l
     background: white; 
 }
 
-/*filtros flotantes en bebidas*/
-.sticky-filter {
-    position: sticky;
-    top: 60px; 
-    z-index: 100; 
-    background:var(--color-black); 
-    padding: 10px 0; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-}
+
