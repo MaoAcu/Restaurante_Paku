@@ -1,18 +1,14 @@
 let deferredPrompt;
 
-// ==============================
-// REGISTRAR SERVICE WORKER
-// ==============================
+//registar el server worker
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker
-        .register("/static/sw.js", { scope: "/" })
+        .register("/static/service-worker.js", { scope: "/" })
         .then(() => console.log("✅ Service Worker registrado"))
         .catch(err => console.error("❌ Error registrando SW:", err));
 }
 
-// ==============================
-// CONFIGURACIÓN
-// ==============================
+// configuracion basica
 const INSTALL_COOLDOWN = 24 * 60 * 60 * 1000; // 24 horas
 const lastPrompt = localStorage.getItem("pwa-install-last");
 const now = Date.now();
@@ -20,23 +16,22 @@ const now = Date.now();
 const canShowInstall =
     !lastPrompt || now - lastPrompt > INSTALL_COOLDOWN;
 
-// Mostrar SOLO en /login
-const isLoginPage = location.pathname === "/login";
+// Mostrar solo en login y menu
+const allowedPaths = ["/login", "/Menu"];
+const canShowOnThisPage = allowedPaths.includes(location.pathname);
 
-// ==============================
-// EVENTO beforeinstallprompt
-// ==============================
+//evento pwa
 window.addEventListener("beforeinstallprompt", (e) => {
-    if (!isLoginPage) return;        // ❌ fuera del login
-    if (!canShowInstall) return;     // ❌ cooldown activo
+    if (!canShowOnThisPage) return;
+    if (!canShowInstall) return;
 
-    e.preventDefault();              // 🔒 control manual
+    e.preventDefault();
     deferredPrompt = e;
 
     createInstallButton();
 });
 
-
+// boton de instalacion
 function createInstallButton() {
     if (document.getElementById("install-btn")) return;
 
@@ -47,7 +42,6 @@ function createInstallButton() {
 
     document.body.appendChild(btn);
 
-    // Registrar que se mostró
     localStorage.setItem("pwa-install-last", Date.now());
 
     btn.addEventListener("click", async () => {
