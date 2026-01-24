@@ -69,3 +69,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('username').value = 'admin';
     document.getElementById('password').value = 'admin123';
 });
+

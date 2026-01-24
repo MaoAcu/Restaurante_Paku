@@ -48,9 +48,7 @@
         <!-- Changed id from home-view to menu-view -->
         <div id="menu-view" class="view">
             <header class="header">
-                <button class="back-btn" onclick="goBack()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+                
                  <div class="splash-logo">
                         <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
                     </div>
@@ -60,12 +58,21 @@
                 <div class="category-grid">
                     <div class="category-card" onclick="navigateTo('bebidas')">
                         <div class="category-text">
-                            <h2>BEBIDAS</h2>
+                            <h2>BEBIDAS CON ALCOHOL</h2>
                         </div>
                         <div class="category-image">
                             <img src="{{ url_for('static', filename='images/Cocteles.jpg') }}" alt="Bebidas">
                         </div>
                     </div>
+                    <div class="category-card" onclick="navigateTo('bebidas')">
+                        <div class="category-text">
+                            <h2>BEBIDAS SIN ALCOHOL</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="{{ url_for('static', filename='images/Cocteles.jpg') }}" alt="Bebidas">
+                        </div>
+                    </div>
+
 
                     <div class="category-card" onclick="navigateTo('para-comenzar')">
                         <div class="category-text">
@@ -626,10 +633,7 @@
         <!-- Search View -->
         <div id="search-view" class="view">
             <header class="header">
-                <!-- Fixed back button to go to menu -->
-                <button class="back-btn" onclick="navigateTo('menu')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+               
                  <div class="splash-logo">
                         <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
                     </div>
@@ -663,10 +667,8 @@
         <!-- Contact View -->
         <div id="contact-view" class="view">
             <header class="header">
-                <!-- Fixed back button to go to menu -->
-                <button class="back-btn" onclick="navigateTo('menu')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+             
+               
                  <div class="splash-logo">
                         <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
                     </div>
@@ -754,5 +756,6 @@
         const URL_BULLDOG="{{ url_for('static', filename='images/Bulldog_Maracuya.jpg') }}"
     </script>
 <script src="{{url_for('static', filename='js/script.js')}}"></script>
+<script src="{{url_for('static', filename='js/pwainstall.js')}}"></script>
     
 {% endblock %}

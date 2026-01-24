@@ -7,7 +7,7 @@
      <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dash.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="manifest" href="{{ url_for('static', filename='manifest-admin.json') }}">
 </head>
 <body>
     <div class="login-page">
@@ -49,5 +49,6 @@
     
 
     <script src="{{url_for('static', filename='js/login.js')}}"></script>
+    <script src="{{url_for('static', filename='js/pwainstall.js')}}"></script>
 </body>
 </html>

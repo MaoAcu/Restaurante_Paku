@@ -11,8 +11,6 @@ auth_bp = Blueprint("auth", __name__)
 def login():
     if request.method == "POST":
         
-        
-        
         usuario = request.form.get("usuario")
         password = request.form.get("password")
 

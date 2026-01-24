@@ -189,8 +189,7 @@ let currentImageIndex = 0
 const navigationHistory = ["menu"]
 
 function navigateTo(viewId) {
-  console.log("[v0] Navigating to:", viewId)
-
+  
   // Hide all views
   const views = document.querySelectorAll(".view")
   views.forEach((view) => view.classList.remove("active"))
