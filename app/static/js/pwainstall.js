@@ -1,68 +1,62 @@
 let deferredPrompt;
 
-const INSTALL_VISIBLE_TIME = 6000; // 6 segundos
-const INSTALL_COOLDOWN = 24 * 60 * 60 * 1000; // 24 horas
-
-// Registrar SW
+// ==============================
+// REGISTRAR SERVICE WORKER
+// ==============================
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/service-worker.js");
+    navigator.serviceWorker
+        .register("/static/sw.js", { scope: "/" })
+        .then(() => console.log("✅ Service Worker registrado"))
+        .catch(err => console.error("❌ Error registrando SW:", err));
 }
 
-// Detectar contexto donde eesta el usuario
-const isMenu = location.pathname.startsWith("/Menu");
-const isDashboard = location.pathname.startsWith("/dashboard");
-
-// Evitar spam
+// ==============================
+// CONFIGURACIÓN
+// ==============================
+const INSTALL_COOLDOWN = 24 * 60 * 60 * 1000; // 24 horas
 const lastPrompt = localStorage.getItem("pwa-install-last");
 const now = Date.now();
+
 const canShowInstall =
-  !lastPrompt || now - lastPrompt > INSTALL_COOLDOWN;
+    !lastPrompt || now - lastPrompt > INSTALL_COOLDOWN;
 
-// Evento PWA
+// Mostrar SOLO en /login
+const isLoginPage = location.pathname === "/login";
+
+// ==============================
+// EVENTO beforeinstallprompt
+// ==============================
 window.addEventListener("beforeinstallprompt", (e) => {
-  if (!isMenu && !isDashboard) return;
-  if (!canShowInstall) return;
+    if (!isLoginPage) return;        // ❌ fuera del login
+    if (!canShowInstall) return;     // ❌ cooldown activo
 
-  e.preventDefault();
-  deferredPrompt = e;
+    e.preventDefault();              // 🔒 control manual
+    deferredPrompt = e;
 
-  showInstallButton();
+    createInstallButton();
 });
 
-function showInstallButton() {
-  if (document.getElementById("install-btn")) return;
 
-  const btn = document.createElement("button");
-  btn.id = "install-btn";
-  btn.textContent = "Instalar App";
-  btn.classList.add("install-btn");
+function createInstallButton() {
+    if (document.getElementById("install-btn")) return;
 
-  document.body.appendChild(btn);
-  localStorage.setItem("pwa-install-last", Date.now());
+    const btn = document.createElement("button");
+    btn.id = "install-btn";
+    btn.textContent = "Instalar App";
+    btn.className = "install-btn";
 
-  const removeButton = () => {
-    btn.remove();
-    window.removeEventListener("scroll", removeButton);
-    window.removeEventListener("click", removeButton);
-  };
+    document.body.appendChild(btn);
 
-  // Interaccion del usuario quita el btn
-  window.addEventListener("scroll", removeButton, { once: true });
-  window.addEventListener("click", removeButton, { once: true });
+    // Registrar que se mostró
+    localStorage.setItem("pwa-install-last", Date.now());
 
-  // Tiempo maximo visible
-  setTimeout(removeButton, INSTALL_VISIBLE_TIME);
+    btn.addEventListener("click", async () => {
+        if (!deferredPrompt) return;
 
-  // Click explicito para instalar
-  btn.addEventListener("click", async (e) => {
-    e.stopPropagation(); // evita cerrar antes de instalar
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
 
-    if (!deferredPrompt) return;
-
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-
-    deferredPrompt = null;
-    removeButton();
-  });
+        deferredPrompt = null;
+        btn.remove();
+    });
 }

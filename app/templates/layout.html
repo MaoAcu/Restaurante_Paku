@@ -23,7 +23,22 @@
 
     {% block content %}{% endblock %}
 </main>
-
+<div id="net-status" 
+     style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #c0392b;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        display: none;
+        font-weight: bold;
+        z-index: 99999;
+    ">
+    Sin conexión
+</div>
 <nav class="bottom-nav">
     <button class="nav-item {% if active_view == 'splash' %}active{% endif %}"
             onclick="navigateTo('splash')">
@@ -49,7 +64,7 @@
         <span>Contact</span>
     </button>
 </nav>
-
+<script src="{{ url_for('static', filename='js/Fueralinea.js') }}"></script>  
 {% block scripts %}{% endblock %}
 </body>
 </html>

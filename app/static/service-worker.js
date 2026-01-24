@@ -1,39 +1,42 @@
-const CACHE_NAME = "paku-pwa-v8";
+const CACHE_NAME = "paku-pwa-v9";
 
-const STATIC_CACHE = [
-  "/",
-  "/Menu",
-  "/dashboard",
 
+const SAFE_CACHE = [
+  "/static/css/loginStyle.css",
   "/static/css/styles.css",
-  "/static/css/dash.css",
-  "/static/css/login.css",
 
-  "/static/images/logo.jpg"
+  "/static/images/fondo.png",
+  "/static/images/logo.png"
 ];
 
-// INSTALL
 self.addEventListener("install", (event) => {
+  console.log("[SW] Install");
+
   event.waitUntil(
-    caches.open(CACHE_NAME).then(async (cache) => {
-      for (const url of STATIC_CACHE) {
-        try {
-          const response = await fetch(url);
-          if (response.ok) {
-            await cache.put(url, response);
-          }
-        } catch (e) {
-          console.warn("No se pudo cachear:", url);
-        }
-      }
+    caches.open(CACHE_NAME).then((cache) => {
+      return Promise.all(
+        SAFE_CACHE.map((url) =>
+          fetch(url)
+            .then((res) => {
+              if (!res.ok) {
+                console.warn("[SW] No cache:", url);
+                return null;
+              }
+              return cache.put(url, res.clone());
+            })
+            .catch(() => console.warn("[SW] Error cache:", url))
+        )
+      );
     })
   );
 
   self.skipWaiting();
 });
 
-// ACTIVATE
+
 self.addEventListener("activate", (event) => {
+  console.log("[SW] Activate");
+
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
@@ -47,23 +50,32 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// FETCH
+
 self.addEventListener("fetch", (event) => {
-  const { request } = event;
+  const request = event.request;
+  const url = new URL(request.url);
 
-  // Solo manejar GET
-  if (request.method !== "GET") return;
+  if (
+    request.method !== "GET" ||
+    url.pathname.startsWith("/login") ||
+    url.pathname.startsWith("/dashboard") ||
+    url.pathname.startsWith("/logout") ||
+    url.pathname.startsWith("/auth")
+  ) {
+    return;
+  }
 
+ 
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;
 
       return fetch(request)
         .then((response) => {
-          // Cache dinámico solo si es válido
+    
           if (
             response.ok &&
-            request.url.startsWith(self.location.origin)
+            request.destination !== "document"
           ) {
             const clone = response.clone();
             caches.open(CACHE_NAME).then((cache) =>
@@ -73,14 +85,7 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(() => {
-          // Fallback SOLO para navegación
-          if (request.mode === "navigate") {
-            if (request.url.includes("/dashboard")) {
-              return caches.match("/dashboard");
-            }
-            return caches.match("/menu");
-          }
-
+          
           return new Response("", { status: 204 });
         });
     })
