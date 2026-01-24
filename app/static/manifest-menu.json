@@ -2,7 +2,7 @@
   "name": "Paku Menu",
   "short_name": "Menu Paku",
   "start_url": "/Menu",
-  "scope": "/Menu",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",

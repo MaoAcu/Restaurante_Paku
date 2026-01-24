@@ -8,7 +8,7 @@ routes_bp = Blueprint("routes", __name__)
 
 @routes_bp.route('/')
 def index():
-    return render_template('login.html')
+    return render_template('index.html')
 
 @routes_bp.route("/service-worker.js")
 def service_worker():

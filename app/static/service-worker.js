@@ -1,12 +1,10 @@
-const CACHE_NAME = "paku-pwa-v9";
+const CACHE_NAME = "paku-pwa-v10";
 
 
 const SAFE_CACHE = [
-  "/static/css/loginStyle.css",
-  "/static/css/styles.css",
-
-  "/static/images/fondo.png",
-  "/static/images/logo.png"
+  "/static/css/loginstyle.css",
+  "/static/css/styles.css",,
+  "/static/images/logo.jpg"
 ];
 
 self.addEventListener("install", (event) => {
