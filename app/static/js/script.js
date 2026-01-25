@@ -1,175 +1,74 @@
-// Product database
-const products = {
-  ImperialLight: {
-    name: "Imperial Light",
-    price: "₡1500",
-    description:
-      " Refrescante cerveza ligera, con un sabor equilibrado y diferente. Una cerveza Ligth es buena cualquier momento del día.",
-    images: ["https://info.megasuper.com/ecommerce/764009000651_1.jpeg"],
-  },
-  ImperialSilver: {
-    name: "Imperial Silver",
-    price: "₡1500",
-    description:
-      " La imperial ofrece un sabor suave y equilibrado, perfecta para disfrutar en cualquier ocasión.",
-    images: ["https://images.unsplash.com/photo-1608270586620-248524c67de9?w=800"],
-  },
-  heineken: {
-    name: "Heineken",
-    price: "₡1500",
-    description:
-      " La imperial ofrece un sabor suave y equilibrado, perfecta para disfrutar en cualquier ocasión.",
-    images: ["https://images.unsplash.com/photo-1608270586620-248524c67de9?w=800"],
-  },
-  Imperial: {
-    name: "Imperial",
-    price: "₡1500",
-    description:
-      "Con más de 150 de historia, Heineken es reconocida por sus ingredientes puros y naturales. Una cerveza premium con un sabor único y balanceado.",
-    images: ["https://images.unsplash.com/photo-1608270586620-248524c67de9?w=800"],
-  },
-  corona: {
-    name: "Corona",
-    price: "₡2000",
-    description:
-      "Cerveza mexicana refrescante con un sabor suave y equilibrado, perfecta con limón. Ideal para disfrutar en cualquier momento.",
-    images: ["https://walmartcr.vtexassets.com/arquivos/ids/1020886/cerveza-corona-extra-botella-355-ml-7503034941200.jpg?v=638985672026930000"],
-  },
-  bavariaGold: {
-    name: "Bavaria Gold",
-    price: "₡2500",
-    description: "Es una bebida milenaria, natural y refrescante, con un incomparable sabor y aroma, producida a partir de malta, agua, levadura y lúpulo y adjuntos.",
-    images: ["https://walmartcr.vtexassets.com/arquivos/ids/921562-800-450?v=638826759337670000&width=800&height=450&aspect=true"],
-  },
-  imperial: {
-    name: "Imperial-Regular",
-    price: "₡1500",
-    description: "Cerveza costarricense, la número uno del país con su sabor único y refrescante.",
-    images: ["https://walmartcr.vtexassets.com/arquivos/ids/901171/14486_01.jpg?v=638796933315530000"],
-  },
-   bulldog: {
-    name: "Margarita Bulldog",
-    price: "Desde los ₡4500",
-    description: "Refescante y deliciosa bebida a base de cerveza (a su eleccion) con tequila y maracuya",
-    images: [URL_BULLDOG],
-  },
-  "pilsen": {
-    name: "Pilsen",
-    price: "₡1500",
-    description: "Cerveza tradicional costarricense con cuerpo ligero y sabor suave.",
-    images: ["https://howlermag.com/wp-content/uploads/2024/01/Untitled-design-2024-01-08T091121.775.jpg"],
-  },
-  "alitas": {
-    name: "Alitas",
-    price: "5500",
-    description: "6 unidades denustras deliciosas alitas de pollo, acompañadas o bañadas en la salsa de su eleccion",
-    images: ["https://images.getrecipekit.com/20220914180525-alas-20de-20pollo-20fritas.png?width=650&quality=90&"],
-  },
-  "chicken-fingers": {
-    name: "Chicken Fingers",
-    price: "₡5000",
-    description: "4 unidades de deditos de pollo empanizados, con deliciosas papas fritas",
-    images: ["https://img.freepik.com/fotos-premium/tiras-pollo-empanizadas-papas-fritas-salsa-mojar_665346-27557.jpg"],
-  },
-  "papas-fritas": {
-    name: "Papas Fritas",
-    price: "₡3000",
-    description:
-      "Deliciosas papa fritas acompañadas de salsa de tomate y mayonesa",
-    images: ["https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800"],
-  },
-  "papas-romero": {
-    name: "Papas con Romero y Parmesano",
-    price: "₡5500",
-    description: "Papas fritas servidas con romero fresco y queso parmesano",
-    images: ["https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800"],
-  },
- 
-  "cesar": {
-    name: "Ensalada César",
-    price: "₡5500",
-    description: "Lechuga romana, crutones, queso parmesano y aderezo césar",
-    images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800"],
-  },
-  "pollo-parrilla": {
-    name: "Ensalada con Pollo a la Parrilla",
-    price: "₡5500",
-    description: "Mix de lechugas, tomates cherry, aguacate, pollo a la parrilla y vinagreta balsámica",
-    images: ["https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800"],
-  },
-  "nuggets": {
-    name: "Nuggets de Pollo",
-    price: "₡5500",
-    description: "6 nuggets de pollo con papas fritas y salsa",
-    images: ["https://images.unsplash.com/photo-1562967914-608f82629710?w=800"],
-  },
-  "mini-burger-ninos": {
-    name: "Mini Hamburguesa",
-    price: "₡5500",
-    description: "Mini hamburguesa con queso, lechuga y tomate, servida con papas",
-    images: ["/images/9.jpg"],
-  },
-  "brownie-helado": {
-    name: "Brownie con Helado",
-    price: "₡5500",
-    description: "Delicioso brownie tibio con helado de vainilla y salsa de chocolate",
-    images: ["https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800"],
-  },
-  "TresLeches": {
-    name: "Tres Leches",
-    price: "₡5500",
-    description: "Suave y delicioso 3 leches",
-    images: ["https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800"],
-  },
-  
-  "Pinto1": {
-    name: "Gallo Pinto",
-    price: "₡4500",
-    description:
-      "Delicioso y tradicional gallo pinto costarricense, acompa;ado de huevo, tortillas, salchichon y natilla",
-    images: [URL_PINTO1],
-  },
-  "le-blue": {
-    name: "Le Blue 1/2",
-    price: "₡5500",
-    description:
-      "1/2 libra de Angus blend Hamburguesia, queso gouda, jalea de tocino, Blue cheese mayo, coronada con cebolla crispy, en nuestro pan Brioche artesanal",
-    images: ["https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"],
-  },
-  "say-cheeese": {
-    name: "Say Cheeese",
-    price: "₡5500",
-    description:
-      "Angus Blend Hamburguesia, cebollas caramelizadas con maple y ron añejo, papas crunch, pinky spice mayo, mucho queso cheddar fundido, lluvia de bacon y pan artesanal",
-    images: ["https://images.unsplash.com/photo-1550547660-d9450f859349?w=800"],
-  },
-  
-  "la-crack": {
-    name: "La Crack",
-    price: "₡5500",
-    description:
-      "Jugosa carne de Angus blend Hamburguesia, abrazada con doble queso cheddar, sobre una base de arúgula, contraste de ajoili de puerro y Wichu mayo",
-    images: ["https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"],
-  },
-  "juicy-queen": {
-    name: "Juicy Queen",
-    price: "₡5500",
-    description:
-      " Carne Angus blend Hamburguesia, queso suizo, jalea de tocineta, coronados con chutney de mango",
-    images: ["https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"],
-  },
- 
-  "mini-hamburguesa": {
-    name: "Mini Hamburguesa",
-    price: "₡5500",
-    description: "Una mini hamburguesa con queso cheddar, lechuga y tomate, incluye papas fritas",
-    images: [""],
-  },
+// Contenedor global de productos
+let products = {};
+
+// Función principal para cargar productos desde la DB
+async function loadMenu() {
+  try {
+    const response = await fetch(MENU_URL, { credentials: "include" });
+    console.log(response)
+    if (!response.ok) throw new Error("Error al cargar productos");
+
+    const menuItems = await response.json();
+
+    // Mapear categorías → contenedores HTML
+    const categoryMap = {
+      bebidas: document.getElementById("bebidas-products"),
+      entradas: document.getElementById("entradas-products"),
+      hamburguesas: document.getElementById("hamburguesas-products"),
+      ensaladas: document.getElementById("ensaladas-products"),
+      ninos: document.getElementById("ninos-products"),
+      postres: document.getElementById("postres-products"),
+      desayunos: document.getElementById("desayunos-products"),
+      promos: document.getElementById("promos-products"),
+    };
+
+    // Limpiar contenedores
+    Object.values(categoryMap).forEach(c => c && (c.innerHTML = ""));
+
+    menuItems.forEach(item => {
+      // Guardar producto global
+      products[item.idmenu] = {
+        id: item.idmenu,
+        name: item.nombre,
+        price: `₡${Number(item.precio).toLocaleString("es-CR")}`,
+        description: item.descripcion || "",
+        images: item.imagen ? [item.imagen] : ["/images/no-image.png"],
+        category: item.categoria,
+        status: item.estado
+      };
+
+      // Crear card dinámica
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.dataset.productId = item.idmenu;
+      card.dataset.category = item.categoria;
+
+      card.innerHTML = `
+        <img src="${item.imagen || '/images/no-image.png'}" alt="${item.nombre}">
+        <div class="product-info">
+          <h3>${item.nombre}</h3>
+          <p>${item.descripcion || ""}</p>
+          <div class="product-footer">
+            <span class="price">₡${item.precio}</span>
+            <button class="show-btn" onclick="event.stopPropagation(); showProductDetail('${item.idmenu}')">Ver</button>
+          </div>
+        </div>
+      `;
+
+      // Insertar card en el contenedor correcto
+      const container = categoryMap[item.categoria];
+      if (container) container.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Error cargando menú:", err);
+  }
 }
 
-// Current product modal state
-let currentProduct = null
-let currentImageIndex = 0
+// Llamar a loadMenu cuando cargue la página
+document.addEventListener("DOMContentLoaded", () => {
+  loadMenu();
+});
+
 
 // Navigation system
 const navigationHistory = ["menu"]
@@ -242,7 +141,10 @@ function updateNavigation(currentView) {
 // Product Modal Functions
 function showProductDetail(productId) {
   const product = products[productId]
-  if (!product) return
+  if (!product) {
+    console.warn("Producto no encontrado:", productId)
+    return
+  }
 
   currentProduct = product
   currentImageIndex = 0
@@ -254,19 +156,24 @@ function showProductDetail(productId) {
   const modalDescription = document.getElementById("modal-description")
   const modalOptions = document.getElementById("modal-options")
 
-  // Set content
-  modalImage.src = product.images[0]
+  /* ===== Contenido principal ===== */
+  modalImage.src = product.images?.[0] || "/static/img/no-image.png"
   modalTitle.textContent = product.name
   modalPrice.textContent = product.price
-  modalDescription.textContent = product.description
+  modalDescription.textContent = product.description || ""
 
-  // Handle gallery navigation visibility
-  updateGalleryNav()
+  /* ===== Galeria ===== */
+  if (typeof updateGalleryNav === "function") {
+    updateGalleryNav()
+  }
 
-  // Handle options
-  if (product.options) {
+  /* ===== Opciones===== */
+  modalOptions.innerHTML = ""
+
+  if (product.options && typeof product.options === "object") {
     let optionsHTML = ""
-    if (product.options.breadType) {
+
+    if (product.options.breadType && Array.isArray(product.options.breadOptions)) {
       optionsHTML += `
         <div class="modal-option">
           <h4>${product.options.breadType}</h4>
@@ -274,15 +181,15 @@ function showProductDetail(productId) {
         </div>
       `
     }
+
     modalOptions.innerHTML = optionsHTML
-  } else {
-    modalOptions.innerHTML = ""
   }
 
-  // Show modal
+  /* ===== Mostrar modal ===== */
   modal.classList.add("active")
   document.body.style.overflow = "hidden"
 }
+
 
 function closeProductModal() {
   const modal = document.getElementById("product-modal")

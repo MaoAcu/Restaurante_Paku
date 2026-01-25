@@ -277,7 +277,9 @@
     ">
     Sin conexión
 </div>
-
+<script>
+    const MENU_URL = "{{ url_for('menu.GetMenu') }}";
+   </script>
 <script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
 <script src="{{ url_for('static', filename='js/Fueralinea.js') }}"></script>
 </body>

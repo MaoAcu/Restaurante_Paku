@@ -14,8 +14,8 @@ const canShowInstall =
 // registra service worher
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/static/sw-menu.js", { scope: "/Menu" })
-    .then(() => console.log("✅ SW Menu registrado"))
+    .register("/static/sw-menu.js", { scope: "/" })
+    .then(() => console.log("SW Menu registrado"))
     .catch(err => console.error(" Error SW Menu:", err));
 }
 

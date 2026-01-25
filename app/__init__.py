@@ -5,6 +5,7 @@ from app.Service import email_service
 #from dotenv import load_dotenv
 from .Controllers.routes import routes_bp
 from .Controllers.AunthController import auth_bp
+from .Controllers.menuController import menu_bp
 from app.models import (
     Usuario,Login
 )
@@ -29,4 +30,5 @@ def create_app():
     #  Registra los blueprints
     app.register_blueprint(routes_bp)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(menu_bp)
     return app

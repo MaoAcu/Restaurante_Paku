@@ -3,7 +3,6 @@ from app import db
 from app.models.login import Login
 from sqlalchemy import text
 import random
-from datetime import datetime
 import threading
 
 auth_bp = Blueprint("auth", __name__)
