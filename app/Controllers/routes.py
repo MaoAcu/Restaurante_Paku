@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template,send_from_directory,current_app
 import os
-from .decorators import loginRequired,localRequired
+from .decorators import loginRequired,localRequired,codigoRequired,noCache
 
 routes_bp = Blueprint("routes", __name__)
 
@@ -17,7 +17,9 @@ def service_worker():
 
 @routes_bp.route("/dashboard", endpoint="dashboard")
 @loginRequired
+@codigoRequired
 @localRequired(1,2)
+@noCache
 def DashBoard():
     return render_template('dashboard.html')
 
@@ -34,6 +36,7 @@ def Login():
 @routes_bp.route("/Codigo", endpoint="Codigo")
 @loginRequired
 @localRequired(1,2)
+@noCache
 def codigo_verificacion():
     return render_template('codigo-verificacion.html')
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = "paku-pwa-v17"; 
+const CACHE_NAME = "paku-pwa-v18"; 
 const urlsToCache = [
   "/",
   "/static/css/login.css",

@@ -59,6 +59,7 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for("auth.login"))
+
 def GenerarCodigo():
     return "{:06d}".format(random.randint(0, 999999))
 
@@ -102,6 +103,7 @@ def VerificarCodigo():
         sql_reset = text("UPDATE login SET codigo=NULL WHERE idusuario=:idusuario")
         db.session.execute(sql_reset, {"idusuario": session["idusuario"]})
         db.session.commit()   
+        session["Access"] =1
         return redirect(url_for("routes.dashboard"))
         
     return render_template("verificar_codigo.html")

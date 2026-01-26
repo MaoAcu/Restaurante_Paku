@@ -304,7 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>${product.description}</p>
                 <div class="product-footer">
                   <span class="price">${product.price}</span>
-                  <button class="show-btn" onclick="event.stopPropagation(); showProductDetail('${product.id}')">SHOW</button>
+                  <button class="show-btn" onclick="event.stopPropagation(); showProductDetail('${product.id}')">Ver</button>
                 </div>
               </div>
             </div>

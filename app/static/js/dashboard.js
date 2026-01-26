@@ -531,7 +531,7 @@ async loadMenu() {
     
     loadConfigData() {
         // Establecer valores por defecto
-        document.getElementById('restaurantName').value = 'Mi Restaurante';
+        document.getElementById('restaurantName').value = 'Paku Resyaurante & Bar';
         document.getElementById('restaurantDescription').value = 'Restaurante familiar con los mejores platos tradicionales';
         document.getElementById('restaurantHours').value = 'Lunes a Viernes: 9:00 - 22:00, Sábados: 10:00 - 23:00';
         document.getElementById('newPassword').value = '';
