@@ -72,6 +72,7 @@
                 
                 <h1 id="sectionTitle">Menú Principal</h1>
                 
+                
                 <div class="header-actions">
                     <button id="saveAllBtn" class="btn-save">
                         <i class="fas fa-save"></i> Guardar Cambios
@@ -84,11 +85,11 @@
                 <div class="section-header">
                     <h2><i class="fas fa-hamburger"></i> Platos Principales</h2>
                     <button class="btn-add-item" data-category="menu">
-                        <i class="fas fa-plus"></i> Agregar Plato
+                        <i class="fas fa-plus"></i> Agregar Platillo
                     </button>
                 </div>
                 <div id="menuItems" class="items-grid">
-                    <!-- Los items se cargarán dinámicamente -->
+                    <!-- Los items se cargan de froma dinamica  -->
                 </div>
             </div>
 
@@ -101,7 +102,7 @@
                     </button>
                 </div>
                 <div id="promoItems" class="items-grid">
-                    <!-- Las promociones se cargarán dinámicamente -->
+                    <!-- Las promociones se cargan de froma dinamica -->
                 </div>
             </div>
 
@@ -114,11 +115,11 @@
                     </button>
                 </div>
                 <div id="bebidasItems" class="items-grid">
-                    <!-- Las bebidas se cargarán dinámicamente -->
+                    <!-- Las bebidas se cargan de froma dinamica -->
                 </div>
             </div>
 
-            <!-- Sección de Postres -->
+            <!-- Seccion de Postres -->
             <div id="postresSection" class="content-section" style="display: none;">
                 <div class="section-header">
                     <h2><i class="fas fa-birthday-cake"></i> Postres</h2>
@@ -127,7 +128,7 @@
                     </button>
                 </div>
                 <div id="postresItems" class="items-grid">
-                    <!-- Los postres se cargarán dinámicamente -->
+                    <!-- Los postres se cargan de froma dinamica -->
                 </div>
             </div>
 
@@ -279,6 +280,7 @@
 </div>
 <script>
     const MENU_URL = "{{ url_for('menu.GetMenu') }}";
+    const EDIT_MENU_URL = "{{ url_for('menu.PatchMenuSection', idmenu=0) }}";
    </script>
 <script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
 <script src="{{ url_for('static', filename='js/Fueralinea.js') }}"></script>

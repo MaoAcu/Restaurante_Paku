@@ -34,16 +34,13 @@ function showInstallButton() {
 
   const removeButton = () => {
     btn.remove();
-    window.removeEventListener("scroll", removeButton);
-    window.removeEventListener("click", removeButton);
+    
   };
 
   // Auto-ocultar
   setTimeout(removeButton, INSTALL_VISIBLE_TIME);
 
-  // Cualquier interaccion lo oculta
-  window.addEventListener("scroll", removeButton, { once: true });
-  window.addEventListener("click", removeButton, { once: true });
+ 
 
   // Instalar
   btn.addEventListener("click", async (e) => {

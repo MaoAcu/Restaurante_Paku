@@ -7,7 +7,7 @@ from .Controllers.routes import routes_bp
 from .Controllers.AunthController import auth_bp
 from .Controllers.menuController import menu_bp
 from app.models import (
-    Usuario,Login
+    Usuario,Login,Local
 )
 
 

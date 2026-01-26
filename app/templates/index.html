@@ -368,15 +368,24 @@
                         <div class="contact-details">
                             <div class="contact-item">
                                 <i class="fas fa-phone"></i>
-                                <span>+506 1234-5678</span>
+                                <span>+506 8362-8516</span>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
                                 <span>info@paku.cr</span>
                             </div>
                             <div class="contact-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Ver ubicación en el mapa</span>
+                                <a
+                                    href="https://www.google.com/maps/dir/?api=1&destination=9.835974698107753,-83.86691657229247"
+                                    target="_blank"
+                                    style="text-decoration:none;"
+                                    class="splash-location-btn"
+                                    
+                                >
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Ver ubicación en el mapa</span>
+                                </a>
+                                
                             </div>
                         </div>
 
@@ -434,6 +443,7 @@
         const URL_PINTO1= "{{ url_for('static', filename='images/Pinto1.jpg') }}"
         const URL_BULLDOG="{{ url_for('static', filename='images/Bulldog_Maracuya.jpg') }}"
         const MENU_URL = "{{ url_for('menu.GetMenu') }}";
+        const STATIC_MENU_URL = "{{ url_for('static', filename='images/menu/') }}";
     </script>
 <script src="{{url_for('static', filename='js/script.js')}}"></script>
 <script src="{{url_for('static', filename='js/pwainstallMenu.js')}}"></script>

@@ -423,55 +423,60 @@ async loadMenu() {
         setTimeout(() => modal.style.display = 'none', 300);
     }
     
-    saveItem() {
-        const itemId = document.getElementById('itemId').value;
-        const itemData = {
-            id: itemId ? parseInt(itemId) : Date.now(),
-            name: document.getElementById('itemName').value,
-            description: document.getElementById('itemDescription').value,
-            price: parseFloat(document.getElementById('itemPrice').value) || 0,
-            image: document.getElementById('itemImage').value,
-            status: document.getElementById('itemStatus').value,
-            category: document.getElementById('itemCategory').value
-        };
-        
-        const category = itemData.category;
-        
-        // Simular guardado
-        console.log('Guardando item:', itemData);
-        
+   async saveItem() {
+    const itemId = document.getElementById('itemId').value;
+    const formData = new FormData();
+
+    const nombre = document.getElementById('itemName').value.trim();
+    const descripcion = document.getElementById('itemDescription').value.trim();
+    const precio = document.getElementById('itemPrice').value;
+    const estado = document.getElementById('itemStatus').value;
+    const categoria = document.getElementById('itemCategory').value;
+
+    if (nombre) formData.append("nombre", nombre);
+    if (descripcion) formData.append("descripcion", descripcion);
+    if (precio) formData.append("precio", precio);
+    if (estado) formData.append("estado", estado);
+    if (categoria) formData.append("categoria", categoria);
+
+    // Imagen (archivo)
+    const imageInput = document.getElementById("imageUpload");
+    if (imageInput.files.length > 0) {
+        formData.append("image", imageInput.files[0]);
+    }
+
+    try {
+        let response;
+
         if (itemId) {
-            // Actualizar item existente
-            const index = this.items[category].findIndex(item => item.id == itemId);
-            if (index !== -1) {
-                this.items[category][index] = itemData;
-            } else {
-                this.items[category].push(itemData);
-            }
+            // PATCH
+            response = await fetch(`/menu/${itemId}`, {
+                method: "PATCH",
+                body: formData
+            });
         } else {
-            // Nuevo item
-            this.items[category].push(itemData);
+            // POST (cuando lo implementes)
+            response = await fetch(`/menu`, {
+                method: "POST",
+                body: formData
+            });
         }
-        
-        // Mostrar mensaje de éxito
-        this.showNotification('✅ Item guardado correctamente', 'success');
-        
+
+        if (!response.ok) {
+            throw new Error("Error al guardar el producto");
+        }
+
         this.closeModal();
-        this.loadSectionItems(category);
+        await this.loadMenu();
+        this.showNotification("✅ Producto guardado correctamente", "success");
+
+    } catch (error) {
+        console.error(error);
+        this.showNotification("❌ Error al guardar el producto", "error");
     }
-    
-    deleteItem(itemId, category) {
-        // Filtrar el array para eliminar el item
-        this.items[category] = this.items[category].filter(item => item.id !== itemId);
-        
-        // Mostrar mensaje
-        this.showNotification('🗑️ Item eliminado', 'info');
-        
-        // Recargar la sección
-        this.loadSectionItems(category);
-    }
-    
-    saveAll() {
+}
+
+saveAll() {
         // Simular guardado en "base de datos"
         console.log('Guardando todos los cambios:', this.items);
         

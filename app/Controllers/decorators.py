@@ -16,14 +16,19 @@ def localRequired(*locales_permitidos):
     def decorador(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-
             local_usuario = session.get("local")
 
             if local_usuario is None:
+                if request.accept_mimetypes['application/json']:
+                    return {"error": "No autenticado"}, 401
+
                 flash("Debe iniciar sesión primero.", "warning")
                 return redirect(url_for("auth.login"))
 
             if local_usuario not in locales_permitidos:
+                if request.accept_mimetypes['application/json']:
+                    return {"error": "No autorizado"}, 403
+
                 flash("No está autorizado para ingresar a esta vista.", "warning")
                 return redirect(url_for("routes.index"))
 
@@ -31,14 +36,20 @@ def localRequired(*locales_permitidos):
         return wrapper
     return decorador
 
+
 def codigoRequired(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         if session.get("Access") != 1:
+            if request.accept_mimetypes['application/json']:
+                return {"error": "Código no verificado"}, 403
+
             flash("Debe verificar el código de seguridad.", "warning")
             return redirect(url_for("routes.Codigo"))
+
         return func(*args, **kwargs)
     return wrapper
+
 def noCache(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -46,6 +57,6 @@ def noCache(func):
         response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
         response.headers["Pragma"] = "no-cache"
         response.headers["Expires"] = "0"
-        flash("Accion no permitida.", "warning")
+        
         return response
     return wrapper
