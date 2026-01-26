@@ -56,7 +56,7 @@
 
             <main class="main-content">
                 <div class="category-grid">
-                    <div class="category-card" onclick="navigateTo('bebidas')">
+                    <div class="category-card" onclick="navigateTo('bebidas-licor')">
                         <div class="category-text">
                             <h2>BEBIDAS CON ALCOHOL</h2>
                         </div>
@@ -64,17 +64,17 @@
                             <img src="{{ url_for('static', filename='images/Cocteles.jpg') }}" alt="Bebidas">
                         </div>
                     </div>
-                    <div class="category-card" onclick="navigateTo('bebidas')">
+                    <div class="category-card" onclick="navigateTo('bebidas-sin')">
                         <div class="category-text">
                             <h2>BEBIDAS SIN ALCOHOL</h2>
                         </div>
                         <div class="category-image">
-                            <img src="{{ url_for('static', filename='images/Cocteles.jpg') }}" alt="Bebidas">
+                            <img src="{{ url_for('static', filename='images/bebidasSin.jpeg') }}" alt="Bebidas">
                         </div>
                     </div>
 
 
-                    <div class="category-card" onclick="navigateTo('para-comenzar')">
+                    <div class="category-card" onclick="navigateTo('entradas')">
                         <div class="category-text">
                             <h2>Entradas</h2>
                         </div>
@@ -119,12 +119,12 @@
                         </div>
                     </div>
 
-                    <div class="category-card" onclick="navigateTo('mi-creacion')">
+                    <div class="category-card" onclick="navigateTo('desayunos')">
                         <div class="category-text">
                             <h2>DESAYUNOS</h2>
                         </div>
                         <div class="category-image">
-                            <img src="{{ url_for('static', filename='images/Pinto1.jpg') }}" alt="Mi Creación">
+                            <img src="{{ url_for('static', filename='images/Pinto1.jpg') }}" alt="Desayunos">
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
         </div>
 
         <!-- Bebidas View -->
-        <div id="bebidas-view" class="view">
+        <div id="bebidas-licor-view" class="view">
             <header class="header">
                 <!-- Fixed back button to go to menu -->
                 <button class="back-btn" onclick="navigateTo('menu')">
@@ -152,12 +152,36 @@
                     </div>
                 </div>
 
-                <div class="section-banner">
-                    <h2>Cervezas Importadas</h2>
-                    <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=200" alt="Beer">
+                <div class="products-list" id="bebidas-licor-products">
+                   
+                </div>
+            </main>
+
+           
+        </div>
+         <!-- Bebidas View -->
+        <div id="bebidas-sin-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Bebidas sin licor</h1>
+            </header>
+
+            <main class="main-content">
+                <div class="sticky-filter">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-category="all">all</button>
+                        <button class="filter-tab" data-category="naturales">NATURALES</button>
+                        <button class="filter-tab" data-category="sodasI">SODA ITALIANA</button>
+                        <button class="filter-tab" data-category="gaseosas">GASEIOSAS & AGUAS</button>
+                        <button class="filter-tab" data-category="calientes">CALIENTES</button>
+                    </div>
                 </div>
 
-                <div class="products-list" id="bebidas-products">
+
+                <div class="products-list" id="bebidas-sin-products">
                    
                 </div>
             </main>
@@ -264,7 +288,7 @@
         </div>
 
         <!-- desayunos View -->
-        <div id="mi-creacion-view" class="view">
+        <div id="desayunos-view" class="view">
             <header class="header">
         
                <button class="back-btn" onclick="navigateTo('menu')">
@@ -274,15 +298,13 @@
             </header>
 
             <main class="main-content">
-                <div class="custom-builder">
+                
                     <h2 class="section-title">Desayunos típicos</h2>
-                    <p style="color: #fff; padding: 1rem; text-align: center;">
-                       Elige uno de nuestros deliciosos desayunos típicos
-                    </p>
+                    
 
                      
-                <div class="products-list" id="desayunos-products"></div>
-                </div>
+                <div class="products-list" id="desayunos-tipicos-products"></div>
+                
             </main>
        </div>
 

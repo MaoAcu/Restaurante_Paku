@@ -1,3 +1,27 @@
+
+const CATEGORY_MAP = {
+  // Menú principal
+  menu: 'menu',
+  'menu-principal': 'menu',
+  entradas: 'menu',
+  hamburguesas: 'menu',
+  ensaladas: 'menu',
+  ninos: 'menu',
+  desayunos: 'menu',
+
+  // Bebidas
+  bebidas: 'bebidas',
+  'bebidas-licor': 'bebidas',
+  'bebidas-sin': 'bebidas',
+
+  // Postres
+  postres: 'postres',
+
+  // Promos
+  promos: 'promos',
+  promociones: 'promos'
+};
+
 class RestaurantDashboard {
     constructor() {
     this.currentUser = { name: 'Administrador', role: 'Dueño' };
@@ -14,6 +38,8 @@ class RestaurantDashboard {
 
     this.init();
 }
+
+
 async loadMenu() {
     try {
         const response = await fetch(MENU_URL);
@@ -33,20 +59,19 @@ async loadMenu() {
         };
 
         data.forEach(item => {
-            const formattedItem = {
-                id: item.idmenu,
-                name: item.nombre,
-                description: item.descripcion,
-                price: Number(item.precio),
-                image: item.imagen,
-                status: item.estado,
-                category: item.categoria
-            };
+            const normalized = CATEGORY_MAP[item.categoria];
 
-            // Clasificación por categoría
-            if (this.items[item.categoria]) {
-                this.items[item.categoria].push(formattedItem);
-            }
+            if (!normalized) return;
+
+            this.items[normalized].push({
+               id: item.idmenu,
+               name: item.nombre,
+               description: item.descripcion,
+               price: Number(item.precio),
+               image: item.imagen,
+               status: item.estado,
+               category: normalized
+            });
         });
 
         this.renderCurrentSection();
@@ -55,11 +80,12 @@ async loadMenu() {
         console.error('[ERROR loadMenu]:', error);
     }
 }
-    
+    renderCurrentSection() {
+  this.loadSectionItems(this.currentSection);
+}
     init() {
         this.loadMenu();
         this.bindEvents();
-        this.loadSectionItems('menu');
         this.handleResize();
         this.updateUserInfo();
         

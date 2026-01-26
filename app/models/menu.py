@@ -13,3 +13,4 @@ class Menu(db.Model):
     imagen = Column(Text)
     categoria = Column(String(100))
     estado = Column(String(20), default="active")
+    subcategoria=Column(String(30),nullable=False)

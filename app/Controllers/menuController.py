@@ -24,10 +24,11 @@ def GetMenu():
                 "imagen": m.imagen,
                 "categoria": m.categoria,
                 "estado": m.estado,
+                "subcategoria":m.subcategoria
             }
             for m in menus
         ]
-        print(data)
+   
         return jsonify(data), 200
 
     except Exception as e:

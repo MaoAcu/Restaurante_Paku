@@ -12,13 +12,14 @@ async function loadMenu() {
 
     // Mapear categorías → contenedores HTML
     const categoryMap = {
-      bebidas: document.getElementById("bebidas-products"),
+      "bebidas-licor": document.getElementById("bebidas-licor-products"),
+      "bebidas-sin": document.getElementById("bebidas-sin-products"),
       entradas: document.getElementById("entradas-products"),
       hamburguesas: document.getElementById("hamburguesas-products"),
       ensaladas: document.getElementById("ensaladas-products"),
       ninos: document.getElementById("ninos-products"),
       postres: document.getElementById("postres-products"),
-      desayunos: document.getElementById("desayunos-products"),
+      desayunos: document.getElementById("desayunos-tipicos-products"),
       promos: document.getElementById("promos-products"),
     };
 
@@ -42,6 +43,7 @@ async function loadMenu() {
       card.className = "product-card";
       card.dataset.productId = item.idmenu;
       card.dataset.category = item.categoria;
+      card.dataset.subcategoria = item.subcategoria;
 
       card.innerHTML = `
         <img src="${item.imagen || '/images/no-image.png'}" alt="${item.nombre}">
@@ -56,7 +58,7 @@ async function loadMenu() {
       `;
 
       // Insertar card en el contenedor correcto
-      const container = categoryMap[item.categoria];
+      const container = categoryMap[item.categoria.toLowerCase()];
       if (container) container.appendChild(card);
     });
   } catch (err) {
@@ -122,7 +124,7 @@ function updateNavigation(currentView) {
     ensaladas: 1,
     "menu-ninos": 1,
     postres: 1,
-    "mi-creacion": 1,
+    "desayunos": 1,
     search: 2,
     contact: 3,
   }
@@ -240,34 +242,29 @@ function updateGalleryNav() {
 
 // Filter functionality
 document.addEventListener("DOMContentLoaded", () => {
-  const filterTabs = document.querySelectorAll(".filter-tab")
-
-  filterTabs.forEach((tab) => {
+  document.querySelectorAll(".filter-tab").forEach(tab => {
     tab.addEventListener("click", () => {
-      const category = tab.dataset.category
-      const parentContainer = tab.closest(".main-content")
-      const productsList = parentContainer.querySelector(".products-list")
-      const products = productsList.querySelectorAll(".product-card")
+      const filter = tab.dataset.category;
+      const view = tab.closest(".view");
+      const products = view.querySelectorAll(".product-card");
 
-      // Update active tab
-      tab.parentElement.querySelectorAll(".filter-tab").forEach((t) => {
-        t.classList.remove("active")
-      })
-      tab.classList.add("active")
+      // Activar tab
+      tab.parentElement.querySelectorAll(".filter-tab")
+        .forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
 
-      // Filter products
-      products.forEach((product) => {
-        const productCategory = product.dataset.category
+      products.forEach(card => {
+        const subcategoria = card.dataset.subcategoria;
 
-        if (category === "all" || productCategory === category) {
-          product.style.display = "flex"
-        } else {
-          product.style.display = "none"
-        }
-      })
-    })
-  })
-})
+        const show =
+          filter === "all" ||
+          subcategoria === filter;
+
+        card.style.display = show ? "flex" : "none";
+      });
+    });
+  });
+});
 
 // Search functionality
 document.addEventListener("DOMContentLoaded", () => {
