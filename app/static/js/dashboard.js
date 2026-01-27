@@ -1,25 +1,48 @@
-
 const CATEGORY_MAP = {
-  // Menú principal
-  menu: 'menu',
-  'menu-principal': 'menu',
-  entradas: 'menu',
-  hamburguesas: 'menu',
-  ensaladas: 'menu',
-  ninos: 'menu',
-  desayunos: 'menu',
-
-  // Bebidas
-  bebidas: 'bebidas',
-  'bebidas-licor': 'bebidas',
-  'bebidas-sin': 'bebidas',
-
+  // Promociones
+  'promos': 'promos',
+  
+  // Bebidas con alcohol
+  'bebidas-licor': 'bebidas-licor',
+  
+  // Bebidas sin alcohol
+  'bebidas-sin': 'bebidas-sin',
+  
+  // Entradas
+  'entradas': 'entradas',
+  
+  // Ensaladas
+  'ensaladas': 'ensaladas',
+  
+  // Menú niños
+  'ninos': 'ninos',
+  
+  // Hamburguesas
+  'hamburguesas': 'hamburguesas',
+  
   // Postres
-  postres: 'postres',
+  'postres': 'postres',
+  
+  // Desayunos
+  'desayunos': 'desayunos'
+};
 
-  // Promos
-  promos: 'promos',
-  promociones: 'promos'
+const SUBCATEGORIES = {
+    'bebidas-licor': [
+        { value: '', text: 'Sin subcategoría' },
+        { value: 'importadas', text: 'Cervezas Importadas' },
+        { value: 'nacionales', text: 'Cervezas Nacionales' },
+        { value: 'cocteles', text: 'Cocteles' },
+        { value: 'shot', text: 'Shot Especiales' },
+        { value: 'destilados', text: 'Destilados' }
+    ],
+    'bebidas-sin': [
+        { value: '', text: 'Sin subcategoría' },
+        { value: 'naturales', text: 'Naturales' },
+        { value: 'sodasI', text: 'Soda Italiana' },
+        { value: 'gaseosas', text: 'Gaseosas & Aguas' },
+        { value: 'calientes', text: 'Calientes' }
+    ]
 };
 
 class RestaurantDashboard {
@@ -29,12 +52,18 @@ class RestaurantDashboard {
     this.isSidebarOpen = false;
 
     // Se inicializa el objeto vacio
-    this.items = {
-        menu: [],
-        promos: [],
-        bebidas: [],
-        postres: []
-    };
+        this.items = {
+            'promos': [],
+            'bebidas-licor': [],
+            'bebidas-sin': [],
+            'entradas': [],
+            'ensaladas': [],
+            'ninos': [],
+            'hamburguesas': [],
+            'postres': [],
+            'desayunos': [],
+            'config': []
+        };
 
     this.init();
 }
@@ -51,27 +80,34 @@ async loadMenu() {
         const data = await response.json();
 
         // Limpiar antes de cargar
-        this.items = {
-            menu: [],
-            promos: [],
-            bebidas: [],
-            postres: []
-        };
+            this.items = {
+                'promos': [],
+                'bebidas-licor': [],
+                'bebidas-sin': [],
+                'entradas': [],
+                'ensaladas': [],
+                'ninos': [],
+                'hamburguesas': [],
+                'postres': [],
+                'desayunos': [],
+                'config': []
+            };
 
         data.forEach(item => {
             const normalized = CATEGORY_MAP[item.categoria];
 
             if (!normalized) return;
 
-            this.items[normalized].push({
-               id: item.idmenu,
-               name: item.nombre,
-               description: item.descripcion,
-               price: Number(item.precio),
-               image: item.imagen,
-               status: item.estado,
-               category: normalized
-            });
+                this.items[normalized].push({
+                    id: item.idmenu,
+                    name: item.nombre,
+                    description: item.descripcion,
+                    price: Number(item.precio),
+                    image: item.imagen,
+                    status: item.estado,
+                    category: normalized,
+                    subcategory: item.subcategoria || ''   
+                });
         });
 
         this.renderCurrentSection();
@@ -82,7 +118,9 @@ async loadMenu() {
 }
     renderCurrentSection() {
   this.loadSectionItems(this.currentSection);
+
 }
+
     init() {
         this.loadMenu();
         this.bindEvents();
@@ -222,6 +260,7 @@ async loadMenu() {
         });
     }
     
+
     toggleSidebar(forceState) {
         const sidebar = document.querySelector('.sidebar');
         const overlay = document.querySelector('.sidebar-overlay');
@@ -260,7 +299,7 @@ async loadMenu() {
     
     switchSection(section) {
         this.currentSection = section;
-        
+       
         // Actualizar navegación
         document.querySelectorAll('.sidebar-nav li').forEach(li => {
             li.classList.remove('active');
@@ -301,34 +340,41 @@ async loadMenu() {
     }
     
     loadSectionItems(section) {
-        const container = document.getElementById(`${section}Items`);
-        if (!container) return;
-        
-        const items = this.items[section] || [];
-        
-        container.innerHTML = items.map(item => this.createItemCard(item, section)).join('');
-        
-        // Agregar eventos a los botones de editar/eliminar
-        container.querySelectorAll('.btn-edit').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const itemId = parseInt(e.currentTarget.dataset.id);
-                const item = items.find(i => i.id === itemId);
-                if (item) {
-                    this.openEditModal(item, section);
-                }
-            });
-        });
-        
-        container.querySelectorAll('.btn-delete').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const itemId = parseInt(e.currentTarget.dataset.id);
-                if (confirm('¿Estás seguro de eliminar este item?')) {
-                    this.deleteItem(itemId, section);
-                }
-            });
-        });
+    const container = document.getElementById(`${section}Items`);
+    if (!container) {
+        console.error(`Contenedor no encontrado para sección: ${section}`);
+        return;
     }
     
+    // Asegurarse de que la sección existe en this.items
+    if (!this.items[section]) {
+        this.items[section] = [];
+    }
+    
+    const items = this.items[section] || [];
+    
+    container.innerHTML = items.map(item => this.createItemCard(item, section)).join('');
+    
+    // Agregar eventos a los botones de editar/eliminar
+    container.querySelectorAll('.btn-edit').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const itemId = parseInt(e.currentTarget.dataset.id);
+            const item = items.find(i => i.id === itemId);
+            if (item) {
+                this.openEditModal(item, section);
+            }
+        });
+    });
+    
+    container.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const itemId = parseInt(e.currentTarget.dataset.id);
+            if (confirm('¿Estás seguro de eliminar este item?')) {
+                this.deleteItem(itemId, section);
+            }
+        });
+    });
+}
     createItemCard(item, section) {
         const priceDisplay = item.price === 0 ? 'GRATIS' : `₡${item.price.toFixed(2)}`;
         
@@ -363,11 +409,35 @@ async loadMenu() {
             </div>
         `;
     }
+    // Función para actualizar subcategorías
+updateSubcategories(category) {
+    const subcategoryGroup = document.getElementById('subcategoryGroup');
+    const subcategorySelect = document.getElementById('itemSubcategory');
     
+    // Mostrar/ocultar subcategorías solo para bebidas
+    if (category === 'bebidas-licor' || category === 'bebidas-sin') {
+        subcategoryGroup.style.display = 'block';
+        
+        // Limpiar opciones actuales
+        subcategorySelect.innerHTML = '';
+        
+        // Agregar nuevas opciones según el tipo de bebida
+        const subcategories = SUBCATEGORIES[category];
+        subcategories.forEach(subcat => {
+            const option = document.createElement('option');
+            option.value = subcat.value;
+            option.textContent = subcat.text;
+            subcategorySelect.appendChild(option);
+        });
+    } else {
+        subcategoryGroup.style.display = 'none';
+        subcategorySelect.innerHTML = '<option value="">Sin subcategoría</option>';
+    }
+}
     openEditModal(item = null, category) {
         const modal = document.getElementById('editModal');
         const form = document.getElementById('itemForm');
-        
+        this.updateSubcategories(category);
         if (item) {
             // Modo edición
             document.getElementById('modalTitle').textContent = 'Editar Item';
@@ -379,6 +449,15 @@ async loadMenu() {
             document.getElementById('itemStatus').value = item.status || 'active';
             document.getElementById('itemCategory').value = category;
             
+             // Si el item tiene subcategoría la establec
+            if (item.subcategory) {
+           
+                setTimeout(() => {
+                    const subcategorySelect = document.getElementById('itemSubcategory');
+                    subcategorySelect.value = item.subcategory;
+                }, 10);
+            }
+
             // Actualizar toggle de estado
             this.setStatus(item.status || 'active');
         } else {

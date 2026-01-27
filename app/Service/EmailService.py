@@ -66,9 +66,11 @@ class EmailService:
                             
                                 <tr>
                                     <td style="background: linear-gradient(135deg, #B62021 0%, #E6871B 100%); padding: 40px 30px; text-align: center;">
-                                        <div style="width: 70px; height: 70px; background: white; border-radius: 50%; margin: 0 auto 15px; overflow: hidden; border: 3px solid #ffffff;">
-                                            <div style="line-height: 70px; font-size: 24px; font-weight: bold; color: #B62021;">P</div>
-                                        </div>
+                                        <div style=" width: 70px; height: 70px; background: url('https://logic-look.onrender.com/static/img/0.png') no-repeat center; background-size: cover;
+                                            border-radius: 50%;
+                                            margin: 0 auto 15px;
+                                            border: 3px solid #ffffff;
+                                        "></div>
                                         <h1 style="margin: 0; color: #ffffff; font-size: 26px; font-weight: 700; letter-spacing: 1px;">
                                         Verificación de Cuenta
                                         </h1>
@@ -107,7 +109,7 @@ class EmailService:
                                 <tr>
                                     <td style="background-color: #fafafa; padding: 30px; text-align: center; border-top: 1px solid #eeeeee;">
                                         <p style="margin: 0 0 5px; color: #B62021; font-size: 18px; font-weight: 700;">
-                                           Paku
+                                           Logic Look
                                         </p>
                                         <p style="margin: 0; color: #999999; font-size: 12px;">
                                             © 2026 Logic Look. Todos los derechos reservados.<br>

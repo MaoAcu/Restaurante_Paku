@@ -25,21 +25,42 @@
             
             <nav class="sidebar-nav">
                 <ul>
-                    <li class="active" data-section="menu">
-                        <i class="fas fa-book"></i>
-                        <span>Menú Principal</span>
-                    </li>
+                     
                     <li data-section="promos">
-                        <i class="fas fa-percentage"></i>
+                        <i class="fas fa-tags"></i>  
                         <span>Promociones</span>
                     </li>
-                    <li data-section="bebidas">
-                        <i class="fas fa-wine-glass"></i>
-                        <span>Bebidas</span>
+                    <li data-section="bebidas-licor">
+                        <i class="fas fa-beer"></i>  
+                        <span>Bebidas con Alcohol</span>
+                    </li>
+                    <li data-section="bebidas-sin">
+                        <i class="fas fa-glass-cheers"></i>  
+                        <span>Bebidas sin Alcohol</span>
+                    </li>
+                    <li data-section="entradas">
+                        <i class="fas fa-appetizer"></i>  
+                        <span>Entradas</span>
+                    </li>
+                    <li data-section="ensaladas">
+                        <i class="fas fa-seedling"></i>  
+                        <span>Ensaladas</span>
+                    </li>
+                    <li data-section="ninos">
+                        <i class="fas fa-child"></i>  
+                        <span>Menu <br> Niños</span>
+                    </li>
+                    <li data-section="hamburguesas">
+                        <i class="fas fa-hamburger"></i>  
+                        <span>Hamburguesas</span>
                     </li>
                     <li data-section="postres">
                         <i class="fas fa-ice-cream"></i>
                         <span>Postres</span>
+                    </li>
+                    <li data-section="desayunos">
+                        <i class="fas fa-coffee"></i>  
+                        <span>Desayunos</span>
                     </li>
                     <li data-section="config">
                         <i class="fas fa-cog"></i>
@@ -80,57 +101,122 @@
                 </div>
             </header>
 
-            <!-- Sección de Menú Principal -->
-            <div id="menuSection" class="content-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-hamburger"></i> Platos Principales</h2>
-                    <button class="btn-add-item" data-category="menu">
-                        <i class="fas fa-plus"></i> Agregar Platillo
-                    </button>
-                </div>
-                <div id="menuItems" class="items-grid">
-                    <!-- Los items se cargan de froma dinamica  -->
-                </div>
-            </div>
+           <!-- Sección de Promociones -->
+<div id="promosSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-tags"></i> Promociones</h2>
+        <button class="btn-add-item" data-category="promos">
+            <i class="fas fa-plus"></i> Agregar Promoción
+        </button>
+    </div>
+    <div id="promosItems" class="items-grid">
+        <!-- Las promociones se cargan de forma dinámica -->
+    </div>
+</div>
 
-            <!-- Sección de Promociones -->
-            <div id="promosSection" class="content-section" style="display: none;">
-                <div class="section-header">
-                    <h2><i class="fas fa-tags"></i> Promociones Semanales</h2>
-                    <button class="btn-add-item" data-category="promos">
-                        <i class="fas fa-plus"></i> Agregar Promoción
-                    </button>
-                </div>
-                <div id="promoItems" class="items-grid">
-                    <!-- Las promociones se cargan de froma dinamica -->
-                </div>
-            </div>
+<!-- Sección de Bebidas con Alcohol -->
+<div id="bebidas-licorSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-beer"></i> Bebidas con Alcohol</h2>
+        <button class="btn-add-item" data-category="bebidas-licor">
+            <i class="fas fa-plus"></i> Agregar Bebida
+        </button>
+    </div>
+    <div id="bebidas-licorItems" class="items-grid">
+        <!-- Las bebidas con alcohol se cargan de forma dinámica -->
+    </div>
+</div>
 
-            <!-- Sección de Bebidas -->
-            <div id="bebidasSection" class="content-section" style="display: none;">
-                <div class="section-header">
-                    <h2><i class="fas fa-wine-glass-alt"></i> Bebidas</h2>
-                    <button class="btn-add-item" data-category="bebidas">
-                        <i class="fas fa-plus"></i> Agregar Bebida
-                    </button>
-                </div>
-                <div id="bebidasItems" class="items-grid">
-                    <!-- Las bebidas se cargan de froma dinamica -->
-                </div>
-            </div>
+<!-- Sección de Bebidas sin Alcohol -->
+<div id="bebidas-sinSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-glass-whiskey"></i> Bebidas sin Alcohol</h2>
+        <button class="btn-add-item" data-category="bebidas-sin">
+            <i class="fas fa-plus"></i> Agregar Bebida
+        </button>
+    </div>
+    <div id="bebidas-sinItems" class="items-grid">
+        <!-- Las bebidas sin alcohol se cargan de forma dinámica -->
+    </div>
+</div>
 
-            <!-- Seccion de Postres -->
-            <div id="postresSection" class="content-section" style="display: none;">
-                <div class="section-header">
-                    <h2><i class="fas fa-birthday-cake"></i> Postres</h2>
-                    <button class="btn-add-item" data-category="postres">
-                        <i class="fas fa-plus"></i> Agregar Postre
-                    </button>
-                </div>
-                <div id="postresItems" class="items-grid">
-                    <!-- Los postres se cargan de froma dinamica -->
-                </div>
-            </div>
+<!-- Sección de Entradas -->
+<div id="entradasSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-utensils"></i> Entradas</h2>
+        <button class="btn-add-item" data-category="entradas">
+            <i class="fas fa-plus"></i> Agregar Entrada
+        </button>
+    </div>
+    <div id="entradasItems" class="items-grid">
+        <!-- Las entradas se cargan de forma dinámica -->
+    </div>
+</div>
+
+<!-- Sección de Ensaladas -->
+<div id="ensaladasSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-seedling"></i> Ensaladas</h2>
+        <button class="btn-add-item" data-category="ensaladas">
+            <i class="fas fa-plus"></i> Agregar Ensalada
+        </button>
+    </div>
+    <div id="ensaladasItems" class="items-grid">
+        <!-- Las ensaladas se cargan de forma dinámica -->
+    </div>
+</div>
+
+<!-- Sección de Menú Niños -->
+<div id="ninosSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-child"></i> Menú Niños</h2>
+        <button class="btn-add-item" data-category="ninos">
+            <i class="fas fa-plus"></i> Agregar Plato
+        </button>
+    </div>
+    <div id="ninosItems" class="items-grid">
+        <!-- Los platos para niños se cargan de forma dinámica -->
+    </div>
+</div>
+
+<!-- Sección de Hamburguesas -->
+<div id="hamburguesasSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-hamburger"></i> Hamburguesas</h2>
+        <button class="btn-add-item" data-category="hamburguesas">
+            <i class="fas fa-plus"></i> Agregar Hamburguesa
+        </button>
+    </div>
+    <div id="hamburguesasItems" class="items-grid">
+        <!-- Las hamburguesas se cargan de forma dinámica -->
+    </div>
+</div>
+
+<!-- Sección de Postres -->
+<div id="postresSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-ice-cream"></i> Postres</h2>
+        <button class="btn-add-item" data-category="postres">
+            <i class="fas fa-plus"></i> Agregar Postre
+        </button>
+    </div>
+    <div id="postresItems" class="items-grid">
+        <!-- Los postres se cargan de forma dinámica -->
+    </div>
+</div>
+
+<!-- Sección de Desayunos -->
+<div id="desayunosSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-coffee"></i> Desayunos</h2>
+        <button class="btn-add-item" data-category="desayunos">
+            <i class="fas fa-plus"></i> Agregar Desayuno
+        </button>
+    </div>
+    <div id="desayunosItems" class="items-grid">
+        <!-- Los desayunos se cargan de forma dinámica -->
+    </div>
+</div>
 
             <!-- Sección de Configuración -->
             <div id="configSection" class="content-section" style="display: none;">
@@ -179,64 +265,89 @@
     </div>
 
     <!-- Modal para editar/agregar items -->
-    <div id="editModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle">Editar Item</h3>
-                <span class="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <form id="itemForm">
-                    <input type="hidden" id="itemId">
-                    <input type="hidden" id="itemCategory">
-                    
-                    <div class="form-group">
-                        <label for="itemName">Nombre del Plato/Bebida</label>
-                        <input type="text" id="itemName" required placeholder="Ej: Hamburguesa Especial">
+    <!-- Modal para editar/agregar items -->
+<div id="editModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Editar Item</h3>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="itemForm">
+                <input type="hidden" id="itemId">
+                
+                <div class="form-group">
+                    <label for="itemCategory">Categoría</label>
+                    <select id="itemCategory" required>
+                        <option value="">Seleccionar categoría</option>
+                        <option value="promos">Promociones</option>
+                        <option value="bebidas-licor">Bebidas con Alcohol</option>
+                        <option value="bebidas-sin">Bebidas sin Alcohol</option>
+                        <option value="entradas">Entradas</option>
+                        <option value="ensaladas">Ensaladas</option>
+                        <option value="ninos">Menú Niños</option>
+                        <option value="hamburguesas">Hamburguesas</option>
+                        <option value="postres">Postres</option>
+                        <option value="desayunos">Desayunos</option>
+                    </select>
+                </div>
+                
+                <!-- Subcategorías (solo visible para bebidas) -->
+                <div class="form-group" id="subcategoryGroup" style="display: none;">
+                    <label for="itemSubcategory">Subcategoría</label>
+                    <select id="itemSubcategory">
+                        <option value="">Sin subcategoría</option>
+                        <!-- Las opciones se llenarán dinámicamente según el tipo de bebida -->
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="itemName">Nombre del Plato/Bebida</label>
+                    <input type="text" id="itemName" required placeholder="Ej: Hamburguesa Especial">
+                </div>
+                
+                <div class="form-group">
+                    <label for="itemDescription">Descripción</label>
+                    <textarea id="itemDescription" rows="3" placeholder="Describe el plato, ingredientes, etc."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="itemPrice">Precio (₡)</label>
+                    <div class="price-input">
+                        <span class="currency">₡</span>
+                        <input type="number" id="itemPrice" step="0.01" min="0" required placeholder="0.00">
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="itemDescription">Descripción</label>
-                        <textarea id="itemDescription" rows="3" placeholder="Describe el plato, ingredientes, etc."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="itemImage">URL de la Imagen</label>
+                    <div class="image-input-group">
+                        <input type="text" id="itemImage" placeholder="https://ejemplo.com/imagen.jpg">
+                        <button type="button" class="btn-image-upload" onclick="document.getElementById('imageUpload').click()">
+                            <i class="fas fa-upload"></i>
+                        </button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="itemPrice">Precio (₡)</label>
-                        <div class="price-input">
-                            <span class="currency">₡</span>
-                            <input type="number" id="itemPrice" step="0.01" min="0" required placeholder="0.00">
-                        </div>
+                    <small>Inserta una URL o sube una imagen</small>
+                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                </div>
+                
+                <div class="form-group">
+                    <label for="itemStatus">Estado</label>
+                    <div class="status-toggle">
+                        <button type="button" class="status-btn active" data-status="active">Activo</button>
+                        <button type="button" class="status-btn" data-status="inactive">Inactivo</button>
+                        <input type="hidden" id="itemStatus" value="active">
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="itemImage">URL de la Imagen</label>
-                        <div class="image-input-group">
-                            <input type="text" id="itemImage" placeholder="https://ejemplo.com/imagen.jpg">
-                            <button type="button" class="btn-image-upload" onclick="document.getElementById('imageUpload').click()">
-                                <i class="fas fa-upload"></i>
-                            </button>
-                        </div>
-                        <small>Inserta una URL o sube una imagen</small>
-                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="itemStatus">Estado</label>
-                        <div class="status-toggle">
-                            <button type="button" class="status-btn active" data-status="active">Activo</button>
-                            <button type="button" class="status-btn" data-status="inactive">Inactivo</button>
-                            <input type="hidden" id="itemStatus" value="active">
-                        </div>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button type="button" class="btn-cancel close-modal">Cancelar</button>
-                        <button type="submit" class="btn-save">Guardar Cambios</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel close-modal">Cancelar</button>
+                    <button type="submit" class="btn-save">Guardar Cambios</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
     <!-- Modal para subir imagen -->
     <div id="uploadModal" class="modal" style="display: none;">
