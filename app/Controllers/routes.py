@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template,send_from_directory,current_app
 import os
-from .decorators import loginRequired,localRequired,codigoRequired,noCache
+from .decorators import loginRequired,localRequired,codigoRequired,noCache,codeVerifiedRequired
 
 routes_bp = Blueprint("routes", __name__)
 
@@ -31,9 +31,23 @@ def DashBoard():
 
 
 
+@routes_bp.route("/restablecer_contra", endpoint="restablecer_contra")
+@codeVerifiedRequired
+def RestablecerContra():
+    return render_template('restablecer-contrasena.html')
+
+@routes_bp.route("/codigo_restablecer", endpoint="codigo_restablecer")
+def CodigoRestablecer():
+    return render_template("codigo-restablecer.html")
+
 @routes_bp.route("/login", endpoint="login")
 def Login():
     return render_template('login.html')
+
+
+@routes_bp.route("/recuperar_Contra", endpoint="recuperar_Contra")
+def RecuperarContrasena():
+    return render_template("recuperar-Contrasena.html")
 
 @routes_bp.route("/Codigo", endpoint="Codigo")
 @loginRequired

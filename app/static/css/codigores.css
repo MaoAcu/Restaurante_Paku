@@ -1,0 +1,189 @@
+/* PALETA DE COLORES PAKU */
+:root {
+    --color-primary: #B62021;
+    --color-primary-dark: #8e1a1b;
+    --color-secondary: #E6871B;
+    --bg-white: #ffffff;
+    --text-main: #2d3436;
+    --text-muted: #636e72;
+    --border-color: #dfe6e9;
+    --error-red: #d63031;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--bg-white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(#e5e5f7 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+/* Logo Circular Paku Style */
+.logo {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+    font-weight: 800;
+    box-shadow: 0 4px 10px rgba(182, 32, 33, 0.2);
+}
+
+h1 {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* Alertas y Errores */
+.alert {
+    background-color: #fff9f2;
+    border-left: 4px solid var(--color-secondary);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.alert-text {
+    color: #856404;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.error-message {
+    display: none; /* Se activa con JS */
+    background-color: #fff5f5;
+    border: 1px solid #fab1a0;
+    color: var(--error-red);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Formulario */
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.code-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 12px;
+    font-weight: 700;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    color: var(--color-primary);
+    transition: all 0.3s;
+}
+
+.code-input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(230, 135, 27, 0.1);
+}
+
+.code-input::placeholder {
+    color: #dfe6e9;
+    letter-spacing: 12px;
+}
+
+/* Botón */
+.btn {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--color-primary-dark);
+    box-shadow: 0 8px 20px rgba(182, 32, 33, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Reenviar Código */
+.resend-code {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.resend-link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.3s;
+}
+
+.resend-link:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .container { padding: 30px 20px; }
+    .code-input { font-size: 1.5rem; letter-spacing: 8px; }
+}

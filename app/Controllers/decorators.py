@@ -50,6 +50,16 @@ def codigoRequired(func):
         return func(*args, **kwargs)
     return wrapper
 
+
+def codeVerifiedRequired(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not session.get('code_verified'):
+            flash("Debes realizar el procesos de seguridad antes de ir a esta vista.", "warning")
+            return redirect(url_for('auth.login'))  
+        return f(*args, **kwargs)
+    return decorated_function
+
 def noCache(func):
     @wraps(func)
     def wrapper(*args, **kwargs):

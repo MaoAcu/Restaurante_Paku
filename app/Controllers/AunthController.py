@@ -81,6 +81,7 @@ def SendCode(app,idusuario, correo):
        db.session.commit()
 
        email_service.SendVerificationCode(email=correo, code=code)
+       
 @auth_bp.route("/verificar_codigo", methods=["GET", "POST"])
 def VerificarCodigo():
     if request.method == "POST":

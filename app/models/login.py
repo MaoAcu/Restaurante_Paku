@@ -13,14 +13,11 @@ class Login(db.Model):
     correo = Column(String(150), unique=True, nullable=False)
     contrasena_hash = Column(Text, nullable=False)
 
-    intentos = Column(Integer, default=0)
-    estado = Column(SmallInteger, default=1)
-
     ultimo_acceso = Column(DateTime)
-    codigo = Column(String(10))
+    estado = Column(Integer, default=1)
+    intentos = Column(Integer, default=0)
+    codigo = Column(Integer)
     local = Column(Integer)
-
-    usuario = relationship("Usuario", backref="login", uselist=False)
 
     def verificar_password(self, password_plano):
         return bcrypt.checkpw(

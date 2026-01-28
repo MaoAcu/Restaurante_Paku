@@ -493,54 +493,59 @@ updateSubcategories(category) {
     }
 }
     openEditModal(item = null, category) {
-        const modal = document.getElementById('editModal');
-        const form = document.getElementById('itemForm');
-        this.updateSubcategories(category);
-        if (item) {
-            // Modo edición
-            document.getElementById('modalTitle').textContent = 'Editar Item';
-            document.getElementById('itemId').value = item.id;
-            document.getElementById('itemName').value = item.name;
-            document.getElementById('itemDescription').value = item.description || '';
-            document.getElementById('itemPrice').value = item.price;
-            document.getElementById('itemImage').value = item.image || '';
-            document.getElementById('itemStatus').value = item.status || 'active';
-            document.getElementById('itemCategory').value = category;
-            
-             // Si el item tiene subcategoria la establec
-            if (item.subcategory) {
-           
-                setTimeout(() => {
-                    const subcategorySelect = document.getElementById('itemSubcategory');
-                    subcategorySelect.value = item.subcategory;
-                }, 10);
-            }
+    const modal = document.getElementById('editModal');
+    const form = document.getElementById('itemForm');
+    const imageInput = document.getElementById('imageUpload');
+    const preview = document.getElementById('imagePreview');
 
-            // Actualizar toggle de estado
-            this.setStatus(item.status || 'active');
-        } else {
-            // Modo nuevo
-            document.getElementById('modalTitle').textContent = 'Agregar Nuevo Item';
-            form.reset();
-            document.getElementById('itemId').value = '';
-            document.getElementById('itemCategory').value = category;
-            document.getElementById('itemStatus').value = 'active';
-            
-            // Establecer valores por defecto según categoría
-            const defaultImages = {
-                menu: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
-                promos: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
-                bebidas: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
-                postres: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'
-            };
-            
-            document.getElementById('itemImage').value = defaultImages[category] || '';
-            this.setStatus('active');
-        }
-        
-        modal.style.display = 'flex';
-        setTimeout(() => modal.classList.add('active'), 10);
+    this.updateSubcategories(category);
+
+    // Limpieza total SIEMPRE
+    form.reset();
+    imageInput.value = "";
+    this.currentImageUrl = null;
+
+    if (preview) {
+        preview.src = "";
+        preview.style.display = "none";
     }
+
+    if (item) {
+        // Modo edición
+        document.getElementById('modalTitle').textContent = 'Editar Item';
+        document.getElementById('itemId').value = item.id;
+        document.getElementById('itemName').value = item.name;
+        document.getElementById('itemDescription').value = item.description || '';
+        document.getElementById('itemPrice').value = item.price;
+        document.getElementById('itemStatus').value = item.status || 'active';
+        document.getElementById('itemCategory').value = category;
+
+        if (item.image && preview) {
+            preview.src = item.image;
+            preview.style.display = "block";
+            this.currentImageUrl = item.image;
+        }
+
+        if (item.subcategory) {
+            setTimeout(() => {
+                document.getElementById('itemSubcategory').value = item.subcategory;
+            }, 10);
+        }
+
+        this.setStatus(item.status || 'active');
+
+    } else {
+        // Modo nuevo
+        document.getElementById('modalTitle').textContent = 'Agregar Nuevo Item';
+        document.getElementById('itemCategory').value = category;
+        document.getElementById('itemStatus').value = 'active';
+        this.setStatus('active');
+    }
+
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('active'), 10);
+}
+
     
     setStatus(status) {
         document.getElementById('itemStatus').value = status;

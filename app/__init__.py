@@ -6,6 +6,7 @@ from app.Service import email_service
 from .Controllers.routes import routes_bp
 from .Controllers.AunthController import auth_bp
 from .Controllers.menuController import menu_bp
+from .Controllers.credentialController import credential_bp
 from app.models import (
     Usuario,Login,Local
 )
@@ -31,4 +32,5 @@ def create_app():
     app.register_blueprint(routes_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(menu_bp)
+    app.register_blueprint(credential_bp)
     return app
