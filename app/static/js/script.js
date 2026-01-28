@@ -46,7 +46,7 @@ async function loadMenu() {
       card.dataset.subcategoria = item.subcategoria;
 
       card.innerHTML = `
-        <img src="${item.imagen || '/images/no-image.png'}" alt="${item.nombre}">
+        <img src="${STATIC_MENU_URL}${item.imagen || '/images/no-image.png'}" alt="${item.nombre}">
         <div class="product-info">
           <h3>${item.nombre}</h3>
           <p>${item.descripcion || ""}</p>
@@ -159,7 +159,7 @@ function showProductDetail(productId) {
   const modalOptions = document.getElementById("modal-options")
 
   /* ===== Contenido principal ===== */
-  modalImage.src = product.images?.[0] || "/static/img/no-image.png"
+  modalImage.src = `${STATIC_MENU_URL}${product.images?.[0]}` || "/static/img/no-image.png"
   modalTitle.textContent = product.name
   modalPrice.textContent = product.price
   modalDescription.textContent = product.description || ""
@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
         results.forEach((product) => {
           resultsHTML += `
             <div class="product-card" onclick="showProductDetail('${product.id}')">
-              <img src="${product.images[0]}" alt="${product.name}">
+              <img src="${STATIC_MENU_URL}${product.images[0]}" alt="${product.name}">
               <div class="product-info">
                 <h3>${product.name}</h3>
                 <p>${product.description}</p>

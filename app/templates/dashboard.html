@@ -7,10 +7,34 @@
     
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dash.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
+
+    <!--Modal confirmacion-->
+    <div id="deleteModal" class="modal-overlay">
+    <div class="modal-card">
+        <div class="modal-icon">
+            <i class="fa-solid fa-trash-can"></i>
+        </div>
+        
+        <div class="modal-body">
+            <h3>¿Eliminar este platillo?</h3>
+            <p>Esta acción no se puede deshacer. El ítem desaparecerá del menú de <strong>Paku</strong> inmediatamente.</p>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-cancel" onclick="closeDeleteModal()">
+                Cancelar
+            </button>
+            <button class="btn-confirm" id="confirmDeleteBtn">
+                Eliminar ítem
+            </button>
+        </div>
+    </div>
+</div>
     <!-- Dashboard Container -->
     <div class="dashboard-container">
         <!-- Sidebar Overlay para móviles -->
@@ -265,7 +289,6 @@
     </div>
 
     <!-- Modal para editar/agregar items -->
-    <!-- Modal para editar/agregar items -->
 <div id="editModal" class="modal" style="display: none;">
     <div class="modal-content">
         <div class="modal-header">
@@ -273,7 +296,7 @@
             <span class="close-modal">&times;</span>
         </div>
         <div class="modal-body">
-            <form id="itemForm">
+            <form id="itemForm" enctype="multipart/form-data">
                 <input type="hidden" id="itemId">
                 
                 <div class="form-group">
@@ -328,7 +351,7 @@
                         </button>
                     </div>
                     <small>Inserta una URL o sube una imagen</small>
-                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                    <input type="file" name="image" id="imageUpload" accept="image/*" style="display: none;">
                 </div>
                 
                 <div class="form-group">
@@ -392,8 +415,10 @@
 <script>
     const MENU_URL = "{{ url_for('menu.GetMenu') }}";
     const EDIT_MENU_URL = "{{ url_for('menu.PatchMenuSection', idmenu=0) }}";
+    const IMG="{{ url_for('static', filename='images/menu/') }}"
    </script>
 <script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
+<script src="{{url_for('static', filename='js/modal.js')}}"></script>
 <script src="{{ url_for('static', filename='js/Fueralinea.js') }}"></script>
 </body>
 </html>

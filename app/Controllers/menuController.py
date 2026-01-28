@@ -46,7 +46,7 @@ def CreateMenuSection():
         data = request.form
         file = request.files.get('image')
 
-        # 🔒 VALIDACIÓN OBLIGATORIA
+        
         if not data.get("nombre") or not data.get("precio") or not data.get("categoria"):
             return jsonify({
                 "error": "nombre, precio y categoria son obligatorios"

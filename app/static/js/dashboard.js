@@ -26,7 +26,8 @@ const CATEGORY_MAP = {
   // Desayunos
   'desayunos': 'desayunos'
 };
-
+let itemIdToDelete = null;
+let itemSectionToDelete = null;
 const SUBCATEGORIES = {
     'bebidas-licor': [
         { value: '', text: 'Sin subcategoría' },
@@ -50,7 +51,7 @@ class RestaurantDashboard {
     this.currentUser = { name: 'Administrador', role: 'Dueño' };
     this.currentSection = 'menu';
     this.isSidebarOpen = false;
-
+    this.initDeleteModal();
     // Se inicializa el objeto vacio
         this.items = {
             'promos': [],
@@ -103,7 +104,7 @@ async loadMenu() {
                     name: item.nombre,
                     description: item.descripcion,
                     price: Number(item.precio),
-                    image: item.imagen,
+                    image: `${IMG}${item.imagen}`,
                     status: item.estado,
                     category: normalized,
                     subcategory: item.subcategoria || ''   
@@ -368,13 +369,70 @@ async loadMenu() {
     
     container.querySelectorAll('.btn-delete').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const itemId = parseInt(e.currentTarget.dataset.id);
-            if (confirm('¿Estás seguro de eliminar este item?')) {
-                this.deleteItem(itemId, section);
-            }
-        });
+        itemIdToDelete = parseInt(e.currentTarget.dataset.id);
+        itemSectionToDelete = section;
+
+        openDeleteModal(itemIdToDelete);
+       });
     });
 }
+
+
+
+async deleteItem(itemId, section) {
+  try {
+    const response = await fetch(`/menu/${itemId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      alert(result.error || "Error al eliminar");
+      this.showNotification(`❌${result.error}`, "error");
+      return;
+    }
+
+    // 🔥 Eliminar del DOM
+    const card = document.querySelector(`.btn-delete[data-id="${itemId}"]`)
+      ?.closest(".item-card");
+
+    if (card) card.remove();
+
+    // 🔥 Eliminar del estado interno (si usas this.items o products)
+    if (this.items && this.items[section]) {
+      this.items[section] = this.items[section].filter(i => i.id !== itemId);
+    }
+
+ 
+     this.showNotification("✅ Producto eliminado correctamente", "success");
+
+  } catch (error) {
+    console.error("Error DELETE:", error);
+   
+    this.showNotification("❌ No se pudo eliminar el producto", "error");
+  }
+}
+initDeleteModal() {
+    const confirmBtn = document.getElementById('confirmDeleteBtn');
+
+    if (!confirmBtn) return;
+
+    confirmBtn.addEventListener('click', () => {
+      if (!itemIdToDelete) return;
+
+      this.deleteItem(itemIdToDelete, itemSectionToDelete);
+
+      itemIdToDelete = null;
+      itemSectionToDelete = null;
+
+      closeDeleteModal();
+    });
+  }
+
     createItemCard(item, section) {
         const priceDisplay = item.price === 0 ? 'GRATIS' : `₡${item.price.toFixed(2)}`;
         
@@ -449,7 +507,7 @@ updateSubcategories(category) {
             document.getElementById('itemStatus').value = item.status || 'active';
             document.getElementById('itemCategory').value = category;
             
-             // Si el item tiene subcategoría la establec
+             // Si el item tiene subcategoria la establec
             if (item.subcategory) {
            
                 setTimeout(() => {
@@ -709,6 +767,7 @@ saveAll() {
         document.querySelector('.user-role').textContent = this.currentUser.role;
     }
 }
+
 
 // Inicializar la aplicación cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
