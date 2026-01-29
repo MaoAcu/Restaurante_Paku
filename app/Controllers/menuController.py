@@ -39,6 +39,7 @@ def GetMenu():
     except Exception as e:
         print(f"[ERROR get_menu]: {e}")
         return jsonify({"error": "No se pudo obtener el menú"}), 500
+    
 #crear nuevo producto 
 @menu_bp.route("/menu", methods=["POST"])
 def CreateMenuSection():
@@ -97,8 +98,8 @@ def PatchMenuSection(idmenu):
 
         data = request.form
         file = request.files.get("image")
-
-        # ---------- Imagen (opcional) ----------
+        
+        # Imagen 
         if file and allowed_file(file.filename):
             ext = file.filename.rsplit(".", 1)[1].lower()
             filename = f"{uuid.uuid4().hex}.{ext}"
@@ -120,7 +121,7 @@ def PatchMenuSection(idmenu):
 
             menu.imagen = filename
 
-        # ---------- Campos editables ----------
+        #  Campos editables 
         campos = {
             "nombre": data.get("nombre"),
             "descripcion": data.get("descripcion"),

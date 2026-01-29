@@ -574,12 +574,14 @@ updateSubcategories(category) {
     const precio = document.getElementById('itemPrice').value;
     const estado = document.getElementById('itemStatus').value;
     const categoria = document.getElementById('itemCategory').value;
+    const subcategoria = document.getElementById('itemSubcategory').value;
 
     if (nombre) formData.append("nombre", nombre);
     if (descripcion) formData.append("descripcion", descripcion);
     if (precio) formData.append("precio", precio);
     if (estado) formData.append("estado", estado);
     if (categoria) formData.append("categoria", categoria);
+    if (subcategoria) formData.append("subcategoria", subcategoria); 
 
     // Imagen (archivo)
     const imageInput = document.getElementById("imageUpload");
@@ -597,7 +599,7 @@ updateSubcategories(category) {
                 body: formData
             });
         } else {
-            // POST (cuando lo implementes)
+            // POST
             response = await fetch(`/menu`, {
                 method: "POST",
                 body: formData
@@ -617,7 +619,6 @@ updateSubcategories(category) {
         this.showNotification("❌ Error al guardar el producto", "error");
     }
 }
-
 saveAll() {
         // Simular guardado en "base de datos"
         console.log('Guardando todos los cambios:', this.items);
