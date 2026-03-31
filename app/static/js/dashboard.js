@@ -72,7 +72,7 @@ class RestaurantDashboard {
 
 async loadMenu() {
     try {
-        const response = await fetch(MENU_URL);
+        const response = await fetch("menu/GetMenu");
 
         if (!response.ok) {
             throw new Error('Error al obtener el menú');
@@ -343,7 +343,7 @@ async loadMenu() {
     loadSectionItems(section) {
     const container = document.getElementById(`${section}Items`);
     if (!container) {
-        console.error(`Contenedor no encontrado para sección: ${section}`);
+        
         return;
     }
     
@@ -381,7 +381,7 @@ async loadMenu() {
 
 async deleteItem(itemId, section) {
   try {
-    const response = await fetch(`/menu/${itemId}`, {
+    const response = await fetch(`/menu/DeleteMenu/${itemId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
@@ -448,11 +448,11 @@ initDeleteModal() {
                         <h3 class="item-name">${item.name}</h3>
                         <span class="item-price">${priceDisplay}</span>
                     </div>
-                    <p class="item-description">${item.description}</p>
+                     <p class="item-description">${item.description}</p>
                     <div class="item-status">
-                        <span class="status-badge ${item.status}">
-                            <i class="fas fa-${item.status === 'active' ? 'check' : 'pause'}"></i>
-                            ${item.status === 'active' ? 'Activo' : 'Inactivo'}
+                        <span class="status-badge ${item.status === 1 ? 'active' : 'inactive'}">
+                            <i class="fas fa-${item.status === 1 ? 'check' : 'pause'}"></i>
+                            ${item.status === 1 ? 'Activo' : 'Inactivo'}
                         </span>
                     </div>
                     <div class="item-actions">
@@ -492,7 +492,7 @@ updateSubcategories(category) {
         subcategorySelect.innerHTML = '<option value="">Sin subcategoría</option>';
     }
 }
-    openEditModal(item = null, category) {
+   openEditModal(item = null, category) {
     const modal = document.getElementById('editModal');
     const form = document.getElementById('itemForm');
     const imageInput = document.getElementById('imageUpload');
@@ -511,13 +511,37 @@ updateSubcategories(category) {
     }
 
     if (item) {
+        // 🔍 DEBUG: Ver qué valor tiene item.status
+        console.log('Editando producto:', item.name);
+        console.log('Valor de status:', item.status, 'Tipo:', typeof item.status);
+        
         // Modo edición
         document.getElementById('modalTitle').textContent = 'Editar Item';
         document.getElementById('itemId').value = item.id;
         document.getElementById('itemName').value = item.name;
         document.getElementById('itemDescription').value = item.description || '';
         document.getElementById('itemPrice').value = item.price;
-        document.getElementById('itemStatus').value = item.status || 'active';
+        
+        // ✅ Convertir estado correctamente (maneja número o string)
+        let statusText = 'inactive'; // Por defecto inactivo
+        
+        // Comparar convirtiendo a número
+        const statusNumber = Number(item.status);
+        if (statusNumber === 1) {
+            statusText = 'active';
+        } else if (statusNumber === 0) {
+            statusText = 'inactive';
+        }
+        
+        console.log('Status convertido a:', statusText);
+        
+        // Asignar al select
+        const statusSelect = document.getElementById('itemStatus');
+        statusSelect.value = statusText;
+        
+        // Verificar si se asignó correctamente
+        console.log('Select ahora tiene valor:', statusSelect.value);
+        
         document.getElementById('itemCategory').value = category;
 
         if (item.image && preview) {
@@ -532,7 +556,8 @@ updateSubcategories(category) {
             }, 10);
         }
 
-        this.setStatus(item.status || 'active');
+        // ✅ Actualizar los botones de toggle
+        this.setStatus(statusText);
 
     } else {
         // Modo nuevo
@@ -545,8 +570,6 @@ updateSubcategories(category) {
     modal.style.display = 'flex';
     setTimeout(() => modal.classList.add('active'), 10);
 }
-
-    
     setStatus(status) {
         document.getElementById('itemStatus').value = status;
         
@@ -590,33 +613,39 @@ updateSubcategories(category) {
     }
 
     try {
+        
+        const sectionToRefresh = this.currentSection;
+        console.log('Sección a refrescar:', sectionToRefresh);
+        
         let response;
+        const url = itemId ? `https://logiclookcr.com/Paku/menu/UpdateMenu/${itemId}` : 'https://logiclookcr.com/Paku/menu/createItem';
+        const method = itemId ? "PATCH" : "POST";
 
-        if (itemId) {
-            // PATCH
-            response = await fetch(`/menu/${itemId}`, {
-                method: "PATCH",
-                body: formData
-            });
-        } else {
-            // POST
-            response = await fetch(`/menu`, {
-                method: "POST",
-                body: formData
-            });
-        }
+        response = await fetch(url, {
+            method: method,
+            body: formData
+        });
 
         if (!response.ok) {
-            throw new Error("Error al guardar el producto");
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Error al guardar el producto");
         }
 
+        const result = await response.json();
         this.closeModal();
+        
         await this.loadMenu();
+        
+        console.log('Recargando sección después de loadMenu:', sectionToRefresh);
+        if (sectionToRefresh && sectionToRefresh !== 'config') {
+            await this.loadSectionItems(sectionToRefresh);
+        }
+        
         this.showNotification("✅ Producto guardado correctamente", "success");
 
     } catch (error) {
-        console.error(error);
-        this.showNotification("❌ Error al guardar el producto", "error");
+        console.error("Error:", error);
+        this.showNotification(`❌ ${error.message}`, "error");
     }
 }
 saveAll() {

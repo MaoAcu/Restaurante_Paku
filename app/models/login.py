@@ -24,7 +24,7 @@ class Login(db.Model):
             password_plano.encode("utf-8"),
             self.contrasena_hash.encode("utf-8")
         )
-
+   
     def esta_activo(self):
         return self.estado == 1
 

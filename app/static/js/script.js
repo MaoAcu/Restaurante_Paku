@@ -1,14 +1,37 @@
 // Contenedor global de productos
 let products = {};
-
+const subcategory={
+  nachosycargados:1,
+  crujientes:2,
+  antojitos:3,
+  casados:4,
+  arroces:5,
+  carnes:6,
+  mariscos:7
+}
 // Función principal para cargar productos desde la DB
 async function loadMenu() {
   try {
-    const response = await fetch(MENU_URL, { credentials: "include" });
+    const response = await fetch("/menu/GetMenu", { credentials: "include" });
     console.log(response)
     if (!response.ok) throw new Error("Error al cargar productos");
 
     const menuItems = await response.json();
+    
+    // Filtrar solo productos activos (manejando string o número)
+    const activeMenuItems = menuItems.filter(item => {
+      // Convertir a número si es necesario
+      const estadoNum = Number(item.estado);
+      return estadoNum === 1;
+    });
+    
+    console.log(`Total productos: ${menuItems.length}, Activos: ${activeMenuItems.length}`);
+
+    // Si no hay productos activos, mostrar mensaje o continuar
+    if (activeMenuItems.length === 0) {
+      console.warn("No se encontraron productos con estado = 1");
+      // Puedes mostrar un mensaje en el HTML si lo deseas
+    }
 
     // Mapear categorías → contenedores HTML
     const categoryMap = {
@@ -21,12 +44,13 @@ async function loadMenu() {
       postres: document.getElementById("postres-products"),
       desayunos: document.getElementById("desayunos-tipicos-products"),
       promos: document.getElementById("promos-products"),
+      "plato-fuerte": document.getElementById("plato-fuerte"),
     };
 
     // Limpiar contenedores
     Object.values(categoryMap).forEach(c => c && (c.innerHTML = ""));
 
-    menuItems.forEach(item => {
+    activeMenuItems.forEach(item => {
       // Guardar producto global
       products[item.idmenu] = {
         id: item.idmenu,
@@ -48,11 +72,11 @@ async function loadMenu() {
       card.innerHTML = `
         <img src="${STATIC_MENU_URL}${item.imagen || '/images/no-image.png'}" alt="${item.nombre}">
         <div class="product-info">
-          <h3>${item.nombre}</h3>
-          <p>${item.descripcion || ""}</p>
+          <h3>${item.nombre}</h3> 
+          <p>${item.descripcion}</p>
           <div class="product-footer">
-            <span class="price">₡${item.precio}</span>
-            <button class="show-btn" onclick="event.stopPropagation(); showProductDetail('${item.idmenu}')">Ver</button>
+            <span class="price">₡${item.precio}+10% de servicio</span>
+            <button class="show-btn" onclick="event.stopPropagation(); showProductDetail('${item.idmenu}')">Ver Detalle</button>
           </div>
         </div>
       `;
@@ -65,7 +89,6 @@ async function loadMenu() {
     console.error("Error cargando menú:", err);
   }
 }
-
 // Llamar a loadMenu cuando cargue la página
 document.addEventListener("DOMContentLoaded", () => {
   loadMenu();
@@ -126,6 +149,7 @@ function updateNavigation(currentView) {
     postres: 1,
     "desayunos": 1,
     search: 2,
+    "plato-fuerte": 1,
     contact: 3,
   }
 

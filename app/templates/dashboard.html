@@ -37,7 +37,7 @@
 </div>
     <!-- Dashboard Container -->
     <div class="dashboard-container">
-        <!-- Sidebar Overlay para móviles -->
+        <!-- Sidebar Overlay para moviles -->
         <div class="sidebar-overlay"></div>
         
         <!-- Sidebar -->
@@ -84,7 +84,11 @@
                     </li>
                     <li data-section="desayunos">
                         <i class="fas fa-coffee"></i>  
-                        <span>Desayunos</span>
+                        <span>Gallo Pinto</span>
+                    </li>
+                    <li data-section="menu">
+                        <i class="fas fa-utensils"></i>  
+                        <span>Menú</span>
                     </li>
                     <li data-section="config">
                         <i class="fas fa-cog"></i>
@@ -241,7 +245,17 @@
         <!-- Los desayunos se cargan de forma dinámica -->
     </div>
 </div>
-
+          <div id="menuSection" class="content-section" style="display: none;">
+    <div class="section-header">
+        <h2><i class="fas fa-utensils"></i> Menú</h2>
+        <button class="btn-add-item" data-category="menu">
+            <i class="fas fa-plus"></i> Agregar Item
+        </button>
+    </div>
+    <div id="menuItems" class="items-grid">
+         
+    </div>
+</div>
             <!-- Sección de Configuración -->
             <div id="configSection" class="content-section" style="display: none;">
                 <div class="config-container">
@@ -413,8 +427,6 @@
     Sin conexión
 </div>
 <script>
-    const MENU_URL = "{{ url_for('menu.GetMenu') }}";
-    const EDIT_MENU_URL = "{{ url_for('menu.PatchMenuSection', idmenu=0) }}";
     const IMG="{{ url_for('static', filename='images/menu/') }}"
    </script>
 <script src="{{url_for('static', filename='js/dashboard.js')}}"></script>

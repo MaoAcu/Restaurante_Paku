@@ -3,75 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña | T.I.T.A.</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/recuperarContraStyle.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/popupStyle.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <title>Recuperar Credenciales - Conexion</title>
-    <style>
-
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <div class="logo-text">Paku</div>
-            <div class="logo-subtitle">Restaurante & Bar</div>
+    <div class="login-card"> <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/LogoT.I.T.A.webp') }}" alt="Logo TITA" class="main-logo">
         </div>
-        
-        <!-- Estado inicial -->
-        <div class="initial-state" id="initialState">
-            <div class="icon-container">
-                <div class="icon">🔐</div>
+
+        <header>
+            <h1>Recuperar Acceso</h1>
+            <p>Enviaremos un código a tu correo para restablecer tu contraseña.</p>
+        </header>
+
+        <form id="recoveryForm">
+            <div class="input-group">
+                <label for="usuario" class="form-label">Correo Electrónico</label>
+                <input type="email" 
+                       id="usuario" 
+                       name="usuario" 
+                       class="form-input" 
+                       placeholder="ejemplo@tita.com" 
+                       required>
+                <div class="error-message" id="emailError"></div>
             </div>
 
-            <h1 class="title">Recuperar Credenciales</h1>
-            
-            <div class="info-message">
-                <strong>💡 Información:</strong> Selecciona qué necesitas recuperar e ingrese su correo electrónico.
-            </div>
+            <button type="button" class="btn-login" id="procesarBtn">
+                CONTINUAR
+            </button>
+        </form>
 
-            <form id="recoveryForm">
-                <!-- Selector de tipo de recuperación -->
-                <div class="form-group">
-                    <label for="tipoRecuperacion" class="form-label">¿Qué necesitas recuperar?</label>
-                    <div class="select-container">
-                        <select id="tipoRecuperacion" name="tipoRecuperacion" class="form-select" required>
-                           <option value="">-- Selecciona una opción --</option>
-                           <option value=1>🔑 Contraseña</option>
-                           <option value=2>👤 Usuario</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="tipoRecuperacion" class="form-label">Ingrese su Correo</label>
-                   
-                    <input type="email"
-                           id="usuario"
-                           name="usuario"
-                           class="form-input"
-                           placeholder="Correo Electronico"
-                           required>
-                    
-                    
-                </div>
-                    <div class="error-message" id="emailError"></div>
-                <!-- Botón dinámico según selección -->
-                <button type="button" class="primary-btn" id="procesarBtn">
-                    Continuar
-                </button>
-            </form>
-
-            <a href="{{ url_for('routes.login') }}" style="text-decoration:none;" class="secondary-btn">
-                <span class="btn-icon">←</span>
-                <span>Volver al inicio de sesión</span>
+        <div class="footer-links">
+            <a href="{{ url_for('routes.login') }}" class="back-link">
+                <span class="icon">←</span> Volver al inicio de sesión
             </a>
         </div>
     </div>
 
     <script>
-    const   PREGUNTAS_URL = "{{ url_for('routes.codigo_restablecer') }}";
-   </script>
-<script src="{{ url_for('static', filename='js/recuperarContrasena.js') }}"></script>
+        const PREGUNTAS_URL = "{{ url_for('routes.codigo_restablecer') }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/recuperarContrasena.js') }}"></script>
 </body>
 </html>

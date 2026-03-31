@@ -29,7 +29,7 @@
                     </a>
                     
                     <div class="splash-social">
-                        <h3>follow us</h3>
+                        <h3>Síguenos</h3>
                         <div class="social-icons">
                             <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link"><i class="fab fa-facebook-f" target="_blank"></i></a>
                             <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2" class="social-link"><i class="fab fa-instagram" target="_blank"></i></a>
@@ -56,60 +56,42 @@
 
             <main class="main-content">
                 <div class="category-grid">
-                    <div class="category-card" onclick="navigateTo('bebidas-licor')">
-                        <div class="category-text">
-                            <h2>BEBIDAS CON ALCOHOL</h2>
-                        </div>
-                        <div class="category-image">
-                            <img src="{{ url_for('static', filename='images/Cocteles.jpg') }}" alt="Bebidas">
-                        </div>
-                    </div>
-                    <div class="category-card" onclick="navigateTo('bebidas-sin')">
-                        <div class="category-text">
-                            <h2>BEBIDAS SIN ALCOHOL</h2>
-                        </div>
-                        <div class="category-image">
-                            <img src="{{ url_for('static', filename='images/bebidasSin.jpeg') }}" alt="Bebidas">
-                        </div>
-                    </div>
 
+                    <div class="category-card" onclick="navigateTo('desayunos')">
+                        <div class="category-text">
+                            <h2>GALLO PINTO</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="{{ url_for('static', filename='images/Pinto1.jpg') }}" alt="Desayunos">
+                        </div>
+                    </div>
 
                     <div class="category-card" onclick="navigateTo('para-comenzar')">
                         <div class="category-text">
-                            <h2>Entradas</h2>
+                            <h2>ENTRADAS Y PARA COMPARTIR</h2>
                         </div>
                         <div class="category-image">
                             <img src="{{ url_for('static', filename='images/Papa_Nacho.jpg') }}" alt="Para Comenzar">
                         </div>
                     </div>
-
-                    <div class="category-card" onclick="navigateTo('ensaladas')">
+                    <div class="category-card" onclick="navigateTo('plato-fuerte')">
                         <div class="category-text">
-                            <h2>ENSALADAS</h2>
+                            <h2>PLATOS FUERTES</h2>
                         </div>
                         <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Ensaladas">
+                            <img src="{{ url_for('static', filename='images/Papa_Nacho.jpg') }}" alt="plato-fuerte'">
                         </div>
                     </div>
-
-                    <div class="category-card" onclick="navigateTo('menu-ninos')">
+                    <div class="category-card" onclick="navigateTo('bebidas-licor')">
                         <div class="category-text">
-                            <h2>MENÚ<br>DE NIÑOS</h2>
+                            <h2>BEBIDAS  </h2>
                         </div>
                         <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1623428454614-abaf00244e52?w=400" alt="Menú de Niños">
+                            <img src="{{ url_for('static', filename='images/Cocteles.jpg') }}" alt="Bebidas">
                         </div>
                     </div>
-
-                    <div class="category-card" onclick="navigateTo('hamburguesas')">
-                        <div class="category-text">
-                            <h2>HAMBUR-<br>GUESAS</h2>
-                        </div>
-                        <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Hamburguesas">
-                        </div>
-                    </div>
-
+                    
+                    
                     <div class="category-card" onclick="navigateTo('postres')">
                         <div class="category-text">
                             <h2>POSTRES</h2>
@@ -118,20 +100,38 @@
                             <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400" alt="Postres">
                         </div>
                     </div>
+                    
 
-                    <div class="category-card" onclick="navigateTo('desayunos')">
+                    <div class="category-card" onclick="navigateTo('ensaladas')">
                         <div class="category-text">
-                            <h2>DESAYUNOS</h2>
+                            <h2>PROMOCIONES</h2>
                         </div>
                         <div class="category-image">
-                            <img src="{{ url_for('static', filename='images/Pinto1.jpg') }}" alt="Desayunos">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Ensaladas">
                         </div>
                     </div>
+
+                    <div class="category-card" onclick="navigateTo('menu-ninos')">
+                        <div class="category-text">
+                            <h2>ALMUERZO ESPECIAL</h2>
+                            <P>Disponible de lunes a sábado · 11:00 a.m. a 4:00 p.m.
+                             Incluye sopa + refresco natural</P>
+                        </div>
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1623428454614-abaf00244e52?w=400" alt="Menú de Niños">
+                        </div>
+                    </div>
+
+                    
+
+                    
+
+                    
                 </div>
             </main>
 
         </div>
-
+        
         <!-- Bebidas View -->
         <div id="bebidas-licor-view" class="view">
             <header class="header">
@@ -142,54 +142,33 @@
                 <h1 class="page-title">Bebidas</h1>
             </header>
 
-            <main class="main-content">
-                <div class="sticky-filter">
-                    <div class="filter-tabs">
-                        <button class="filter-tab active" data-category="all">all</button>
-                        <button class="filter-tab" data-category="importadas">Cervezas Importadas</button>
-                        <button class="filter-tab" data-category="nacionales">Cervezas Nacionales</button>
-                        <button class="filter-tab" data-category="cocteles">Cocteles</button>
-                        <button class="filter-tab" data-category="shot">Shot Especiales</button>
-                        <button class="filter-tab" data-category="destilados">Destilados</button>
-                    </div>
-                </div>
-
-                <div class="products-list" id="bebidas-licor-products">
+            <div class="category-card" >
+                    <h3>BEBIDAS NATURALES</h3>
+                    <div class="products-list" id="bebidas-sin-products">
                    
                 </div>
+            </div>
+            <div class="category-card" >
+                    <h3>BEBIDAS CALIENTES</h3>
+            </div>
+            <div class="category-card" >
+                    <h3>GASEOSAS Y SODAS ITALIANAS</h3>
+            </div>
+            <div class="category-card" >
+                    <h3>CÓCTELES</h3>
+            </div>
+            <div class="category-card" >
+                    <h3>CERVEZAS, LICORES Y SHOTS</h3>
+            </div>
+                
             </main>
 
            
+        
         </div>
-         <!-- Bebidas View -->
-        <div id="bebidas-sin-view" class="view">
-            <header class="header">
-                <!-- Fixed back button to go to menu -->
-                <button class="back-btn" onclick="navigateTo('menu')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <h1 class="page-title">Bebidas sin licor</h1>
-            </header>
+         
 
-            <main class="main-content">
-                <div class="sticky-filter">
-                    <div class="filter-tabs">
-                        <button class="filter-tab active" data-category="all">all</button>
-                        <button class="filter-tab" data-category="naturales">NATURALES</button>
-                        <button class="filter-tab" data-category="sodasI">SODA ITALIANA</button>
-                        <button class="filter-tab" data-category="gaseosas">GASEIOSAS & AGUAS</button>
-                        <button class="filter-tab" data-category="calientes">CALIENTES</button>
-                    </div>
-                </div>
-
-
-                <div class="products-list" id="bebidas-sin-products">
-                   
-                </div>
-            </main>
-
-           
-        </div>
+        
 
         <!-- Para Comenzar View -->
         <div id="para-comenzar-view" class="view">
@@ -198,14 +177,28 @@
                 <button class="back-btn" onclick="navigateTo('menu')">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <h1 class="page-title">Entradas</h1>
+                <h1 class="page-title">ENTRADAS Y PARA COMPARTIR</h1>
             </header>
 
             <main class="main-content">
                 <div class="section-banner">
-                    <h2>Para Comenzar</h2>
+                    <h2>Para empezar, picar y compartir<br>
+
+                     Sabores para la mesa</h2>
+                </div>
+                <div class="category-card" >
+                    <h3>PARA COMPARTIR</h3>
                 </div>
 
+                <div class="category-card" >
+                    <h3>NACHOS Y CARGADOS</h3>
+                </div>
+                <div  class="category-card" >
+                    <h3>CRUJIENTES Y CAMARONES</h3>
+                </div>
+                <div class="category-card" >
+                    <h3>ANTOJITOS Y SOPAS</h3>
+                </div>
                 <div class="products-list" id="entradas-products">
                     
                 </div>
@@ -224,13 +217,7 @@
                 <h1 class="page-title">Hamburguesas</h1>
             </header>
 
-            <main class="main-content">
-                <h2 class="section-title">Recomendados del Chef</h2>
-
-                <div class="products-list" id="hamburguesas-products">
-                    
-                </div>
-            </main>
+           
 
            
         </div>
@@ -255,17 +242,52 @@
         </div>
 
         <!-- Menu Niños View -->
-        <div id="menu-ninos-view" class="view">
+        <div id="plato-fuerte-view" class="view">
             <header class="header">
                 <!-- Fixed back button to go to menu -->
                 <button class="back-btn" onclick="navigateTo('menu')">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <h1 class="page-title">Menú de Niños</h1>
+                <h1 class="page-title">Platos Fuertes</h1>
             </header>
+            <div class="section-banner">
+                    <h2>Caseros, completos y para disfrutar
 
+                      Elegí tu estilo de comida</h2>
+            </div>
+            <div class="subcategory">
+                    <h3></h3>
+                </div>
+                <div class="subcategory">
+                    <h3></h3>
+                </div>
+                <div class="category-card" >
+                    <h3>CASADOS Y ENSALADAS</h3>
+                </div>
+                <div class="subcategory">
+                    <h3>ARROCES Y PASTAS</h3>
+                </div>
+                <div class="category-card" >
+                    <h3>CARNES Y POLLO</h3>
+                </div>
+                <div class="category-card" >
+                    <h3>MARISCOS</h3>
+                </div>
+                <div class="category-card" onclick="navigateTo('hamburguesas')">
+                    <h3>HAMBURGUESAS Y SÁNDWICHES</h3>
+                    <main class="main-content">
+                <h2 class="section-title">Recomendados del Chef</h2>
+
+                <div class="products-list" id="hamburguesas-products">
+                    
+                </div>
+            </main>
+                </div>
+                <div class="category-card" >
+                    <h3>MENU DE NIÑOZ</h3>
+                </div>
             <main class="main-content">
-                <div class="products-list"  id="desayunos-products">
+                <div class="products-list"  id="plato-fuerte-products">
                    
                 </div>
             </main>
@@ -296,12 +318,15 @@
                <button class="back-btn" onclick="navigateTo('menu')">
                   <i class="fas fa-chevron-left"></i>
                </button>
-                <h1 class="page-title">Desayunos</h1>
+                <h1 class="page-title">GALLO PINTO</h1>
             </header>
 
             <main class="main-content">
                 
-                    <h2 class="section-title">Desayunos típicos</h2>
+                    <h3 class="section-title">A cualquier hora del día.
+
+                     Elegí tu favorito
+                    todos incluyen plátano maduro, natilla, tortilla, café o refresco natural del día</h3>
                     
 
                      
@@ -392,7 +417,7 @@
                         </div>
 
                         <div class="contact-social">
-                            <h4>Síguenos en redes sociales</h4>
+                            <h4>Síguenos</h4>
                             <div class="social-links">
                                 <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link"><i class="fab fa-facebook-f"></i></a>
                                 <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -444,7 +469,6 @@
     <script>
         const URL_PINTO1= "{{ url_for('static', filename='images/Pinto1.jpg') }}"
         const URL_BULLDOG="{{ url_for('static', filename='images/Bulldog_Maracuya.jpg') }}"
-        const MENU_URL = "{{ url_for('menu.GetMenu') }}";
         const STATIC_MENU_URL = "{{ url_for('static', filename='images/menu/') }}";
 
     </script>

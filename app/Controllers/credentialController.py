@@ -13,7 +13,7 @@ def ValidarUsuarioRecovery():
     try:
         data = request.get_json()
         correo = data.get('usuario')
-        tipo = data.get('tipo')
+         
 
         if not correo:
             return jsonify({'success': False, 'message': 'Correo requerido'})
@@ -27,7 +27,7 @@ def ValidarUsuarioRecovery():
             })
 
         #   valida el estado
-        if login.estado != 1 and tipo != "1":
+        if login.estado != 1 :
             return jsonify({
                 'success': False,
                 'message': 'Usuario bloqueado. Solo puede recuperar contraseña.'
@@ -41,13 +41,10 @@ def ValidarUsuarioRecovery():
         #   variables de sesion
         session['recovery_idusuario'] = login.idusuario
         session['recovery_correo'] = login.correo
-        session['recovery_tipo'] = tipo
+        
 
         #   envia el correo
-        email_service.SendVerificationCode(
-            email=login.correo,
-            code=code
-        )
+        #email_service.SendVerificationCode(email=correo, code=code)
 
         return jsonify({
             'success': True,
@@ -63,45 +60,31 @@ def ValidarUsuarioRecovery():
 def ValidateCode():
     try:
         data = request.get_json()
-        code_entered = data.get('code')
+        code_entered = data.get('codigo')
 
         idusuario = session.get('recovery_idusuario')
-        tipo = session.get('recovery_tipo')
-
+    
+        
         if not idusuario:
             return jsonify({'success': False, 'message': 'Sesión expirada.'})
 
         login = Login.query.filter_by(idusuario=idusuario).first()
         if not login:
             return jsonify({'success': False, 'message': 'Cuenta no encontrada.'})
-
+        print(login.codigo,  code_entered)
         if str(login.codigo) != str(code_entered):
             return jsonify({'success': False, 'message': 'Código incorrecto.'})
 
-        # 🔥 Invalida código
+        #  Invalida codigo
         login.codigo = None
         db.session.commit()
 
-        if tipo == "1":
-            session['code_verified'] = True
-            return jsonify({
+         
+        session['code_verified'] = True
+        return jsonify({
                 'success': True,
                 'redirect_url': url_for('routes.restablecer_contra')
-            })
-
-        elif tipo == "2":
-            email_service.SendUsernameReminder(
-                email=login.correo,
-                uss=login.correo
-            )
-
-            return jsonify({
-                'success': True,
-                'redirect_url': url_for('auth.login'),
-                'message': f'Tu usuario fue enviado a {login.correo}.'
-            })
-
-        return jsonify({'success': False, 'message': 'Tipo inválido'})
+        })
 
     except Exception as e:
         print("ERROR validate_code:", e)
@@ -111,6 +94,7 @@ def ValidateCode():
 @credential_bp.route('/update_password', methods=['POST'])
 def UpdatePassword():
     try:
+        
         if not session.get('code_verified'):
             return jsonify({'success': False, 'message': 'No autorizado'}), 403
 
@@ -131,7 +115,7 @@ def UpdatePassword():
             bcrypt.gensalt()
         ).decode()
 
-        # 🔓 Reactiva cuenta
+        # Reactiva cuenta
         login.estado = 1
         login.intentos = 0
 
