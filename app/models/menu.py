@@ -14,3 +14,4 @@ class Menu(db.Model):
     estado = Column(Integer, default=1)   
     subcategoria = Column(String(50), default='')
     destacado = Column(Boolean, default=False)
+    titulo = Column(String(70))

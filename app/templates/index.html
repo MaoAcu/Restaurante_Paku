@@ -29,7 +29,7 @@
                     </a>
                     
                     <div class="splash-social">
-                        <h3>Síguenos</h3>
+                        <h3>Siguenos</h3>
                         <div class="social-icons">
                             <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link"><i class="fab fa-facebook-f" target="_blank"></i></a>
                             <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2" class="social-link"><i class="fab fa-instagram" target="_blank"></i></a>
@@ -121,17 +121,11 @@
                             <img src="https://images.unsplash.com/photo-1623428454614-abaf00244e52?w=400" alt="Menú de Niños">
                         </div>
                     </div>
-
-                    
-
-                    
-
-                    
+ 
                 </div>
             </main>
 
         </div>
-        
         <!-- Bebidas View -->
         <div id="bebidas-licor-view" class="view">
             <header class="header">
@@ -142,33 +136,54 @@
                 <h1 class="page-title">Bebidas</h1>
             </header>
 
-            <div class="category-card" >
-                    <h3>BEBIDAS NATURALES</h3>
-                    <div class="products-list" id="bebidas-sin-products">
+            <main class="main-content">
+                <div class="sticky-filter">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-category="all">all</button>
+                        <button class="filter-tab" data-category="importadas">Cervezas Importadas</button>
+                        <button class="filter-tab" data-category="nacionales">Cervezas Nacionales</button>
+                        <button class="filter-tab" data-category="cocteles">Cocteles</button>
+                        <button class="filter-tab" data-category="shot">Shot Especiales</button>
+                        <button class="filter-tab" data-category="destilados">Destilados</button>
+                    </div>
+                </div>
+
+                <div class="products-list" id="bebidas-licor-products">
                    
                 </div>
-            </div>
-            <div class="category-card" >
-                    <h3>BEBIDAS CALIENTES</h3>
-            </div>
-            <div class="category-card" >
-                    <h3>GASEOSAS Y SODAS ITALIANAS</h3>
-            </div>
-            <div class="category-card" >
-                    <h3>CÓCTELES</h3>
-            </div>
-            <div class="category-card" >
-                    <h3>CERVEZAS, LICORES Y SHOTS</h3>
-            </div>
-                
             </main>
 
            
-        
         </div>
-         
+         <!-- Bebidas View -->
+        <div id="bebidas-sin-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Bebidas sin licor</h1>
+            </header>
 
-        
+            <main class="main-content">
+                <div class="sticky-filter">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-category="all">all</button>
+                        <button class="filter-tab" data-category="naturales">NATURALES</button>
+                        <button class="filter-tab" data-category="sodasI">SODA ITALIANA</button>
+                        <button class="filter-tab" data-category="gaseosas">GASEIOSAS & AGUAS</button>
+                        <button class="filter-tab" data-category="calientes">CALIENTES</button>
+                    </div>
+                </div>
+
+
+                <div class="products-list" id="bebidas-sin-products">
+                   
+                </div>
+            </main>
+
+           
+        </div>
 
         <!-- Para Comenzar View -->
         <div id="para-comenzar-view" class="view">
@@ -177,28 +192,14 @@
                 <button class="back-btn" onclick="navigateTo('menu')">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <h1 class="page-title">ENTRADAS Y PARA COMPARTIR</h1>
+                <h1 class="page-title">Entradas</h1>
             </header>
 
             <main class="main-content">
                 <div class="section-banner">
-                    <h2>Para empezar, picar y compartir<br>
-
-                     Sabores para la mesa</h2>
-                </div>
-                <div class="category-card" >
-                    <h3>PARA COMPARTIR</h3>
+                    <h2>Para Comenzar</h2>
                 </div>
 
-                <div class="category-card" >
-                    <h3>NACHOS Y CARGADOS</h3>
-                </div>
-                <div  class="category-card" >
-                    <h3>CRUJIENTES Y CAMARONES</h3>
-                </div>
-                <div class="category-card" >
-                    <h3>ANTOJITOS Y SOPAS</h3>
-                </div>
                 <div class="products-list" id="entradas-products">
                     
                 </div>
@@ -217,7 +218,13 @@
                 <h1 class="page-title">Hamburguesas</h1>
             </header>
 
-           
+            <main class="main-content">
+                <h2 class="section-title">Recomendados del Chef</h2>
+
+                <div class="products-list" id="hamburguesas-products">
+                    
+                </div>
+            </main>
 
            
         </div>
@@ -242,52 +249,17 @@
         </div>
 
         <!-- Menu Niños View -->
-        <div id="plato-fuerte-view" class="view">
+        <div id="menu-ninos-view" class="view">
             <header class="header">
                 <!-- Fixed back button to go to menu -->
                 <button class="back-btn" onclick="navigateTo('menu')">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <h1 class="page-title">Platos Fuertes</h1>
+                <h1 class="page-title">Menú de Niños</h1>
             </header>
-            <div class="section-banner">
-                    <h2>Caseros, completos y para disfrutar
 
-                      Elegí tu estilo de comida</h2>
-            </div>
-            <div class="subcategory">
-                    <h3></h3>
-                </div>
-                <div class="subcategory">
-                    <h3></h3>
-                </div>
-                <div class="category-card" >
-                    <h3>CASADOS Y ENSALADAS</h3>
-                </div>
-                <div class="subcategory">
-                    <h3>ARROCES Y PASTAS</h3>
-                </div>
-                <div class="category-card" >
-                    <h3>CARNES Y POLLO</h3>
-                </div>
-                <div class="category-card" >
-                    <h3>MARISCOS</h3>
-                </div>
-                <div class="category-card" onclick="navigateTo('hamburguesas')">
-                    <h3>HAMBURGUESAS Y SÁNDWICHES</h3>
-                    <main class="main-content">
-                <h2 class="section-title">Recomendados del Chef</h2>
-
-                <div class="products-list" id="hamburguesas-products">
-                    
-                </div>
-            </main>
-                </div>
-                <div class="category-card" >
-                    <h3>MENU DE NIÑOZ</h3>
-                </div>
             <main class="main-content">
-                <div class="products-list"  id="plato-fuerte-products">
+                <div class="products-list"  id="desayunos-products">
                    
                 </div>
             </main>
@@ -318,15 +290,12 @@
                <button class="back-btn" onclick="navigateTo('menu')">
                   <i class="fas fa-chevron-left"></i>
                </button>
-                <h1 class="page-title">GALLO PINTO</h1>
+                <h1 class="page-title">Desayunos</h1>
             </header>
 
             <main class="main-content">
                 
-                    <h3 class="section-title">A cualquier hora del día.
-
-                     Elegí tu favorito
-                    todos incluyen plátano maduro, natilla, tortilla, café o refresco natural del día</h3>
+                    <h2 class="section-title">Desayunos típicos</h2>
                     
 
                      
@@ -417,7 +386,7 @@
                         </div>
 
                         <div class="contact-social">
-                            <h4>Síguenos</h4>
+                            <h4>Síguenos en redes sociales</h4>
                             <div class="social-links">
                                 <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link"><i class="fab fa-facebook-f"></i></a>
                                 <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2" class="social-link"><i class="fab fa-instagram"></i></a>
