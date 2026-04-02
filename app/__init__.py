@@ -44,6 +44,8 @@ def create_app():
         "pool_pre_ping": True,
         "pool_recycle": 300,  
     }
+
+    
     
     # Inicialización de extensiones
     db.init_app(app)
