@@ -1423,6 +1423,136 @@ l .logo-icon-large .logo-lines {
   margin-right: 5px;
 }
 
+/* Contenedor */
+.paku-transition-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* Rectángulos (Slats) */
+.paku-slat {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 150%;
+    left: -150%;
+    transform: skewX(-20deg);
+    z-index: 25; 
+    animation: pakuSlatWipe 10s infinite cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Colores Paku */
+.paku-slat-1 { background-color: #3e2723; } /* Café */
+.paku-slat-2 { background-color: #E6871B; animation-delay: 0.1s; } /* Naranja */
+.paku-slat-3 { background-color: #B62021; animation-delay: 0.2s; } /* Rojo */
+
+/* --- KEYFRAMES LENTOS Y SINCRONIZADOS --- */
+
+@keyframes pakuSlatWipe {
+    0% { left: -150%; }
+    /* IDA: Del segundo 3 al 4.5 barren a la derecha */
+    30% { left: -150%; } 
+    45% { left: 100%; } 
+    /* ESPERA: Se quedan en la derecha mientras se lee el blanco */
+    80% { left: 100%; }
+    /* VUELTA: Del segundo 8 al 9.5 barren de vuelta a la izquierda */
+    95% { left: -150%; }
+    100% { left: -150%; }
+}
+
+@keyframes pakuRevealDescription {
+    /* Muestra la imagen los primeros 4 segundos */
+    0%, 40% { opacity: 0; }
+    /* Aparece el blanco justo cuando pasan los rectángulos */
+    43%, 85% { opacity: 1; }
+    /* Desaparece cuando los rectángulos vienen de vuelta */
+    92%, 100% { opacity: 0; }
+}
+
+.paku-description-final {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    opacity: 0;
+    animation: pakuRevealDescription 10s infinite;
+}
+
+.description-minimal {
+    padding: 20px;
+    text-align: center;
+}
+
+.desc-title {
+    color: #1a1a1a;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.desc-subtitle {
+    color: #666;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.language-selector {
+    position: fixed; 
+    top: 20px;
+    right: 20px;
+    z-index: 100000 !important; 
+    isolation: isolate; 
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 10px 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    display: flex; 
+    align-items: center;
+}
+
+.language-selector:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 20px 5px rgba(182, 32, 33, 0.7); 
+    border-color: rgba(182, 32, 33, 0.5); 
+}
+
+.lang-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; 
+}
+
+.lang-content img {
+    width: 32px; 
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
 /* Media queries */
 @media (max-width: 550px) {
   .brand-name {

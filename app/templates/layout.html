@@ -12,6 +12,12 @@
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 </head>
 <body>
+    <div class="language-selector" onclick="toggleLanguage()">
+    <div id="lang-content" class="lang-content">
+        <img id="lang-flag" src="https://flagcdn.com/w40/cr.png" alt="Español">
+        <span id="lang-text">ES</span>
+    </div>
+</div>
 <main>
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
@@ -65,30 +71,6 @@
     </button>
 </nav>
 <script src="{{ url_for('static', filename='js/Fueralinea.js') }}"></script> 
-
 {% block scripts %}{% endblock %}
-<style>
-    .gtranslate_wrapper, .gt_float_switcher {
-        position: fixed !important;
-        top: 20px !important;
-        right: 20px !important;
-        bottom: auto !important; 
-        left: auto !important;  
-        z-index: 999999 !important;
-    }
-</style>
-
-<div class="gtranslate_wrapper"></div>
-<script>
-    window.gtranslateSettings = {
-        "default_language": "es",
-        "languages": ["es", "fr", "en", "pt", "zh-TW", "de"],
-        "wrapper_selector": ".gtranslate_wrapper",
-        "switcher_horizontal_position": "right",
-        "switcher_vertical_position": "top",
-        "float_switcher_open_direction": "bottom"
-    };
-</script>
-<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 </body>
 </html>

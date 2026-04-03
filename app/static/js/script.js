@@ -1,3 +1,138 @@
+const SUBMENU_MAP = {
+    "para-comenzar": [
+        { id: "Para_Compartir", name: "PARA COMPARTIR", img: "Surtido.jpg" },
+        { id: "Nachos_y_Cargados", name: "NACHOS Y CARGADOS", img: "Papa_Nacho.jpg" },
+        { id: "Crujientes_y_Camarones", name: "CRUJIENTES Y CAMARONES", img: "Cocteles.jpg" },
+        { id: "Antojitos_y_Sopas", name: "ANTOJITOS Y SOPAS", img: "Pinto1.jpg" }
+    ],
+    "plato-fuerte": [
+        { id: "Casados_y_Ensaladas", name: "CASADOS Y ENSALADAS", img: "Pinto1.jpg" },
+        { id: "Arroces_y_Pastas", name: "ARROCES Y PASTAS", img: "Arroz_Pollo.jpg" },
+        { id: "Carnes_y_Pollo", name: "CARNES Y POLLO", img: "Bistec.jpg" },
+        { id: "Mariscos", name: "MARISCOS", img: "Corvina.jpg" },
+        { id: "Hamburguesas_y_Sandwiches", name: "HAMBURGUESAS Y SANDWICHES", img: "Hamburguesa.jpg" },
+        { id: "Menu_Infantil", name: "MENÚ INFANTIL", img: "Pinto1.jpg" }
+    ],
+    "bebidas-licor": [
+        { id: "Bebidas_Naturales", name: "BEBIDAS NATURALES", img: "Naturales.jpg" },
+        { id: "Bebidas_Calientes", name: "BEBIDAS CALIENTES", img: "Cafe.jpg" },
+        { id: "Gaseosas_y_Sodas_Italianas", name: "GASEOSAS Y SODAS", img: "Gaseosa.jpg" },
+        { id: "Cocteles", name: "COCTELES", img: "Cocteles.jpg" },
+        { id: "Cervezas", name: "CERVEZAS", img: "Bulldog_Maracuya.jpg" },
+        { id: "Shots", name: "SHOTS", img: "Cocteles.jpg" }
+    ]
+};
+
+const SUB_HEADERS_MAP = {
+    // Entradas
+    "Para_Compartir": "Para Compartir",
+    "Nachos_y_Cargados": "Nachos y Cargados",
+    "Crujientes_y_Camarones": "Crujientes y Camarones",
+    "Antojitos_y_Sopas": "Antojitos y Sopas",
+
+    // Platos Fuertes
+    "Casados_y_Ensaladas": "Casados y Ensaladas",
+    "Arroces_y_Pastas": "Arroces y Pastas",
+    "Carnes_y_Pollo": "Carnes y Pollo",
+    "Mariscos": "Mariscos",
+    "Hamburguesas_y_Sandwiches": "Hamburguesas y Sándwiches",
+    "Menu_Infantil": "Menú Infantil",
+
+    // Bebidas
+    "Bebidas_Naturales": "Bebidas Naturales",
+    "Bebidas_Calientes": "Bebidas Calientes",
+    "Gaseosas_y_Sodas_Italianas": "Sodas Italianas",
+    "Cocteles": "Cócteles",
+    "Cervezas": "Cervezas",
+    "Shots": "Shots Especiales"
+};
+
+let currentSubCategoryId = null;
+function openSubMenu(categoryId) {
+    navigateTo(categoryId); 
+    // CAMBIO DE TÍTULO DINÁMICO 
+    const targetView = document.getElementById(`${categoryId}-view`);
+    const headerTitle = targetView ? targetView.querySelector('.page-title') : null;
+    
+    if (headerTitle) {
+        const mainHeaderMap = {
+            'para-comenzar': 'Entradas',
+            'plato-fuerte': 'Platos Fuertes',
+            'bebidas-licor': 'Bebidas'
+        };
+        headerTitle.innerText = mainHeaderMap[categoryId] || categoryId.replace(/_/g, ' '); 
+    }
+
+    const subContainer = document.getElementById(`${categoryId}-subcategories`);
+    const productsList = document.getElementById(`${categoryId}-products`);
+
+    if (!subContainer) return;
+
+    subContainer.innerHTML = "";
+    subContainer.style.display = "flex";
+    if (productsList) productsList.style.display = "none";
+    
+    currentSubCategoryId = null; 
+
+    const sections = SUBMENU_MAP[categoryId];
+    if (!sections) return;
+
+    sections.forEach(section => {
+        const card = document.createElement("div");
+        card.className = "category-card";
+        card.onclick = () => filterRealProducts(categoryId, section.id);
+
+        card.innerHTML = `
+            <div class="category-text"><h2>${section.name}</h2></div>
+            <div class="category-image">
+                <img src="${STATIC_MENU_URL}${section.img}" onerror="this.src='${URL_PINTO1}'">
+            </div>
+        `;
+        subContainer.appendChild(card);
+    });
+}
+
+function filterRealProducts(categoryId, subId) {
+    const subContainer = document.getElementById(`${categoryId}-subcategories`);
+    const productsContainerId = (categoryId === 'para-comenzar') ? 'entradas-products' : `${categoryId}-products`;
+    const productsList = document.getElementById(productsContainerId);
+    const targetView = document.getElementById(`${categoryId}-view`);
+    const headerTitle = targetView ? targetView.querySelector('.page-title') : null;
+
+    if (!subContainer || !productsList) {
+        console.error("No se encontró el contenedor para:", categoryId);
+        return;
+    }
+
+    currentSubCategoryId = subId; 
+
+    subContainer.style.display = "none";
+    productsList.style.display = "grid";
+
+    // CAMBIO DE TÍTULO DINÁMICO 
+    if (headerTitle) {
+        headerTitle.innerText = SUB_HEADERS_MAP[subId] || subId.replace(/_/g, ' '); 
+    }
+    // Filtrar items
+    const items = productsList.querySelectorAll(".product-card");
+    let encontrados = 0;
+
+    items.forEach(item => {
+        if (item.dataset.subcategoria === subId) {
+            item.style.display = "flex";
+            encontrados++;
+        } else {
+            item.style.display = "none";
+        }
+    });
+
+    if(encontrados === 0) {
+        console.warn("No hay productos para la subcategoría:", subId);
+    }
+    
+    window.scrollTo(0, 0);
+}
+
 // Contenedor global de productos
 let products = {};
 const subcategory={
@@ -125,12 +260,32 @@ function navigateTo(viewId) {
 }
 
 function goBack() {
-  if (navigationHistory.length > 1) {
-    navigationHistory.pop()
-    const previousView = navigationHistory[navigationHistory.length - 1]
-    navigateTo(previousView)
-    navigationHistory.pop() // Remove duplicate
-  }
+    const currentView = document.querySelector('.view.active');
+    if (!currentView) return;
+
+    const categoryId = currentView.id.replace('-view', '');
+    const subContainer = document.getElementById(`${categoryId}-subcategories`);
+    const productsList = document.getElementById(
+        (categoryId === 'para-comenzar') ? 'entradas-products' : `${categoryId}-products`
+    );
+
+    if (productsList && productsList.style.display === "grid") {
+        productsList.style.display = "none";
+        subContainer.style.display = "grid";
+        const headerTitle = currentView.querySelector('.page-title');
+        if (headerTitle) {
+            const mainHeaderMap = {
+                'para-comenzar': 'Entradas',
+                'plato-fuerte': 'Platos Fuertes',
+                'bebidas-licor': 'Bebidas'
+            };
+            headerTitle.innerText = mainHeaderMap[categoryId] || "Menú";
+        }
+        
+        window.scrollTo(0, 0);
+    } else {
+        navigateTo('menu');
+    }
 }
 
 function updateNavigation(currentView) {
@@ -390,3 +545,25 @@ document.addEventListener("keydown", (e) => {
   }
 })
 
+let currentLang = 'es'; 
+
+function toggleLanguage() {
+    const flagImg = document.getElementById('lang-flag');
+    const langText = document.getElementById('lang-text');
+    
+    if (currentLang === 'es') {
+        // Cambiar a Inglés
+        currentLang = 'en';
+        flagImg.src = "https://flagcdn.com/w80/us.png"; // Bandera USA
+        langText.innerText = "EN";
+        console.log("Cambiando interfaz a Inglés...");
+        // llamar traductor a inglés
+    } else {
+        // Cambiar a Español
+        currentLang = 'es';
+        flagImg.src = "https://flagcdn.com/w80/cr.png"; // Bandera Costa Rica
+        langText.innerText = "ES";
+        console.log("Cambiando interfaz a Español...");
+        // llamar traductor a español
+    }
+}

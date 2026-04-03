@@ -1,13 +1,11 @@
 {% extends "layout.html" %}
 
-{% block title %}Bebidas | Menu Paku{% endblock %}
+{% block title %}Menú | Paku Restaurant{% endblock %}
 
 {% block content %}
 <div class="spotlight-bg"></div>
 <div class="noise-texture"></div>
 <div id="app">
-    <!-- Added splash screen view -->
-    <!-- Splash Screen View -->
     <div id="splash-view" class="view active">
         <div class="splash-container">
             <div class="splash-bg"></div>
@@ -15,410 +13,156 @@
                 <div class="splash-logo">
                     <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
                 </div>
-
-                <!-- Fixed navigation from splash to home -->
                 <button class="splash-menu-btn" onclick="navigateTo('menu')">
                     <i class="fas fa-utensils"></i> MENÚ
                 </button>
-
-                <a href="https://www.google.com/maps/dir/?api=1&destination=9.835974698107753,-83.86691657229247"
-                    target="_blank" style="text-decoration:none;" class="splash-location-btn">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=9.835974698107753,-83.86691657229247" target="_blank" style="text-decoration:none;" class="splash-location-btn">
                     <i class="fas fa-map-marker-alt"></i> UBICACIÓN
                 </a>
-
                 <div class="splash-social">
                     <h3>Siguenos</h3>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link"><i
-                                class="fab fa-facebook-f" target="_blank"></i></a>
-                        <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2" class="social-link"><i
-                                class="fab fa-instagram" target="_blank"></i></a>
-                        <a href="https://wa.me/50683628516?text=Hola%20quiero%20hacer%20un%20pedido" class="social-link"
-                            target="_blank" rel="noopener">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+                        <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/50683628516?text=Hola%20quiero%20hacer%20un%20pedido" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--Estilo-->
   
-<div id="menu-view" class="view">
- 
-      <header class="header">
-                
-                 <div class="splash-logo">
-                        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
-                    </div>
-            </header>
-
-            <main class="main-content">
-                <div class="category-grid">
-
-                    <div class="category-card" onclick="navigateTo('desayunos')">
-                        <div class="category-text">
-                            <h2>GALLO PINTO</h2>
-                        </div>
-                        <div class="category-image">
-                            <img src="{{ url_for('static', filename='images/Pinto1.jpg') }}" alt="Desayunos">
-                        </div>
-                    </div>
-
-                    <div class="category-card" onclick="navigateTo('para-comenzar')">
-                        <div class="category-text">
-                            <h2>ENTRADAS Y PARA COMPARTIR</h2>
-                        </div>
-                        <div class="category-image">
-                            <img src="{{ url_for('static', filename='images/Papa_Nacho.jpg') }}" alt="Para Comenzar">
-                        </div>
-                    </div>
-                    <div class="category-card" onclick="navigateTo('plato-fuerte')">
-                        <div class="category-text">
-                            <h2>PLATOS FUERTES</h2>
-                        </div>
-                        <div class="category-image">
-                            <img src="{{ url_for('static', filename='images/Papa_Nacho.jpg') }}" alt="plato-fuerte'">
-                        </div>
-                    </div>
-                    <div class="category-card" onclick="navigateTo('bebidas-licor')">
-                        <div class="category-text">
-                            <h2>BEBIDAS  </h2>
-                        </div>
-                        <div class="category-image">
-                            <img src="{{ url_for('static', filename='images/Cocteles.jpg') }}" alt="Bebidas">
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="category-card" onclick="navigateTo('postres')">
-                        <div class="category-text">
-                            <h2>POSTRES</h2>
-                        </div>
-                        <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400" alt="Postres">
-                        </div>
-                    </div>
-                    
-
-                    <div class="category-card" onclick="navigateTo('ensaladas')">
-                        <div class="category-text">
-                            <h2>PROMOCIONES</h2>
-                        </div>
-                        <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Ensaladas">
-                        </div>
-                    </div>
-
-                    <div class="category-card" onclick="navigateTo('menu-ninos')">
-                        <div class="category-text">
-                            <h2>ALMUERZO ESPECIAL</h2>
-                            <P>Disponible de lunes a sábado · 11:00 a.m. a 4:00 p.m.
-                             Incluye sopa + refresco natural</P>
-                        </div>
-                        <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1623428454614-abaf00244e52?w=400" alt="Menú de Niños">
-                        </div>
-                    </div>
- 
+    <div id="menu-view" class="view">
+        <header class="header">
+            <div class="splash-logo">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
+            </div>
+        </header>
+        <main class="main-content">
+            <div class="category-grid">
+                <div class="category-card" onclick="navigateTo('desayunos')">
+                    <div class="category-text"><h2>GALLO PINTO</h2></div>
+                    <div class="category-image"><img src="{{ url_for('static', filename='images/Pinto1.jpg') }}"></div>
                 </div>
-            </main>
-
-        </div>
-
-<div id="bebidas-licor-view" class="view">
-            <header class="header">
-                <!-- Fixed back button to go to menu -->
-                <button class="back-btn" onclick="navigateTo('menu')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <h1 class="page-title">Bebidas</h1>
-            </header>
-
-            <main class="main-content">
-                <div class="sticky-filter">
-                    <div class="filter-tabs">
-                        <button class="filter-tab active" data-category="all">all</button>
-                        <button class="filter-tab" data-category="importadas">Cervezas Importadas</button>
-                        <button class="filter-tab" data-category="nacionales">Cervezas Nacionales</button>
-                        <button class="filter-tab" data-category="cocteles">Cocteles</button>
-                        <button class="filter-tab" data-category="shot">Shot Especiales</button>
-                        <button class="filter-tab" data-category="destilados">Destilados</button>
+                <div class="category-card" onclick="openSubMenu('para-comenzar')">
+                    <div class="category-text"><h2>ENTRADAS Y PARA COMPARTIR</h2></div>
+                    <div class="category-image"><img src="{{ url_for('static', filename='images/Papa_Nacho.jpg') }}"></div>
+                </div>
+                <div class="category-card" onclick="openSubMenu('plato-fuerte')">
+                    <div class="category-text"><h2>PLATOS FUERTES</h2></div>
+                    <div class="category-image"><img src="{{ url_for('static', filename='images/Papa_Nacho.jpg') }}"></div>
+                </div>
+                <div class="category-card" onclick="openSubMenu('bebidas-licor')">
+                    <div class="category-text"><h2>BEBIDAS</h2></div>
+                    <div class="category-image"><img src="{{ url_for('static', filename='images/Cocteles.jpg') }}"></div>
+                </div>
+                <div class="category-card" onclick="navigateTo('postres')">
+                    <div class="category-text"><h2>POSTRES</h2></div>
+                    <div class="category-image"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400"></div>
+                </div>
+                <div class="category-card" onclick="navigateTo('ensaladas')">
+                    <div class="category-text"><h2>PROMOCIONES</h2></div>
+                    <div class="category-image"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400"></div>
+                </div>
+                <div class="category-card" onclick="navigateTo('menu-ninos')">
+                <div class="category-text">
+                    <h2>ALMUERZO ESPECIAL</h2>
+                </div>
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1623428454614-abaf00244e52?w=400" alt="Almuerzo">
+                    
+                    <div class="paku-transition-overlay">
+                        <div class="paku-slat paku-slat-1"></div> <div class="paku-slat paku-slat-2"></div> <div class="paku-slat paku-slat-3"></div> 
+                        <div class="paku-description-final">
+                        <div class="description-minimal">
+                            <p class="desc-title">Sopa + Refresco Natural incluido</p>
+                            <p class="desc-subtitle">Lunes a Sábado · 11am a 4pm</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
+            </div>
+            </div>
+        </main>
+    </div>
 
-                <div class="products-list" id="bebidas-licor-products">
-                   
-                </div>
-            </main>
-
-           
-        </div>
-
-    <!-- Para Comenzar View -->
     <div id="para-comenzar-view" class="view">
         <header class="header">
-            <!-- Fixed back button to go to menu -->
-            <button class="back-btn" onclick="navigateTo('menu')">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-chevron-left"></i></button>
             <h1 class="page-title">Entradas</h1>
         </header>
-
         <main class="main-content">
-            <div class="section-banner">
-                <h2>Para Comenzar</h2>
-            </div>
-
-            <div class="products-list" id="entradas-products">
-
-            </div>
+            <div id="para-comenzar-subcategories" class="category-grid"></div>
+            <div class="products-list" id="entradas-products" style="display: none;"></div>
         </main>
-
-
     </div>
 
-    <!-- Hamburguesas View -->
-    <div id="hamburguesas-view" class="view">
+    <div id="plato-fuerte-view" class="view">
         <header class="header">
-            <!-- Fixed back button to go to menu -->
-            <button class="back-btn" onclick="navigateTo('menu')">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <h1 class="page-title">Hamburguesas</h1>
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-chevron-left"></i></button>
+            <h1 class="page-title">Platos Fuertes</h1>
         </header>
-
         <main class="main-content">
-            <h2 class="section-title">Recomendados del Chef</h2>
-
-            <div class="products-list" id="hamburguesas-products">
-
-            </div>
+            <div id="plato-fuerte-subcategories" class="category-grid"></div>
+            <div class="products-list" id="plato-fuerte-products" style="display: none;"></div>
         </main>
-
-
     </div>
 
-    <!-- Ensaladas View -->
-    <div id="ensaladas-view" class="view">
+    <div id="bebidas-licor-view" class="view">
         <header class="header">
-            <!-- Fixed back button to go to menu -->
-            <button class="back-btn" onclick="navigateTo('menu')">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <h1 class="page-title">Ensaladas</h1>
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-chevron-left"></i></button>
+            <h1 class="page-title">Bebidas</h1>
         </header>
-
         <main class="main-content">
-            <div class="products-list" id="ensaladas-products">
-
-            </div>
+            <div id="bebidas-licor-subcategories" class="category-grid"></div>
+            <div class="products-list" id="bebidas-licor-products" style="display: none;"></div>
         </main>
-
-
     </div>
 
-    <!-- Menu Niños View -->
-    <div id="menu-ninos-view" class="view">
+    <div id="desayunos-view" class="view">
         <header class="header">
-            <!-- Fixed back button to go to menu -->
-            <button class="back-btn" onclick="navigateTo('menu')">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <h1 class="page-title">Menú de Niños</h1>
+            <button class="back-btn" onclick="navigateTo('menu')"><i class="fas fa-chevron-left"></i></button>
+            <h1 class="page-title">Gallo Pinto</h1>
         </header>
-
         <main class="main-content">
-            <div class="products-list" id="desayunos-products">
-
-            </div>
+            <div class="products-list" id="desayunos-tipicos-products"></div>
         </main>
-
-
     </div>
 
-    <!-- Postres View -->
     <div id="postres-view" class="view">
         <header class="header">
-
-            <button class="back-btn" onclick="navigateTo('menu')">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+            <button class="back-btn" onclick="navigateTo('menu')"><i class="fas fa-chevron-left"></i></button>
             <h1 class="page-title">Postres</h1>
         </header>
-
         <main class="main-content">
-            <!-- Contenedor vacío para JS dinámico -->
             <div class="products-list" id="postres-products"></div>
         </main>
     </div>
 
-    <!-- desayunos View -->
-    <div id="desayunos-view" class="view">
+    <div id="ensaladas-view" class="view">
         <header class="header">
-
-            <button class="back-btn" onclick="navigateTo('menu')">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <h1 class="page-title">Desayunos</h1>
+            <button class="back-btn" onclick="navigateTo('menu')"><i class="fas fa-chevron-left"></i></button>
+            <h1 class="page-title">Promociones</h1>
         </header>
-
         <main class="main-content">
-
-            <h2 class="section-title">Desayunos típicos</h2>
-
-
-
-            <div class="products-list" id="desayunos-tipicos-products"></div>
-
+            <div class="products-list" id="ensaladas-products"></div>
         </main>
     </div>
 
-    <!-- Added Search View -->
-    <!-- Search View -->
-    <div id="search-view" class="view">
+    <div id="menu-ninos-view" class="view">
         <header class="header">
-
-            <div class="splash-logo">
-                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
-            </div>
+            <button class="back-btn" onclick="navigateTo('menu')"><i class="fas fa-chevron-left"></i></button>
+            <h1 class="page-title">Almuerzo Especial</h1>
         </header>
-
         <main class="main-content">
-            <div class="search-container">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search-input" placeholder="Search" />
-                </div>
-
-                <div class="search-placeholder" id="search-placeholder">
-                    <div class="search-logo">
-                        <div class="logo-icon-large">
-                            <div class="logo-lines"></div>
-                        </div>
-                    </div>
-                    <h2>Paku</h2>
-                    <p>Busca en nuestro menu digital</p>
-                </div>
-
-                <div class="search-results" id="search-results"></div>
-            </div>
+            <div class="products-list" id="desayunos-products"></div>
         </main>
-
-
     </div>
 
-    <!-- Added Contact View -->
-    <!-- Contact View -->
-    <div id="contact-view" class="view">
-        <header class="header">
-
-
-            <div class="splash-logo">
-                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
-            </div>
-        </header>
-
-        <main class="main-content">
-            <div class="contact-container">
-                <h1 class="contact-title">Contact</h1>
-
-               <a href="tel:+50625748422" style="text-decoration: none;">
-                      <button class="call-waiter-btn">
-                        <i class="fas fa-bell"></i> ¡Llámanos!
-                        </button>
-               </a>
- 
-                <div class="contact-info">
-                    <h3>Restaurante Paku</h3>
-                    <p>Paraíso de Cartago, Costa Rica</p>
-
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+506 8362-8516</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@paku.cr</span>
-                        </div>
-                        <div class="contact-item">
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=9.835974698107753,-83.86691657229247"
-                                target="_blank" style="text-decoration:none; background-color: black;"
-                                class="splash-location-btn">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Ver ubicación en el mapa</span>
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="contact-social">
-                        <h4>Síguenos en redes sociales</h4>
-                        <div class="social-links">
-                            <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link"><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2"
-                                class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="https://wa.me/50683628516?text=Hola%20quiero%20hacer%20un%20pedido"
-                                class="social-link" target="_blank" rel="noopener">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-
     </div>
-
-    <!-- Added Product Detail Modal -->
-    <!-- Product Detail Modal -->
-    <div id="product-modal" class="modal">
-        <div class="modal-overlay" onclick="closeProductModal()"></div>
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeProductModal()">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <div class="modal-gallery">
-                <button class="gallery-nav gallery-prev" onclick="previousImage()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <img id="modal-image" src="" alt="Product">
-                <button class="gallery-nav gallery-next" onclick="nextImage()">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <div class="modal-info">
-                <h2 id="modal-title"></h2>
-                <h3 id="modal-price"></h3>
-                <p id="modal-description"></p>
-
-                <div id="modal-options" class="modal-options"></div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script>
     const URL_PINTO1 = "{{ url_for('static', filename='images/Pinto1.jpg') }}"
-    const URL_BULLDOG = "{{ url_for('static', filename='images/Bulldog_Maracuya.jpg') }}"
     const STATIC_MENU_URL = "{{ url_for('static', filename='images/menu/') }}";
-
 </script>
-
-<svg style="display: none;">
-    <filter id="noiseFilter">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-    </filter>
-</svg>
-
 <script src="{{url_for('static', filename='js/script.js')}}"></script>
-<script src="{{url_for('static', filename='js/pwainstallMenu.js')}}"></script>
-
-
-
 {% endblock %}
