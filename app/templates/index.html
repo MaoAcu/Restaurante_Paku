@@ -126,7 +126,34 @@
 
         </div>
 
+<div id="bebidas-licor-view" class="view">
+            <header class="header">
+                <!-- Fixed back button to go to menu -->
+                <button class="back-btn" onclick="navigateTo('menu')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="page-title">Bebidas</h1>
+            </header>
 
+            <main class="main-content">
+                <div class="sticky-filter">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-category="all">all</button>
+                        <button class="filter-tab" data-category="importadas">Cervezas Importadas</button>
+                        <button class="filter-tab" data-category="nacionales">Cervezas Nacionales</button>
+                        <button class="filter-tab" data-category="cocteles">Cocteles</button>
+                        <button class="filter-tab" data-category="shot">Shot Especiales</button>
+                        <button class="filter-tab" data-category="destilados">Destilados</button>
+                    </div>
+                </div>
+
+                <div class="products-list" id="bebidas-licor-products">
+                   
+                </div>
+            </main>
+
+           
+        </div>
 
     <!-- Para Comenzar View -->
     <div id="para-comenzar-view" class="view">
@@ -296,10 +323,12 @@
             <div class="contact-container">
                 <h1 class="contact-title">Contact</h1>
 
-                <button class="call-waiter-btn">
-                    <i class="fas fa-bell"></i> LLamanos.!
-                </button>
- +
+               <a href="tel:+50625748422" style="text-decoration: none;">
+                      <button class="call-waiter-btn">
+                        <i class="fas fa-bell"></i> ¡Llámanos!
+                        </button>
+               </a>
+ 
                 <div class="contact-info">
                     <h3>Restaurante Paku</h3>
                     <p>Paraíso de Cartago, Costa Rica</p>
