@@ -45,191 +45,88 @@
     <!--Estilo-->
   
 <div id="menu-view" class="view">
-    <header class="header">
-        <div class="hero-brand">
-            <div class="brand-name">PAKUOON</div>
-            <div class="brand-sub">Restaurante & bar</div>
-            <div class="tagline-header">
-                <i class="fas fa-heart"></i> Cocina con tradición
-            </div>
+ 
+      <header class="header">
+                
+                 <div class="splash-logo">
+                        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
+                    </div>
+            </header>
+
+            <main class="main-content">
+                <div class="category-grid">
+
+                    <div class="category-card" onclick="navigateTo('desayunos')">
+                        <div class="category-text">
+                            <h2>GALLO PINTO</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="{{ url_for('static', filename='images/Pinto1.jpg') }}" alt="Desayunos">
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="navigateTo('para-comenzar')">
+                        <div class="category-text">
+                            <h2>ENTRADAS Y PARA COMPARTIR</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="{{ url_for('static', filename='images/Papa_Nacho.jpg') }}" alt="Para Comenzar">
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="navigateTo('plato-fuerte')">
+                        <div class="category-text">
+                            <h2>PLATOS FUERTES</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="{{ url_for('static', filename='images/Papa_Nacho.jpg') }}" alt="plato-fuerte'">
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="navigateTo('bebidas-licor')">
+                        <div class="category-text">
+                            <h2>BEBIDAS  </h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="{{ url_for('static', filename='images/Cocteles.jpg') }}" alt="Bebidas">
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="category-card" onclick="navigateTo('postres')">
+                        <div class="category-text">
+                            <h2>POSTRES</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400" alt="Postres">
+                        </div>
+                    </div>
+                    
+
+                    <div class="category-card" onclick="navigateTo('ensaladas')">
+                        <div class="category-text">
+                            <h2>PROMOCIONES</h2>
+                        </div>
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Ensaladas">
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="navigateTo('menu-ninos')">
+                        <div class="category-text">
+                            <h2>ALMUERZO ESPECIAL</h2>
+                            <P>Disponible de lunes a sábado · 11:00 a.m. a 4:00 p.m.
+                             Incluye sopa + refresco natural</P>
+                        </div>
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1623428454614-abaf00244e52?w=400" alt="Menú de Niños">
+                        </div>
+                    </div>
+ 
+                </div>
+            </main>
+
         </div>
-    </header>
-
-    <main class="main-content">
-        <!-- Categorías horizontales estilo primera imagen -->
-        <div class="category-strip">
-            <div class="cat-badge">
-                <i class="fas fa-hamburger"></i> HAMBUR-GUESAS
-            </div>
-            <div class="cat-badge" onclick="navigateTo('postres')">
-                <i class="fas fa-cake-candles"></i> POSTRES
-            </div>
-            <div class="cat-badge special">
-                <i class="fas fa-hand-sparkles"></i> CARIÑO SERVIDO CON SABOR
-            </div>
-            <div class="cat-badge" onclick="navigateTo('desayunos')">
-                <i class="fas fa-mug-hot"></i> DESAYUNOS
-            </div>
-        </div>
-
-        <!-- Banner especial -->
-        <div class="carinio-banner">
-            <i class="fas fa-heartbeat"></i>
-            <span>CARINO SERVIDO CON SABOR</span>
-            <i class="fas fa-utensils"></i>
-        </div>
-
-        <!-- Secciones de menú -->
-        <div class="menu-sections-container">
-            <!-- GALLO PINTO -->
-            <div class="menu-block" onclick="navigateTo('desayunos')">
-                <div class="menu-block-header">
-                    <i class="fas fa-seedling"></i> GALLO PINTO
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Gallo Pinto Tradicional</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Gallo Pinto con Huevo</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Gallo Pinto Ranchero</div>
-                </div>
-            </div>
-
-            <!-- ENTRADAS Y PARA COMPARTIR -->
-            <div class="menu-block" onclick="navigateTo('para-comenzar')">
-                <div class="menu-block-header">
-                    <i class="fas fa-share-alt"></i> ENTRADAS Y PARA COMPARTIR
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Patacones con Guacamol</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Yucas Fritas con Chilero</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Chicharrones & Platano</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Tabla Pakuoon</div>
-                </div>
-            </div>
-
-            <!-- PLATOS FUERTES -->
-            <div class="menu-block" onclick="navigateTo('plato-fuerte')">
-                <div class="menu-block-header">
-                    <i class="fas fa-utensils"></i> PLATOS FUERTES
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Casado Tradicional</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Pechuga a la Plancha</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Churrasco 180g</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Salmón a la Miel</div>
-                </div>
-            </div>
-
-            <!-- BEBIDAS -->
-            <div class="menu-block" onclick="navigateTo('bebidas-licor')">
-                <div class="menu-block-header">
-                    <i class="fas fa-wine-bottle"></i> BEBIDAS
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Cervezas Nacionales</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Cervezas Importadas</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Cocteles Especiales</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Bebidas Sin Alcohol</div>
-                </div>
-            </div>
-
-            <!-- POSTRES -->
-            <div class="menu-block" onclick="navigateTo('postres')">
-                <div class="menu-block-header">
-                    <i class="fas fa-ice-cream"></i> POSTRES
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Queque Tres Leches</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Flan de Coco</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Brownie con Helado</div>
-                </div>
-            </div>
-
-            <!-- PROMOCIONES -->
-            <div class="menu-block" onclick="navigateTo('ensaladas')">
-                <div class="menu-block-header">
-                    <i class="fas fa-tag"></i> PROMOCIONES
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Promoción del Día</div>
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">2x1 en Cervezas</div>
-                </div>
-                <div class="horario-text">
-                    <i class="fas fa-clock"></i> Disponible de lunes a sábado · 11:00 a.m. a 4:00 p.m.
-                </div>
-            </div>
-
-            <!-- ALMUERZO ESPECIAL -->
-            <div class="menu-block" onclick="navigateTo('menu-ninos')">
-                <div class="menu-block-header">
-                    <i class="fas fa-child"></i> ALMUERZO ESPECIAL
-                </div>
-                <div class="menu-item-card">
-                    <div class="menu-item-name">Incluye sopa + refresco natural</div>
-                </div>
-                <div class="horario-text">
-                    <i class="fas fa-clock"></i> Lunes a sábado · 11:00 a.m. a 4:00 p.m.
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
-    <!-- Bebidas View -->
-    <div id="bebidas-licor-view" class="view">
-        <header class="header">
-            <!-- Fixed back button to go to menu -->
-            <button class="back-btn" onclick="navigateTo('menu')">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <h1 class="page-title">Bebidas</h1>
-        </header>
-
-        <main class="main-content">
-            <div class="sticky-filter">
-                <div class="filter-tabs">
-                    <button class="filter-tab active" data-category="all">all</button>
-                    <button class="filter-tab" data-category="importadas">Cervezas Importadas</button>
-                    <button class="filter-tab" data-category="nacionales">Cervezas Nacionales</button>
-                    <button class="filter-tab" data-category="cocteles">Cocteles</button>
-                    <button class="filter-tab" data-category="shot">Shot Especiales</button>
-                    <button class="filter-tab" data-category="destilados">Destilados</button>
-                </div>
-            </div>
-
-            <div class="products-list" id="bebidas-licor-products">
-
-            </div>
-        </main>
 
 
-    </div>
 
     <!-- Para Comenzar View -->
     <div id="para-comenzar-view" class="view">
