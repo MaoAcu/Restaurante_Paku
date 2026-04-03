@@ -6,7 +6,7 @@
 <div class="spotlight-bg"></div>
 <div class="noise-texture"></div>
 <div id="app">
-    <div id="splash-view" class="view active">
+   <div id="splash-view" class="view active">
         <div class="splash-container">
             <div class="splash-bg"></div>
             <div class="splash-content">
@@ -158,8 +158,111 @@
         </main>
     </div>
 
-    </div>
- <div id="product-modal" class="modal">
+ 
+ <!-- Added Search View -->
+        <!-- Search View -->
+        <div id="search-view" class="view">
+            <header class="header">
+               
+                 <div class="splash-logo">
+                        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
+                    </div>
+            </header>
+
+            <main class="main-content">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search" />
+                    </div>
+                    
+                    <div class="search-placeholder" id="search-placeholder">
+                        <div class="search-logo">
+                            <div class="logo-icon-large">
+                                <div class="logo-lines"></div>
+                            </div>
+                        </div>
+                        <h2>Paku</h2>
+                        <p>Busca en nuestro menu digital</p>
+                    </div>
+
+                    <div class="search-results" id="search-results"></div>
+                </div>
+            </main>
+
+           
+        </div>
+
+        <!-- Added Contact View -->
+        <!-- Contact View -->
+        <div id="contact-view" class="view">
+            <header class="header">
+             
+               
+                 <div class="splash-logo">
+                        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Paku Restaurant">
+                    </div>
+            </header>
+
+            <main class="main-content">
+                <div class="contact-container">
+                    <h1 class="contact-title">Contact</h1>
+                    
+                    <button class="call-waiter-btn">
+                        <i class="fas fa-bell"></i> CALL THE WAITER
+                    </button>
+
+                    <div class="contact-info">
+                        <h3>Restaurante Paku</h3>
+                        <p>Paraíso de Cartago, Costa Rica</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+506 8362-8516</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>info@paku.cr</span>
+                            </div>
+                            <div class="contact-item">
+                                <a
+                                    href="https://www.google.com/maps/dir/?api=1&destination=9.835974698107753,-83.86691657229247"
+                                    target="_blank"
+                                    style="text-decoration:none; background-color: black;"
+                                    class="splash-location-btn"
+                                    
+                                >
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Ver ubicación en el mapa</span>
+                                </a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="contact-social">
+                            <h4>Síguenos en redes sociales</h4>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/share/17n9Ac9f9x/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/pakuresbarcr?igsh=NjBxaWkzYjVocHF2" class="social-link"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/50683628516?text=Hola%20quiero%20hacer%20un%20pedido"
+                                    class="social-link"
+                                    target="_blank"
+                                    rel="noopener">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+           
+        </div>
+
+        <!-- Added Product Detail Modal -->
+        <!-- Product Detail Modal -->
+        <div id="product-modal" class="modal">
             <div class="modal-overlay" onclick="closeProductModal()"></div>
             <div class="modal-content">
                 <button class="modal-close" onclick="closeProductModal()">
@@ -185,8 +288,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
+</div>
 <script>
     const URL_PINTO1 = "{{ url_for('static', filename='images/Pinto1.jpg') }}"
     const STATIC_MENU_URL = "{{ url_for('static', filename='images/menu/') }}";
