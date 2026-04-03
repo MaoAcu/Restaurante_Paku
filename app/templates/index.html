@@ -159,6 +159,33 @@
     </div>
 
     </div>
+ <div id="product-modal" class="modal">
+            <div class="modal-overlay" onclick="closeProductModal()"></div>
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeProductModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <div class="modal-gallery">
+                    <button class="gallery-nav gallery-prev" onclick="previousImage()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <img id="modal-image" src="" alt="Product">
+                    <button class="gallery-nav gallery-next" onclick="nextImage()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <h3 id="modal-price"></h3>
+                    <p id="modal-description"></p>
+                    
+                    <div id="modal-options" class="modal-options"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <script>
     const URL_PINTO1 = "{{ url_for('static', filename='images/Pinto1.jpg') }}"
